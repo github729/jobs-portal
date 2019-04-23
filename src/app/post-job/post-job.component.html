@@ -14,7 +14,7 @@
     <div class="job-postdetails">
       <div class="row">
         <div class="col-lg-8">
-          <form action="#">
+          <form [formGroup]="jobForm" (ngSubmit)="postJob(jobForm.value)">
             <fieldset>
               <div class="section postdetails">
                 <h4>
@@ -30,8 +30,8 @@
                         ><span class="change-text">Select a category</span>
                         <i class="fa fa-angle-down pull-right"></i
                       ></a>
-                      <ul class="dropdown-menu category-change">
-                        <li><a>Select a category</a></li>
+                      <ul class="dropdown-menu category-change" >
+                        <li formControlName="category"><a>Select a category</a></li>
                         <li><a>Software Engineer</a></li>
                         <li><a>Program Development</a></li>
                         <li><a>Project Manager</a></li>
@@ -50,6 +50,7 @@
                       name="sellType"
                       value="full-time"
                       id="full-time"
+                      formControlName="type"
                     />
                     <label for="full-time">Full Time</label>
                     <input
@@ -57,6 +58,7 @@
                       name="sellType"
                       value="part-time"
                       id="part-time"
+                      formControlName="type"
                     />
                     <label for="part-time">Part Time</label>
                     <input
@@ -64,6 +66,7 @@
                       name="sellType"
                       value="freelance"
                       id="freelance"
+                      formControlName="type"
                     />
                     <label for="freelance">Freelance</label>
                     <input
@@ -71,19 +74,21 @@
                       name="sellType"
                       value="contract"
                       id="contract"
+                      formControlName="type"
                     />
                     <label for="contract">Contract</label>
                   </div>
                 </div>
                 <div class="row form-group">
                   <label class="col-sm-3 label-title"
-                    >Title for your jonb<span class="required">*</span></label
+                    >Title for your job<span class="required">*</span></label
                   >
                   <div class="col-sm-9">
                     <input
                       type="text"
                       class="form-control"
                       placeholder="ex, Human Resource Manager"
+                      formControlName = "title"
                     />
                   </div>
                 </div>
@@ -97,6 +102,7 @@
                       id="textarea"
                       placeholder="Write few lines about your jobs"
                       rows="8"
+                      formControlName = "description"
                     ></textarea>
                   </div>
                 </div>
@@ -116,7 +122,8 @@
                         <i class="fa fa-angle-down pull-right"></i
                       ></a>
                       <ul class="dropdown-menu category-change">
-                        <li><a>Argentina</a></li>
+
+                      <li   formControlName = "location"><a>Argentina</a></li>
                         <li><a>Australia</a></li>
                         <li><a>Belgium</a></li>
                         <li><a>Brazil</a></li>
@@ -128,8 +135,8 @@
                         ><span class="change-text">State</span>
                         <i class="fa fa-angle-down pull-right"></i
                       ></a>
-                      <ul class="dropdown-menu category-change">
-                        <li><a>State 1</a></li>
+                      <ul class="dropdown-menu category-change"   >
+                        <li formControlName = "state"><a>State 1</a></li>
                         <li><a>State 2</a></li>
                         <li><a>State 3</a></li>
                       </ul>
@@ -142,14 +149,15 @@
                   >
                   <div class="col-sm-9">
                     <label>$USD</label>
-                    <input type="text" class="form-control" placeholder="Min" />
+                    <input type="text" class="form-control" placeholder="Min" formControlName = "salary" />
                     <span>-</span>
-                    <input type="text" class="form-control" placeholder="Max" />
+                    <input type="text" class="form-control" placeholder="Max" formControlName = "salary"/>
                     <input
                       type="radio"
                       name="price"
                       value="negotiable"
                       id="negotiable"
+                      formControlName = "salary"
                     />
                     <label for="negotiable">Negotiable </label>
                   </div>
@@ -165,7 +173,7 @@
                         <i class="fa fa-angle-down pull-right"></i
                       ></a>
                       <ul class="dropdown-menu category-change">
-                        <li><a>Per Hour</a></li>
+                        <li formControlName="salaryType"><a>Per Hour</a></li>
                         <li><a>Daily</a></li>
                         <li><a>Monthly</a></li>
                         <li><a>Yearly</a></li>
@@ -175,7 +183,7 @@
                 </div>
                 <div class="row form-group add-title">
                   <label class="col-sm-3 label-title"
-                    >Exprience<span class="required">*</span></label
+                    >Experience<span class="required">*</span></label
                   >
                   <div class="col-sm-9">
                     <div class="dropdown category-dropdown">
@@ -183,7 +191,7 @@
                         ><span class="change-text">Mid Level</span>
                         <i class="fa fa-angle-down pull-right"></i
                       ></a>
-                      <ul class="dropdown-menu category-change">
+                      <ul formControlName="experience" class="dropdown-menu category-change">
                         <li><a>Entry Level</a></li>
                         <li><a>Mid Level</a></li>
                         <li><a>Mid-Senior Level</a></li>
@@ -201,6 +209,7 @@
                       type="text"
                       class="form-control"
                       placeholder="human, reosurce, job, hrm"
+                      formControlName="function"
                     />
                   </div>
                 </div>
@@ -219,6 +228,7 @@
                       name="name"
                       class="form-control"
                       placeholder="Marketing and Advertising"
+                      formControlName="industry"
                     />
                   </div>
                 </div>
@@ -232,6 +242,7 @@
                       name="name"
                       class="form-control"
                       placeholder="ex, Jhon Doe"
+                      formControlName="companyName"
                     />
                   </div>
                 </div>
@@ -243,6 +254,7 @@
                       name="email"
                       class="form-control"
                       placeholder="ex, jhondoe@mail.com"
+                      formControlName="email"
                     />
                   </div>
                 </div>
@@ -256,6 +268,7 @@
                       name="mobileNumber"
                       class="form-control"
                       placeholder="ex, +912457895"
+                      formControlName="mobileNumber"
                     />
                   </div>
                 </div>
@@ -269,6 +282,7 @@
                       name="address"
                       class="form-control"
                       placeholder="ex, alekdera House, coprotec, usa"
+                      formControlName="address"
                     />
                   </div>
                 </div>
@@ -329,7 +343,7 @@
 
               <div class="checkbox section agreement">
                 <label for="send">
-                  <input type="checkbox" name="send" id="send" />
+                  <input type="checkbox" name="send" id="send" formControlName="terms"/>
                   You agree to our <a>Terms of Use</a> and
                   <a>Privacy Policy</a> and acknowledge that you are the
                   rightful owner of this item and using Jobs to find a genuine
