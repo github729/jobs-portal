@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +19,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { ProfileUpdateComponent } from './profile-update/profile-update.component';
 import { ResumeEditComponent } from './resume-edit/resume-edit.component';
 import { CloseAccountComponent } from './close-account/close-account.component';
+import { from } from 'rxjs';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,8 @@ import { CloseAccountComponent } from './close-account/close-account.component';
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
+    FormsModule,
     AppRoutingModule
   ],
   providers: [],

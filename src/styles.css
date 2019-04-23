@@ -2,3 +2,7 @@
 .btn-primary {
   color: #fff !important;
 }
+.invalid-feedback {
+  display: block;
+  font-size: 100%;
+}

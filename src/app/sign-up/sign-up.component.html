@@ -27,45 +27,118 @@
 
         <div class="tab-content">
           <div role="tabpanel" class="tab-pane active show" id="find-job">
-            <form action="#">
+            <form
+              [formGroup]="employeeSignUpForm"
+              (ngSubmit)="employeeSignUp(employeeSignUpForm.value)"
+            >
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Name" />
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="name"
+                  placeholder="Name"
+                />
+                <div
+                  *ngIf="f.name.errors && (f.name.dirty || f.name.touched)"
+                  class="invalid-feedback"
+                >
+                  <div *ngIf="f.name.errors.required">
+                    Name is required
+                  </div>
+                </div>
               </div>
               <div class="form-group">
                 <input
                   type="email"
                   class="form-control"
                   placeholder="Email Id"
+                  formControlName="email"
                 />
+                <div
+                  *ngIf="f.email.errors && (f.email.dirty || f.email.touched)"
+                  class="invalid-feedback"
+                >
+                  <div *ngIf="f.email.errors.required">Email is required</div>
+                  <div *ngIf="f.email.errors.email">
+                    Email must be a valid email address
+                  </div>
+                </div>
               </div>
               <div class="form-group">
                 <input
                   type="password"
                   class="form-control"
                   placeholder="Password"
+                  formControlName="password"
                 />
+                <div
+                  *ngIf="
+                    f.password.errors &&
+                    (f.password.dirty || f.password.touched)
+                  "
+                  class="invalid-feedback"
+                >
+                  <div *ngIf="f.password.errors.required">
+                    Password is required
+                  </div>
+                  <div *ngIf="f.password.errors.minlength">
+                    Password must be at least 6 characters
+                  </div>
+                </div>
               </div>
               <div class="form-group">
                 <input
                   type="password"
                   class="form-control"
                   placeholder="Confirm Password"
+                  formControlName="confirmPassword"
                 />
+                <div
+                  *ngIf="
+                    f.confirmPassword.errors &&
+                    (f.confirmPassword.dirty || f.confirmPassword.touched)
+                  "
+                  class="invalid-feedback"
+                >
+                  <div *ngIf="f.confirmPassword.errors.required">
+                      Confirm Password is required
+                  </div>
+                </div>
               </div>
               <div class="form-group">
                 <input
                   type="text"
                   class="form-control"
                   placeholder="Mobile Number"
+                  formControlName="mobileNumber"
                 />
+                <div
+                  *ngIf="
+                    f.mobileNumber.errors &&
+                    (f.mobileNumber.dirty || f.mobileNumber.touched)
+                  "
+                  class="invalid-feedback"
+                >
+                  <div *ngIf="f.mobileNumber.errors.required">
+                    Mobile Number is required
+                  </div>
+                </div>
               </div>
               <!-- select -->
-              <select class="form-control">
-                <option value="#">Select City</option>
-                <option value="#">London UK</option>
-                <option value="#">Newyork, USA</option>
-                <option value="#">Seoul, Korea</option>
-                <option value="#">Beijing, China</option> </select
+              <select class="form-control" formControlName="city">
+                <option value="" selected>Select City</option>
+                <option value="London UK">London UK</option>
+                <option value="Newyork, USA">Newyork, USA</option>
+                <option value="Seoul, Korea">Seoul, Korea</option>
+                <option value="Beijing, China">Beijing, China</option>
+                <div
+                  *ngIf="f.city.errors && (f.city.dirty || f.city.touched)"
+                  class="invalid-feedback"
+                >
+                  <div *ngIf="f.city.errors.required">
+                    City is required
+                  </div>
+                </div> </select
               ><!-- select -->
 
               <div class="checkbox">
@@ -76,45 +149,111 @@
                 </label>
               </div>
               <!-- checkbox -->
-              <button type="submit" class="btn">Registration</button>
+              <button type="submit" [disabled]="employerSignUpForm.invalid" class="btn">Registration</button>
             </form>
           </div>
           <div role="tabpanel" class="tab-pane" id="post-job">
-            <form action="#">
+            <form
+              [formGroup]="employerSignUpForm"
+              (ngSubmit)="employerSignUp(employeeSignUpForm.value)"
+            >
               <div class="form-group">
                 <input
                   type="text"
                   class="form-control"
                   placeholder="Employer Name"
+                  formControlName="employerName"
                 />
+                <div
+                  *ngIf="
+                    ef.employerName.errors &&
+                    (ef.employerName.dirty || ef.employerName.touched)
+                  "
+                  class="invalid-feedback"
+                >
+                  <div *ngIf="ef.employerName.errors.required">
+                    Employer Name is required
+                  </div>
+                </div>
               </div>
               <div class="form-group">
                 <input
                   type="email"
                   class="form-control"
+                  formControlName="email"
                   placeholder="Email Id"
                 />
+                <div
+                  *ngIf="
+                    ef.email.errors && (ef.email.dirty || ef.email.touched)
+                  "
+                  class="invalid-feedback"
+                >
+                  <div *ngIf="ef.email.errors.required">Email is required</div>
+                  <div *ngIf="ef.email.errors.email">
+                    Email must be a valid email address
+                  </div>
+                </div>
               </div>
               <div class="form-group">
                 <input
                   type="password"
                   class="form-control"
+                  formControlName="password"
                   placeholder="Password"
                 />
+                <div
+                  *ngIf="
+                    ef.password.errors &&
+                    (ef.password.dirty || ef.password.touched)
+                  "
+                  class="invalid-feedback"
+                >
+                  <div *ngIf="ef.password.errors.required">
+                    Password is required
+                  </div>
+                  <div *ngIf="ef.password.errors.minlength">
+                    Password must be at least 6 characters
+                  </div>
+                </div>
               </div>
               <div class="form-group">
                 <input
                   type="password"
                   class="form-control"
+                  formControlName="confirmPassword"
                   placeholder="Confirm Password"
                 />
+                <div
+                  *ngIf="
+                    ef.confirmPassword.errors &&
+                    (ef.confirmPassword.dirty || ef.confirmPassword.touched)
+                  "
+                  class="invalid-feedback"
+                >
+                  <div *ngIf="ef.confirmPassword.errors.required">
+                    Confirm Password is required
+                  </div>
+                </div>
               </div>
               <div class="form-group">
                 <input
                   type="text"
                   class="form-control"
-                  placeholder="Contact Number"
+                  formControlName="mobileNumber"
+                  placeholder="Mobile Number"
                 />
+                <div
+                  *ngIf="
+                    ef.mobileNumber.errors &&
+                    (ef.mobileNumber.dirty || ef.mobileNumber.touched)
+                  "
+                  class="invalid-feedback"
+                >
+                  <div *ngIf="ef.mobileNumber.errors.required">
+                    Mobile Number is required
+                  </div>
+                </div>
               </div>
               <div class="checkbox">
                 <label class="pull-left checked" for="signing-2"
@@ -124,7 +263,7 @@
                 >
               </div>
               <!-- checkbox -->
-              <button type="submit" class="btn">Registration</button>
+              <button type="submit" [disabled]="employeeSignUpForm.invalid" class="btn">Registration</button>
             </form>
           </div>
         </div>
