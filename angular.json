@@ -25,7 +25,14 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": [],
+            "scripts": [
+              "src/assets/js/jquery.min.js",
+              "src/assets/js/popper.min.js",
+              "src/assets/js/bootstrap.min.js",
+              "src/assets/js/price-range.js",
+              "src/assets/js/main.js",
+              "src/assets/js/switcher.js"
+            ],
             "es5BrowserSupport": true
           },
           "configurations": {

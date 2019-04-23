@@ -1,0 +1,62 @@
+<header id="header" class="clearfix">
+  <!-- navbar -->
+  <nav class="navbar navbar-default navbar-expand-lg">
+    <div class="container">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"
+          ><i class="fa fa-align-justify"></i
+        ></span>
+      </button>
+      <a class="navbar-brand" routerLink="/home"
+        ><img class="img-fluid" src="assets/images/logo.png" alt="Logo"
+      /></a>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="nav navbar-nav">
+          <li class="active"><a routerLink="/home">Home</a></li>
+          <li><a routerLink="job-list">Job list</a></li>
+          <!-- <li><a href="details.html">Job Details</a></li> -->
+          <li><a routerLink="resume-details">Resume</a></li>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown"
+              >My Account<span class="caret"></span
+            ></a>
+            <ul class="dropdown-menu">
+              <li><a routerLink="/profile">Profile</a></li>
+              <li><a routerLink="/post-resume">Post Resume</a></li>
+              <li><a routerLink="/post-job">Job Post</a></li>
+              <li><a routerLink="/resume-edit">Edit Resume</a></li>
+              <li><a routerLink="/profile-update">Update Profile</a></li>
+              <!-- <li><a routerLink="applied-jobs">Applied Job</a></li> -->
+              <li><a routerLink="/delete-account">Close Account</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <!-- nav-right -->
+      <div class="nav-right">
+        <ul class="sign-in">
+          <li><i class="fa fa-user"></i></li>
+          <li><a routerLink="sign-in">Sign In</a></li>
+          <li><a routerLink="sign-up">Register</a></li>
+        </ul>
+        <!-- sign-in -->
+
+        <a routerLink="post-job" class="btn">Post Your Job</a>
+      </div>
+      <!-- nav-right -->
+    </div>
+    <!-- container -->
+  </nav>
+  <!-- navbar -->
+</header>
+<!-- header -->
