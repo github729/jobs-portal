@@ -54,35 +54,35 @@
                       type="radio"
                       value="full-time"
                       id="full-time"
-                      formControlName="type"
+                      formControlName="jobType"
                     />
                     <label for="full-time">Full Time</label>
                     <input
                       type="radio"
                       value="part-time"
                       id="part-time"
-                      formControlName="type"
+                      formControlName="jobType"
                     />
                     <label for="part-time">Part Time</label>
                     <input
                       type="radio"
                       value="freelance"
                       id="freelance"
-                      formControlName="type"
+                      formControlName="jobType"
                     />
                     <label for="freelance">Freelance</label>
                     <input
                       type="radio"
                       value="contract"
                       id="contract"
-                      formControlName="type"
+                      formControlName="jobType"
                     />
                     <label for="contract">Contract</label>
                     <div
-                      *ngIf="f.type.errors && (f.type.dirty || f.type.touched)"
+                      *ngIf="f.jobType.errors && (f.jobType.dirty || f.jobType.touched)"
                       class="invalid-feedback"
                     >
-                      <div *ngIf="f.type.errors.required">
+                      <div *ngIf="f.jobType.errors.required">
                         Job Type is required
                       </div>
                     </div>
@@ -197,30 +197,30 @@
                       type="text"
                       class="form-control"
                       placeholder="Min"
-                      formControlName="salary"
+                      formControlName="minSalary"
                     />
                     <span>-</span>
                     <input
                       type="text"
                       class="form-control"
                       placeholder="Max"
-                      formControlName="salary"
+                      formControlName="maxSalary"
                     />
                     <input
                       type="radio"
                       value="negotiable"
                       id="negotiable"
-                      formControlName="salary"
+                      formControlName="maxSalary"
                     />
                     <label for="negotiable">Negotiable </label>
                     <div
                       *ngIf="
-                        f.salary.errors && (f.salary.dirty || f.salary.touched)
+                        f.maxSalary.errors && (f.maxSalary.dirty || f.maxSalary.touched)
                       "
                       class="invalid-feedback"
                     >
-                      <div *ngIf="f.salary.errors.required">
-                        Salary is required
+                      <div *ngIf="f.maxSalary.errors.required">
+                        Max Salary is required
                       </div>
                     </div>
                   </div>

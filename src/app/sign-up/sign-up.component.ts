@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UserService } from '../user.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-sign-up',
@@ -11,7 +13,9 @@ export class SignUpComponent implements OnInit {
   employerSignUpForm: FormGroup;
 
 
-  constructor(private _fb: FormBuilder) { }
+  constructor(private _fb: FormBuilder,
+              private userApi: UserService,
+              private toastr: ToastrService) { }
 
   ngOnInit() {
     this.employeeSignUpForm = this._fb.group({
@@ -20,26 +24,31 @@ export class SignUpComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', Validators.required],
       mobileNumber: ['', Validators.required],
-      city: ['', Validators.required]
+      city: ['', Validators.required],
+      role: ['', Validators.required],
     });
-    this.employerSignUpForm = this._fb.group({
-      employerName: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', Validators.required],
-      mobileNumber: ['', Validators.required],
-    });
+    // this.employerSignUpForm = this._fb.group({
+    //   employerName: ['', Validators.required],
+    //   email: ['', [Validators.required, Validators.email]],
+    //   password: ['', [Validators.required, Validators.minLength(6)]],
+    //   confirmPassword: ['', Validators.required],
+    //   mobileNumber: ['', Validators.required],
+    // });
   }
   // convenience getter for easy access to form fields
   get f() { return this.employeeSignUpForm.controls; }
 
-  // convenience getter for easy access to form fields
-  get ef() { return this.employerSignUpForm.controls; }
 
-  employerSignUp(userData) {
-    console.log(userData);
-  }
+  // employerSignUp(userData) {
+
+  // }
   employeeSignUp(userData) {
-    console.log(userData);
+    this.userApi.registerUser(userData).subscribe(res => {
+      // tslint:disable-next-line: no-string-literal
+      if (res['success']) {
+        // tslint:disable-next-line: no-string-literal
+        this.toastr.success(res['message'], 'Success');
+      }
+    });
   }
 }

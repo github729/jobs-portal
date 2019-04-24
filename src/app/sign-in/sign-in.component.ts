@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UserService } from '../user.service';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-in',
@@ -9,7 +12,10 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class SignInComponent implements OnInit {
   signInForm: FormGroup;
 
-  constructor(private _fb: FormBuilder) { }
+  constructor(private _fb: FormBuilder,
+    private userApi: UserService,
+    private toastr: ToastrService,
+    private router: Router) { }
 
   ngOnInit() {
     this.signInForm = this._fb.group({
@@ -21,6 +27,15 @@ export class SignInComponent implements OnInit {
   get f() { return this.signInForm.controls; }
 
   login(userData) {
-    console.log(userData);
+    this.userApi.LoginUser(userData).subscribe(res => {
+      // tslint:disable-next-line: no-string-literal
+      if (res['success']) {
+        // tslint:disable-next-line: no-string-literal
+        this.toastr.success(res['message'], 'Success');
+        this.router.navigate(['/job-list']);
+      } else {
+        this.toastr.error(res['message'], 'Failed');
+      }
+    });
   }
 }

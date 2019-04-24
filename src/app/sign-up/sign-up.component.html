@@ -101,7 +101,7 @@
                   class="invalid-feedback"
                 >
                   <div *ngIf="f.confirmPassword.errors.required">
-                      Confirm Password is required
+                    Confirm Password is required
                   </div>
                 </div>
               </div>
@@ -124,22 +124,40 @@
                   </div>
                 </div>
               </div>
-              <!-- select -->
-              <select class="form-control" formControlName="city">
-                <option value="" selected>Select City</option>
-                <option value="London UK">London UK</option>
-                <option value="Newyork, USA">Newyork, USA</option>
-                <option value="Seoul, Korea">Seoul, Korea</option>
-                <option value="Beijing, China">Beijing, China</option>
-                <div
-                  *ngIf="f.city.errors && (f.city.dirty || f.city.touched)"
-                  class="invalid-feedback"
-                >
-                  <div *ngIf="f.city.errors.required">
-                    City is required
-                  </div>
-                </div> </select
-              ><!-- select -->
+              <div class="form-group">
+                <!-- select -->
+                <select class="form-control" formControlName="role">
+                  <option value="" selected>Select Role</option>
+                  <option value="Employee">Employee</option>
+                  <option value="Employer">Employer</option>
+                  <div
+                    *ngIf="f.role.errors && (f.role.dirty || f.role.touched)"
+                    class="invalid-feedback"
+                  >
+                    <div *ngIf="f.role.errors.required">
+                      Role is required
+                    </div>
+                  </div> </select
+                ><!-- select -->
+              </div>
+              <div class="form-group">
+                <!-- select -->
+                <select class="form-control" formControlName="city">
+                  <option value="" selected>Select City</option>
+                  <option value="London UK">London UK</option>
+                  <option value="Newyork, USA">Newyork, USA</option>
+                  <option value="Seoul, Korea">Seoul, Korea</option>
+                  <option value="Beijing, China">Beijing, China</option>
+                  <div
+                    *ngIf="f.city.errors && (f.city.dirty || f.city.touched)"
+                    class="invalid-feedback"
+                  >
+                    <div *ngIf="f.city.errors.required">
+                      City is required
+                    </div>
+                  </div> </select
+                ><!-- select -->
+              </div>
 
               <div class="checkbox">
                 <label class="pull-left checked" for="signing"
@@ -149,10 +167,16 @@
                 </label>
               </div>
               <!-- checkbox -->
-              <button type="submit" [disabled]="employerSignUpForm.invalid" class="btn">Registration</button>
+              <button
+                type="submit"
+                [disabled]="employeeSignUpForm.invalid"
+                class="btn"
+              >
+                Registration
+              </button>
             </form>
           </div>
-          <div role="tabpanel" class="tab-pane" id="post-job">
+          <!-- <div role="tabpanel" class="tab-pane" id="post-job">
             <form
               [formGroup]="employerSignUpForm"
               (ngSubmit)="employerSignUp(employeeSignUpForm.value)"
@@ -262,10 +286,9 @@
                   Conditions</label
                 >
               </div>
-              <!-- checkbox -->
               <button type="submit" [disabled]="employeeSignUpForm.invalid" class="btn">Registration</button>
             </form>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
