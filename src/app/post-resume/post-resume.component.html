@@ -14,9 +14,12 @@
     <div class="job-postdetails post-resume">
       <div class="row">
         <div class="col-lg-8 clearfix">
-          <form action="#">
+          <form [formGroup]="resumeForm" (ngSubmit)="postResume()">
             <fieldset>
-              <div class="section express-yourself">
+              <div
+                class="section express-yourself"
+                [formGroup]="resumeForm.get('basicInfo')"
+              >
                 <h4>Express Yourself</h4>
                 <div class="row form-group">
                   <label class="col-sm-4 label-title">Full Name</label>
@@ -26,6 +29,7 @@
                       name="name"
                       class="form-control"
                       placeholder="ex Jhon Doe"
+                      formControlName="fullName"
                     />
                   </div>
                 </div>
@@ -36,6 +40,7 @@
                   <div class="col-sm-8">
                     <textarea
                       class="form-control"
+                      formControlName="addInformation"
                       placeholder="Address: 123 West 12th Street, Suite 456 New York, NY 123456\n Phone: +012 345 678 910 \n Email: itsme@surzilegeek.com*"
                     ></textarea>
                   </div>
@@ -46,11 +51,19 @@
                   >
                   <div class="col-sm-8 ">
                     <label class="upload-image left" for="upload-image-one">
-                      <input type="file" id="upload-image-one" />
+                      <input
+                        type="file"
+                        id="upload-image-one"
+                        formControlName="image"
+                      />
                       Type: JPG, PNG Size: 3.5 x 4.5 cm
                     </label>
                     <label class="upload-image" for="upload-image-two">
-                      <input type="file" id="upload-image-two" />
+                      <input
+                        type="file"
+                        id="upload-image-two"
+                        formControlName="image"
+                      />
                       Upload Photo
                     </label>
                   </div>
@@ -65,124 +78,168 @@
                     class="form-control"
                     placeholder="Write few lines about your career objective"
                     rows="8"
+                    formControlName="careerObject"
                   ></textarea>
                 </div>
                 <span>5000 characters left</span>
               </div>
               <!-- career-objective -->
 
-              <div class="section">
+              <div class="section" formArrayName="workHistory">
                 <h4>Work History</h4>
-                <div class="row form-group">
-                  <label class="col-sm-3 label-title">Compnay Name</label>
-                  <div class="col-sm-9">
-                    <input
-                      type="text"
-                      name="name"
-                      class="form-control"
-                      placeholder="Name"
-                    />
+                <div
+                  *ngFor="
+                    let work of resumeForm.controls.workHistory.controls;
+                    let workIndex = index
+                  "
+                >
+                  <div [formGroupName]="workIndex">
+                    <div class="row form-group">
+                      <label class="col-sm-3 label-title">Compnay Name</label>
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          name="name"
+                          class="form-control"
+                          placeholder="Name"
+                          formControlName="companyName"
+                        />
+                      </div>
+                    </div>
+                    <div class="row form-group">
+                      <label class="col-sm-3 label-title">Designation</label>
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          name="name"
+                          class="form-control"
+                          placeholder="Human Resource Manager"
+                          formControlName="designation"
+                        />
+                      </div>
+                    </div>
+                    <div class="row form-group time-period">
+                      <label class="col-sm-3 label-title">Time Period</label>
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          name="name"
+                          class="form-control"
+                          placeholder="dd/mm/yy"
+                          formControlName="timePeriod"
+                        /><span>-</span>
+                        <input
+                          type="text"
+                          name="name"
+                          class="form-control pull-right"
+                          placeholder="dd/mm/yy"
+                          formControlName="timePeriod"
+                        />
+                      </div>
+                    </div>
+                    <div class="row form-group job-description">
+                      <label class="col-sm-3 label-title"
+                        >Job Description</label
+                      >
+                      <div class="col-sm-9">
+                        <textarea
+                          class="form-control"
+                          placeholder=""
+                          rows="8"
+                          formControlName="jobDescription"
+                        ></textarea>
+                      </div>
+                    </div>
+                    <div class="buttons pull-right">
+                      <a class="btn" (click)="addWorkHistory()"
+                        >Add New Exprience</a
+                      >
+                      <a
+                        class="btn delete"
+                        (click)="removeWorkHistory(workIndex)"
+                        >Delete</a
+                      >
+                    </div>
                   </div>
-                </div>
-                <div class="row form-group">
-                  <label class="col-sm-3 label-title">Designation</label>
-                  <div class="col-sm-9">
-                    <input
-                      type="text"
-                      name="name"
-                      class="form-control"
-                      placeholder="Human Resource Manager"
-                    />
-                  </div>
-                </div>
-                <div class="row form-group time-period">
-                  <label class="col-sm-3 label-title">Time Period</label>
-                  <div class="col-sm-9">
-                    <input
-                      type="text"
-                      name="name"
-                      class="form-control"
-                      placeholder="dd/mm/yy"
-                    /><span>-</span>
-                    <input
-                      type="text"
-                      name="name"
-                      class="form-control pull-right"
-                      placeholder="dd/mm/yy"
-                    />
-                  </div>
-                </div>
-                <div class="row form-group job-description">
-                  <label class="col-sm-3 label-title">Job Description</label>
-                  <div class="col-sm-9">
-                    <textarea
-                      class="form-control"
-                      placeholder=""
-                      rows="8"
-                    ></textarea>
-                  </div>
-                </div>
-                <div class="buttons pull-right">
-                  <a class="btn">Add New Exprience</a>
-                  <a class="btn delete">Delete</a>
                 </div>
               </div>
               <!-- work-history -->
 
-              <div class="section education-background">
+              <div
+                class="section education-background"
+                formArrayName="educationDetails"
+              >
                 <h4>Education Background</h4>
-                <div class="row form-group">
-                  <label class="col-sm-3 label-title">Institute Name</label>
-                  <div class="col-sm-9">
-                    <input
-                      type="text"
-                      name="name"
-                      class="form-control"
-                      placeholder="ropbox"
-                    />
+                <div
+                  *ngFor="
+                    let education of resumeForm.controls.educationDetails
+                      .controls;
+                    let educationIndex = index
+                  "
+                >
+                  <div [formGroupName]="educationIndex">
+                    <div class="row form-group">
+                      <label class="col-sm-3 label-title">Institute Name</label>
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="ropbox"
+                          fromControlName="instituteName"
+                        />
+                      </div>
+                    </div>
+                    <div class="row form-group">
+                      <label class="col-sm-3 label-title">Degree</label>
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="Human Resource Manager"
+                          formControlName="degree"
+                        />
+                      </div>
+                    </div>
+                    <div class="row form-group time-period">
+                      <label class="col-sm-3 label-title">Time Period</label>
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="dd/mm/yy"
+                          fromControlName="timeDuration"
+                        /><span>-</span>
+                        <input
+                          type="text"
+                          class="form-control pull-right"
+                          placeholder="dd/mm/yy"
+                          fromControlName="timeDuration"
+                        />
+                      </div>
+                    </div>
+                    <div class="row form-group job-description">
+                      <label class="col-sm-3 label-title">Description</label>
+                      <div class="col-sm-9">
+                        <textarea
+                          class="form-control"
+                          placeholder=""
+                          rows="8"
+                          fromControlName="educationDescription"
+                        ></textarea>
+                      </div>
+                    </div>
+                    <div class="buttons pull-right">
+                      <a class="btn" (click)="addEducation()"
+                        >Add New Education</a
+                      >
+                      <a
+                        class="btn delete"
+                        *ngIf="educationIndex !== 0"
+                        (click)="removeEducation(educationIndex)"
+                        >Delete</a
+                      >
+                    </div>
                   </div>
-                </div>
-                <div class="row form-group">
-                  <label class="col-sm-3 label-title">Degree</label>
-                  <div class="col-sm-9">
-                    <input
-                      type="text"
-                      name="name"
-                      class="form-control"
-                      placeholder="Human Resource Manager"
-                    />
-                  </div>
-                </div>
-                <div class="row form-group time-period">
-                  <label class="col-sm-3 label-title">Time Period</label>
-                  <div class="col-sm-9">
-                    <input
-                      type="text"
-                      name="name"
-                      class="form-control"
-                      placeholder="dd/mm/yy"
-                    /><span>-</span>
-                    <input
-                      type="text"
-                      name="name"
-                      class="form-control pull-right"
-                      placeholder="dd/mm/yy"
-                    />
-                  </div>
-                </div>
-                <div class="row form-group job-description">
-                  <label class="col-sm-3 label-title">Description</label>
-                  <div class="col-sm-9">
-                    <textarea
-                      class="form-control"
-                      placeholder=""
-                      rows="8"
-                    ></textarea>
-                  </div>
-                </div>
-                <div class="buttons pull-right">
-                  <a class="btn">Add New Education</a>
-                  <a class="btn delete">Delete</a>
                 </div>
               </div>
               <!-- work-history -->
@@ -194,91 +251,135 @@
                     class="form-control"
                     placeholder="Write few lines about your special qualification"
                     rows="8"
+                    formControlName="specialQualification"
                   ></textarea>
                 </div>
               </div>
               <!-- special-qualification -->
 
-              <div class="section language-proficiency">
+              <div
+                class="section language-proficiency"
+                formArrayName="languageProficiency"
+              >
                 <h4>Language Proficiency:</h4>
-                <div class="row form-group">
-                  <label class="col-sm-3 label-title">Language Name</label>
-                  <div class="col-sm-9">
-                    <input
-                      type="text"
-                      name="name"
-                      class="form-control"
-                      placeholder="English"
-                    />
-                  </div>
-                </div>
-                <div class="row form-group rating">
-                  <label class="col-sm-3 label-title">Rating</label>
-                  <div class="col-sm-9">
-                    <div class="rating-star">
-                      <div class="rating">
-                        <input type="radio" id="star1" name="rating" /><label
-                          class="full"
-                          for="star1"
-                        ></label>
-
-                        <input type="radio" id="star2" name="rating" /><label
-                          class="half"
-                          for="star2"
-                        ></label>
-
-                        <input type="radio" id="star3" name="rating" /><label
-                          class="full"
-                          for="star3"
-                        ></label>
-
-                        <input type="radio" id="star4" name="rating" /><label
-                          class="half"
-                          for="star4"
-                        ></label>
-
-                        <input type="radio" id="star5" name="rating" /><label
-                          class="full"
-                          for="star5"
-                        ></label>
-
-                        <input type="radio" id="star6" name="rating" /><label
-                          class="half"
-                          for="star6"
-                        ></label>
-
-                        <input type="radio" id="star7" name="rating" /><label
-                          class="full"
-                          for="star7"
-                        ></label>
-
-                        <input type="radio" id="star8" name="rating" /><label
-                          class="half"
-                          for="star8"
-                        ></label>
-
-                        <input type="radio" id="star9" name="rating" /><label
-                          class="full"
-                          for="star9"
-                        ></label>
-
-                        <input type="radio" id="star10" name="rating" /><label
-                          class="half"
-                          for="star10"
-                        ></label>
+                <div
+                  *ngFor="
+                    let language of resumeForm.controls.languageProficiency
+                      .controls;
+                    let languageIndex = index
+                  "
+                >
+                  <div [formGroupName]="languageIndex">
+                    <div class="row form-group">
+                      <label class="col-sm-3 label-title">Language Name</label>
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          name="name"
+                          class="form-control"
+                          placeholder="English"
+                          formControlName="languageName"
+                        />
                       </div>
                     </div>
-                    <!-- rating-star -->
+                    <div class="row form-group rating">
+                      <label class="col-sm-3 label-title">Rating</label>
+                      <div class="col-sm-9">
+                        <div class="rating-star">
+                          <div class="rating">
+                            <input
+                              type="radio"
+                              id="star1"
+                              name="rating"
+                            /><label class="full" for="star1"></label>
+
+                            <input
+                              type="radio"
+                              id="star2"
+                              name="rating"
+                              formControlName="rating"
+                            /><label class="half" for="star2"></label>
+
+                            <input
+                              type="radio"
+                              id="star3"
+                              name="rating"
+                              formControlName="rating"
+                            /><label class="full" for="star3"></label>
+
+                            <input
+                              type="radio"
+                              id="star4"
+                              name="rating"
+                              formControlName="rating"
+                            /><label class="half" for="star4"></label>
+
+                            <input
+                              type="radio"
+                              id="star5"
+                              name="rating"
+                              formControlName="rating"
+                            /><label class="full" for="star5"></label>
+
+                            <input
+                              type="radio"
+                              id="star6"
+                              name="rating"
+                              formControlName="rating"
+                            /><label class="half" for="star6"></label>
+
+                            <input
+                              type="radio"
+                              id="star7"
+                              name="rating"
+                              formControlName="rating"
+                            /><label class="full" for="star7"></label>
+
+                            <input
+                              type="radio"
+                              id="star8"
+                              name="rating"
+                              formControlName="rating"
+                            /><label class="half" for="star8"></label>
+
+                            <input
+                              type="radio"
+                              id="star9"
+                              name="rating"
+                              formControlName="rating"
+                            /><label class="full" for="star9"></label>
+
+                            <input
+                              type="radio"
+                              id="star10"
+                              name="rating"
+                              formControlName="rating"
+                            /><label class="half" for="star10"></label>
+                          </div>
+                        </div>
+                        <!-- rating-star -->
+                      </div>
+                    </div>
+                    <div class="buttons pull-right">
+                      <a class="btn" (click)="addLanguage()"
+                        >Add New Language</a
+                      >
+                      <a
+                        *ngIf="languageIndex !== 0"
+                        class="btn delete"
+                        (click)="removeLanguage(languageIndex)"
+                        >Delete</a
+                      >
+                    </div>
                   </div>
-                </div>
-                <div class="buttons pull-right">
-                  <a class="btn">Add New Language</a>
-                  <a class="btn delete">Delete</a>
                 </div>
               </div>
               <!-- language-proficiency -->
 
-              <div class="section company-information">
+              <div
+                class="section company-information"
+                [formGroup]="resumeForm.get('personalDetails')"
+              >
                 <h4>Personal Deatils</h4>
                 <div class="row form-group">
                   <label class="col-sm-3 label-title">Full Name</label>
@@ -288,6 +389,7 @@
                       name="name"
                       class="form-control"
                       placeholder="Jhon Doe"
+                      formControlName="fullName"
                     />
                   </div>
                 </div>
@@ -299,6 +401,7 @@
                       name="name"
                       class="form-control"
                       placeholder="Robert Doe"
+                      formControlName="fatherName"
                     />
                   </div>
                 </div>
@@ -310,6 +413,7 @@
                       name="name"
                       class="form-control"
                       placeholder="Ismatic Roderos Doe"
+                      formControlName="motherName"
                     />
                   </div>
                 </div>
@@ -321,17 +425,7 @@
                       name="name"
                       class="form-control"
                       placeholder="26/01/1982"
-                    />
-                  </div>
-                </div>
-                <div class="row form-group">
-                  <label class="col-sm-3 label-title">Birth Place</label>
-                  <div class="col-sm-9">
-                    <input
-                      type="text"
-                      name="name"
-                      class="form-control"
-                      placeholder="United State of America"
+                      formControlName="dob"
                     />
                   </div>
                 </div>
@@ -343,17 +437,19 @@
                       name="name"
                       class="form-control"
                       placeholder="Canadian"
+                      formControlName="nationality"
                     />
                   </div>
                 </div>
                 <div class="row form-group">
-                  <label class="col-sm-3 label-title">Sex</label>
+                  <label class="col-sm-3 label-title">Gender</label>
                   <div class="col-sm-9">
                     <input
                       type="text"
                       name="name"
                       class="form-control"
                       placeholder="Male"
+                      formControlName="gender"
                     />
                   </div>
                 </div>
@@ -365,12 +461,13 @@
                       name="name"
                       class="form-control"
                       placeholder="121 King Street, Melbourne Victoria, 1200 USA"
+                      formControlName="address"
                     />
                   </div>
                 </div>
-                <div class="buttons pull-right">
+                <!-- <div class="buttons pull-right">
                   <a class="btn">Add New Feild</a>
-                </div>
+                </div> -->
               </div>
               <!-- section -->
 
@@ -381,17 +478,21 @@
                     class="form-control"
                     placeholder=""
                     rows="8"
+                    formControlName="declaration"
                   ></textarea>
                 </div>
               </div>
               <!-- special-qualification -->
             </fieldset>
+            <button type="submit" class="btn btn-primary">
+              Post Your Resume
+            </button>
           </form>
           <!-- form -->
-          <div class="buttons">
+          <!-- <div class="buttons">
             <a class="btn">Update Profile</a>
             <a class="btn cancle">Cancle</a>
-          </div>
+          </div> -->
         </div>
 
         <!-- quick-rules -->

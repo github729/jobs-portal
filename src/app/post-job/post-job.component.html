@@ -3,8 +3,8 @@
     <div class="breadcrumb-section">
       <!-- breadcrumb -->
       <ol class="breadcrumb">
-        <li><a routerLink="/home">Home</a></li>
-        <li>Job Post</li>
+        <option><a routerLink="/home">Home</a></option>
+        <option>Job Post</option>
       </ol>
       <!-- breadcrumb -->
       <h2 class="title">Post Your Job</h2>
@@ -25,19 +25,24 @@
                 <div class="row form-group add-title">
                   <label class="col-sm-3 label-title">Job Category</label>
                   <div class="col-sm-9">
-                    <div class="dropdown category-dropdown">
-                      <a data-toggle="dropdown" aria-expanded="false"
-                        ><span class="change-text">Select a category</span>
-                        <i class="fa fa-angle-down pull-right"></i
-                      ></a>
-                      <ul class="dropdown-menu category-change" >
-                        <li formControlName="category"><a>Select a category</a></li>
-                        <li><a>Software Engineer</a></li>
-                        <li><a>Program Development</a></li>
-                        <li><a>Project Manager</a></li>
-                        <li><a>Graphics Designer</a></li>
-                      </ul>
-                    </div>
+                    <select class="form-control" formControlName="category">
+                      <option value="" selected>Select a category</option>
+                      <option>Software Engineer</option>
+                      <option>Program Development</option>
+                      <option>Project Manager</option>
+                      <option>Graphics Designer</option>
+                      <div
+                        *ngIf="
+                          f.category.errors &&
+                          (f.category.dirty || f.category.touched)
+                        "
+                        class="invalid-feedback"
+                      >
+                        <div *ngIf="f.category.errors.required">
+                          Category is required
+                        </div>
+                      </div>
+                    </select>
                   </div>
                 </div>
                 <div class="row form-group">
@@ -47,7 +52,6 @@
                   <div class="col-sm-9 user-type">
                     <input
                       type="radio"
-                      name="sellType"
                       value="full-time"
                       id="full-time"
                       formControlName="type"
@@ -55,7 +59,6 @@
                     <label for="full-time">Full Time</label>
                     <input
                       type="radio"
-                      name="sellType"
                       value="part-time"
                       id="part-time"
                       formControlName="type"
@@ -63,7 +66,6 @@
                     <label for="part-time">Part Time</label>
                     <input
                       type="radio"
-                      name="sellType"
                       value="freelance"
                       id="freelance"
                       formControlName="type"
@@ -71,12 +73,19 @@
                     <label for="freelance">Freelance</label>
                     <input
                       type="radio"
-                      name="sellType"
                       value="contract"
                       id="contract"
                       formControlName="type"
                     />
                     <label for="contract">Contract</label>
+                    <div
+                      *ngIf="f.type.errors && (f.type.dirty || f.type.touched)"
+                      class="invalid-feedback"
+                    >
+                      <div *ngIf="f.type.errors.required">
+                        Job Type is required
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div class="row form-group">
@@ -88,8 +97,18 @@
                       type="text"
                       class="form-control"
                       placeholder="ex, Human Resource Manager"
-                      formControlName = "title"
+                      formControlName="title"
                     />
+                    <div
+                      *ngIf="
+                        f.title.errors && (f.title.dirty || f.title.touched)
+                      "
+                      class="invalid-feedback"
+                    >
+                      <div *ngIf="f.title.errors.required">
+                        Title is required
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div class="row form-group item-description">
@@ -102,8 +121,19 @@
                       id="textarea"
                       placeholder="Write few lines about your jobs"
                       rows="8"
-                      formControlName = "description"
+                      formControlName="description"
                     ></textarea>
+                    <div
+                      *ngIf="
+                        f.description.errors &&
+                        (f.description.dirty || f.description.touched)
+                      "
+                      class="invalid-feedback"
+                    >
+                      <div *ngIf="f.description.errors.required">
+                        Description is required
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div class="row characters">
@@ -116,30 +146,44 @@
                     >Location<span class="required">*</span></label
                   >
                   <div class="col-sm-9">
-                    <div class="dropdown category-dropdown pull-left">
-                      <a data-toggle="dropdown" aria-expanded="false"
-                        ><span class="change-text">Country</span>
-                        <i class="fa fa-angle-down pull-right"></i
-                      ></a>
-                      <ul class="dropdown-menu category-change">
-
-                      <li   formControlName = "location"><a>Argentina</a></li>
-                        <li><a>Australia</a></li>
-                        <li><a>Belgium</a></li>
-                        <li><a>Brazil</a></li>
-                        <li><a>Cambodia</a></li>
-                      </ul>
+                    <div class="pull-left col-sm-6">
+                      <select class="form-control" formControlName="country">
+                        <option value="" selected>Select a Country</option>
+                        <option>Argentina</option>
+                        <option>Australia</option>
+                        <option>Belgium</option>
+                        <option>Brazil</option>
+                        <option>Cambodia</option>
+                        <div
+                          *ngIf="
+                            f.country.errors &&
+                            (f.country.dirty || f.country.touched)
+                          "
+                          class="invalid-feedback"
+                        >
+                          <div *ngIf="f.country.errors.required">
+                            Country is required
+                          </div>
+                        </div>
+                      </select>
                     </div>
-                    <div class="dropdown category-dropdown pull-right">
-                      <a data-toggle="dropdown" aria-expanded="false"
-                        ><span class="change-text">State</span>
-                        <i class="fa fa-angle-down pull-right"></i
-                      ></a>
-                      <ul class="dropdown-menu category-change"   >
-                        <li formControlName = "state"><a>State 1</a></li>
-                        <li><a>State 2</a></li>
-                        <li><a>State 3</a></li>
-                      </ul>
+                    <div class="pull-right col-sm-6">
+                      <select class="form-control" formControlName="state">
+                        <option value="" selected>Select a State</option>
+                        <option>State 1</option>
+                        <option>State 2</option>
+                        <option>State 3</option>
+                        <div
+                          *ngIf="
+                            f.state.errors && (f.state.dirty || f.state.touched)
+                          "
+                          class="invalid-feedback"
+                        >
+                          <div *ngIf="f.coustatentry.errors.required">
+                            State is required
+                          </div>
+                        </div>
+                      </select>
                     </div>
                   </div>
                 </div>
@@ -149,17 +193,36 @@
                   >
                   <div class="col-sm-9">
                     <label>$USD</label>
-                    <input type="text" class="form-control" placeholder="Min" formControlName = "salary" />
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Min"
+                      formControlName="salary"
+                    />
                     <span>-</span>
-                    <input type="text" class="form-control" placeholder="Max" formControlName = "salary"/>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Max"
+                      formControlName="salary"
+                    />
                     <input
                       type="radio"
-                      name="price"
                       value="negotiable"
                       id="negotiable"
-                      formControlName = "salary"
+                      formControlName="salary"
                     />
                     <label for="negotiable">Negotiable </label>
+                    <div
+                      *ngIf="
+                        f.salary.errors && (f.salary.dirty || f.salary.touched)
+                      "
+                      class="invalid-feedback"
+                    >
+                      <div *ngIf="f.salary.errors.required">
+                        Salary is required
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div class="row form-group add-title">
@@ -167,18 +230,24 @@
                     >Salary Type<span class="required">*</span></label
                   >
                   <div class="col-sm-9">
-                    <div class="dropdown category-dropdown">
-                      <a data-toggle="dropdown" aria-expanded="false"
-                        ><span class="change-text">Per Hour</span>
-                        <i class="fa fa-angle-down pull-right"></i
-                      ></a>
-                      <ul class="dropdown-menu category-change">
-                        <li formControlName="salaryType"><a>Per Hour</a></li>
-                        <li><a>Daily</a></li>
-                        <li><a>Monthly</a></li>
-                        <li><a>Yearly</a></li>
-                      </ul>
-                    </div>
+                    <select class="form-control" formControlName="salaryType">
+                      <option value="" selected>Select Salary Type</option>
+                      <option><a>Per Hour</a></option>
+                      <option><a>Daily</a></option>
+                      <option><a>Monthly</a></option>
+                      <option><a>Yearly</a></option>
+                      <div
+                        *ngIf="
+                          f.salaryType.errors &&
+                          (f.salaryType.dirty || f.salaryType.touched)
+                        "
+                        class="invalid-feedback"
+                      >
+                        <div *ngIf="f.salaryType.errors.required">
+                          Salary Type is required
+                        </div>
+                      </div>
+                    </select>
                   </div>
                 </div>
                 <div class="row form-group add-title">
@@ -186,18 +255,27 @@
                     >Experience<span class="required">*</span></label
                   >
                   <div class="col-sm-9">
-                    <div class="dropdown category-dropdown">
-                      <a data-toggle="dropdown" aria-expanded="false"
-                        ><span class="change-text">Mid Level</span>
-                        <i class="fa fa-angle-down pull-right"></i
-                      ></a>
-                      <ul formControlName="experience" class="dropdown-menu category-change">
-                        <li><a>Entry Level</a></li>
-                        <li><a>Mid Level</a></li>
-                        <li><a>Mid-Senior Level</a></li>
-                        <li><a>Top Level</a></li>
-                      </ul>
-                    </div>
+                    <select
+                      formControlName="experience"
+                      class="category-change form-control"
+                    >
+                      <option value="" selected>Select Experience</option>
+                      <option value=""><a>Entry Level</a></option>
+                      <option><a>Mid Level</a></option>
+                      <option><a>Mid-Senior Level</a></option>
+                      <option><a>Top Level</a></option>
+                      <div
+                        *ngIf="
+                          f.experience.errors &&
+                          (f.experience.dirty || f.experience.touched)
+                        "
+                        class="invalid-feedback"
+                      >
+                        <div *ngIf="f.experience.errors.required">
+                          Experience is required
+                        </div>
+                      </div>
+                    </select>
                   </div>
                 </div>
                 <div class="row form-group brand-name">
@@ -211,6 +289,17 @@
                       placeholder="human, reosurce, job, hrm"
                       formControlName="function"
                     />
+                    <div
+                      *ngIf="
+                        f.function.errors &&
+                        (f.function.dirty || f.function.touched)
+                      "
+                      class="invalid-feedback"
+                    >
+                      <div *ngIf="f.function.errors.required">
+                        Job Function is required
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -230,6 +319,17 @@
                       placeholder="Marketing and Advertising"
                       formControlName="industry"
                     />
+                    <div
+                      *ngIf="
+                        f.industry.errors &&
+                        (f.industry.dirty || f.industry.touched)
+                      "
+                      class="invalid-feedback"
+                    >
+                      <div *ngIf="f.industry.errors.required">
+                        Industry is required
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div class="row form-group">
@@ -244,6 +344,17 @@
                       placeholder="ex, Jhon Doe"
                       formControlName="companyName"
                     />
+                    <div
+                      *ngIf="
+                        f.companyName.errors &&
+                        (f.companyName.dirty || f.companyName.touched)
+                      "
+                      class="invalid-feedback"
+                    >
+                      <div *ngIf="f.companyName.errors.required">
+                        Company Name is required
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div class="row form-group">
@@ -256,6 +367,19 @@
                       placeholder="ex, jhondoe@mail.com"
                       formControlName="email"
                     />
+                    <div
+                      *ngIf="
+                        f.email.errors && (f.email.dirty || f.email.touched)
+                      "
+                      class="invalid-feedback"
+                    >
+                      <div *ngIf="f.email.errors.required">
+                        Email is required
+                      </div>
+                      <div *ngIf="f.email.errors.email">
+                        Email must be a valid email address
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div class="row form-group">
@@ -270,6 +394,17 @@
                       placeholder="ex, +912457895"
                       formControlName="mobileNumber"
                     />
+                    <div
+                      *ngIf="
+                        f.mobileNumber.errors &&
+                        (f.mobileNumber.dirty || f.mobileNumber.touched)
+                      "
+                      class="invalid-feedback"
+                    >
+                      <div *ngIf="f.mobileNumber.errors.required">
+                        Mobile Number is required
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div class="row form-group address">
@@ -284,20 +419,31 @@
                       placeholder="ex, alekdera House, coprotec, usa"
                       formControlName="address"
                     />
+                    <div
+                      *ngIf="
+                        f.address.errors &&
+                        (f.address.dirty || f.address.touched)
+                      "
+                      class="invalid-feedback"
+                    >
+                      <div *ngIf="f.address.errors.required">
+                        Address is required
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
               <!-- section -->
 
-              <div class="section">
+              <!-- <div class="section">
                 <h4>Make Your Post Premium</h4>
                 <p>
                   More replies means more interested buyers. With lots of
                   interested buyers, you have a better chance of selling for the
                   price that you want.<a>Learn more</a>
                 </p>
-                <ul class="premium-options">
-                  <li class="premium">
+                <select class="premium-options">
+                  <option class="premium">
                     <input
                       type="radio"
                       name="premiumOption"
@@ -306,8 +452,8 @@
                     />
                     <label for="day-one">Regular Post</label>
                     <span>$20.00</span>
-                  </li>
-                  <li class="premium">
+                  </option>
+                  <option class="premium">
                     <input
                       type="radio"
                       name="premiumOption"
@@ -316,8 +462,8 @@
                     />
                     <label for="day-two">Regular Post</label>
                     <span>$30.00</span>
-                  </li>
-                  <li class="premium">
+                  </option>
+                  <option class="premium">
                     <input
                       type="radio"
                       name="premiumOption"
@@ -326,8 +472,8 @@
                     />
                     <label for="day-three">Top Post for 7 days</label>
                     <span>$50.00</span>
-                  </li>
-                  <li class="premium">
+                  </option>
+                  <option class="premium">
                     <input
                       type="radio"
                       name="premiumOption"
@@ -336,20 +482,38 @@
                     />
                     <label for="day-four">Daily Bump Up for 7 days</label>
                     <span>$100.00</span>
-                  </li>
-                </ul>
-              </div>
+                  </option>
+                </select>
+              </div> -->
               <!-- section -->
 
               <div class="checkbox section agreement">
                 <label for="send">
-                  <input type="checkbox" name="send" id="send" formControlName="terms"/>
+                  <input
+                    type="checkbox"
+                    name="send"
+                    id="send"
+                    formControlName="terms"
+                  />
                   You agree to our <a>Terms of Use</a> and
                   <a>Privacy Policy</a> and acknowledge that you are the
                   rightful owner of this item and using Jobs to find a genuine
                   buyer.
+
+                  <div
+                    *ngIf="f.terms.errors && (f.terms.dirty || f.terms.touched)"
+                    class="invalid-feedback"
+                  >
+                    <div *ngIf="f.terms.errors.required">
+                      Please Accept Terms And Conditions
+                    </div>
+                  </div>
                 </label>
-                <button type="submit" class="btn btn-primary">
+                <button
+                  type="submit"
+                  class="btn btn-primary"
+                  [disabled]="jobForm.invalid"
+                >
                   Post Your Job
                 </button>
               </div>

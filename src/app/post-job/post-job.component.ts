@@ -12,12 +12,13 @@ export class PostJobComponent implements OnInit {
   constructor(private _fb: FormBuilder) { }
 
   ngOnInit() {
-    this._fb.group({
+    this.jobForm = this._fb.group({
       category: [''],
       type: ['', Validators.required],
       title: ['', Validators.required],
       description: ['', [Validators.required, Validators.maxLength(5000)]],
-      location: ['', Validators.required],
+      country: ['', Validators.required],
+      state: ['', Validators.required],
       salary: ['', Validators.required],
       salaryType: ['', Validators.required],
       experience: ['', Validators.required],
@@ -30,7 +31,10 @@ export class PostJobComponent implements OnInit {
       terms: ['', Validators.required]
     });
   }
-  postJob() {
+  // convenience getter for easy access to form fields
+  get f() { return this.jobForm.controls; }
 
+  postJob() {
+    console.log(this.jobForm.value);
   }
 }
