@@ -547,7 +547,7 @@
               <div class="item-info">
                 <div class="item-image-box">
                   <div class="item-image">
-                    <a routerLink="/job-details"
+                    <a routerLink="/job-details/{{ job.id }}"
                       ><img
                         src="assets/images/job/1.png"
                         alt="Image"
@@ -559,7 +559,7 @@
 
                 <div class="ad-info">
                   <span
-                    ><a routerLink="/job-details" class="title">{{
+                    ><a routerLink="/job-details/{{job.id}}" class="title">{{
                       job.category | titlecase
                     }}</a>
                     @ <a>{{ job.companyName | titlecase }}</a></span

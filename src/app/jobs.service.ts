@@ -38,6 +38,14 @@ export class JobsService {
       );
   }
 
+  // get job by id
+  getJobById(jobId) {
+    return this._http
+      .get(`${ENV.BASE_API}job/${jobId}`, this.httpOptions)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.

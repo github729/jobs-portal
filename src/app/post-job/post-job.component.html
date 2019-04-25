@@ -79,7 +79,10 @@
                     />
                     <label for="contract">Contract</label>
                     <div
-                      *ngIf="f.jobType.errors && (f.jobType.dirty || f.jobType.touched)"
+                      *ngIf="
+                        f.jobType.errors &&
+                        (f.jobType.dirty || f.jobType.touched)
+                      "
                       class="invalid-feedback"
                     >
                       <div *ngIf="f.jobType.errors.required">
@@ -107,6 +110,54 @@
                     >
                       <div *ngIf="f.title.errors.required">
                         Title is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row form-group">
+                  <label class="col-sm-3 label-title"
+                    >Apply Url For Job<span class="required">*</span></label
+                  >
+                  <div class="col-sm-9">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="ex, Human Resource Manager"
+                      formControlName="applyUrl"
+                    />
+                    <div
+                      *ngIf="
+                        f.applyUrl.errors && (f.applyUrl.dirty || f.applyUrl.touched)
+                      "
+                      class="invalid-feedback"
+                    >
+                      <div *ngIf="f.applyUrl.errors.required">
+                        Apply Url is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row form-group item-description">
+                  <label class="col-sm-3 label-title"
+                    >Minimum Requirements<span class="required">*</span></label
+                  >
+                  <div class="col-sm-9">
+                    <textarea
+                      class="form-control"
+                      id="textarea"
+                      placeholder="Write minimum requirements for your jobs"
+                      rows="8"
+                      formControlName="requirements"
+                    ></textarea>
+                    <div
+                      *ngIf="
+                        f.requirements.errors &&
+                        (f.requirements.dirty || f.requirements.touched)
+                      "
+                      class="invalid-feedback"
+                    >
+                      <div *ngIf="f.requirements.errors.required">
+                        Minimum  Requirements is required
                       </div>
                     </div>
                   </div>
@@ -215,7 +266,8 @@
                     <label for="negotiable">Negotiable </label>
                     <div
                       *ngIf="
-                        f.maxSalary.errors && (f.maxSalary.dirty || f.maxSalary.touched)
+                        f.maxSalary.errors &&
+                        (f.maxSalary.dirty || f.maxSalary.touched)
                       "
                       class="invalid-feedback"
                     >
@@ -279,16 +331,45 @@
                   </div>
                 </div>
                 <div class="row form-group brand-name">
-                  <label class="col-sm-3 label-title"
-                    >Job Function<span class="required">*</span></label
+                  <label class="col-sm-3 label-title">
+                    Key Responsibilities:<span class="required">*</span></label
                   >
                   <div class="col-sm-9">
-                    <input
+                    <!-- <input
                       type="text"
                       class="form-control"
                       placeholder="human, reosurce, job, hrm"
                       formControlName="function"
-                    />
+                    /> -->
+                    <div id="editparent">
+                      <div
+                        id="editControls"
+                        style="text-align:center;"
+                      >
+                        <div class="btn-group">
+                          <a class="btn" data-role="undo"
+                            ><i class="icon-undo"></i
+                          ></a>
+                        </div>
+                        <div class="btn-group">
+                          <a
+                            class="btn"
+                            data-role="insertUnorderedList"
+                            ><i class="fa fa-user"></i></a>
+                          <a class="btn" data-role="insertOrderedList"
+                            ><i class="icon-list-ol"></i
+                          ></a>
+                        </div>
+                      </div>
+                      <div id="editor" style="" contenteditable >
+                        <p>
+                         amet, consectetur adipisicing
+                          elit. Necessitatibus natus vero voluptatem aliquam
+                          molestias dicta aperiam dignissimos laudantium
+                          accusamus saepe!
+                        </p>
+                      </div>
+                    </div>
                     <div
                       *ngIf="
                         f.function.errors &&
@@ -297,7 +378,31 @@
                       class="invalid-feedback"
                     >
                       <div *ngIf="f.function.errors.required">
-                        Job Function is required
+                        Key Responsibilities is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row form-group brand-name">
+                  <label class="col-sm-3 label-title"
+                    >Application Deadline<span class="required">*</span></label
+                  >
+                  <div class="col-sm-9">
+                    <input
+                      type="date"
+                      class="form-control"
+                      placeholder="human, reosurce, job, hrm"
+                      formControlName="jobDeadLine"
+                    />
+                    <div
+                      *ngIf="
+                        f.jobDeadLine.errors &&
+                        (f.jobDeadLine.dirty || f.jobDeadLine.touched)
+                      "
+                      class="invalid-feedback"
+                    >
+                      <div *ngIf="f.jobDeadLine.errors.required">
+                        Job DeadLine is required
                       </div>
                     </div>
                   </div>
@@ -353,6 +458,56 @@
                     >
                       <div *ngIf="f.companyName.errors.required">
                         Company Name is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row form-group">
+                  <label class="col-sm-3 label-title"
+                    >Company Size<span class="required">*</span></label
+                  >
+                  <div class="col-sm-9">
+                    <input
+                      type="text"
+                      name="name"
+                      class="form-control"
+                      placeholder="ex, 10,200"
+                      formControlName="companySize"
+                    />
+                    <div
+                      *ngIf="
+                        f.companySize.errors &&
+                        (f.companySize.dirty || f.companySize.touched)
+                      "
+                      class="invalid-feedback"
+                    >
+                      <div *ngIf="f.companySize.errors.required">
+                        Company Size is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row form-group">
+                  <label class="col-sm-3 label-title"
+                    >Web Site<span class="required">*</span></label
+                  >
+                  <div class="col-sm-9">
+                    <input
+                      type="text"
+                      name="name"
+                      class="form-control"
+                      placeholder="ex, www.example.com"
+                      formControlName="companySite"
+                    />
+                    <div
+                      *ngIf="
+                        f.companySite.errors &&
+                        (f.companySite.dirty || f.companySite.touched)
+                      "
+                      class="invalid-feedback"
+                    >
+                      <div *ngIf="f.companySite.errors.required">
+                        Company Web Site is required
                       </div>
                     </div>
                   </div>

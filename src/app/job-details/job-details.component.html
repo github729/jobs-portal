@@ -71,26 +71,29 @@
 
           <div class="ad-info">
             <span
-              ><span><a class="title">Human Resource Manager</a></span> @
-              <a> Dropbox Inc</a></span
+              ><span
+                ><a class="title">{{ jobDetails?.category }}</a></span
+              >
+              @ <a>{{ jobDetails?.companyName }}</a></span
             >
             <div class="ad-meta">
               <ul>
                 <li>
                   <a
-                    ><i class="fa fa-map-marker" aria-hidden="true"></i>San
-                    Francisco, CA, US</a
+                    ><i class="fa fa-map-marker" aria-hidden="true"></i
+                    >{{ jobDetails?.state }}, {{ jobDetails?.country }}</a
                   >
                 </li>
                 <li>
                   <a
-                    ><i class="fa fa-clock-o" aria-hidden="true"></i>Full
-                    Time</a
+                    ><i class="fa fa-clock-o" aria-hidden="true"></i
+                    >{{ jobDetails?.jobType }}</a
                   >
                 </li>
                 <li>
-                  <i class="fa fa-money" aria-hidden="true"></i>$25,000 -
-                  $35,000
+                  <i class="fa fa-money" aria-hidden="true"></i
+                  >{{ jobDetails?.minSalary | currency: "USD" }} -
+                  {{ jobDetails?.maxSalary | currency: "USD" }}
                 </li>
                 <li>
                   <a
@@ -100,7 +103,8 @@
                 </li>
                 <li>
                   <i class="fa fa-hourglass-start" aria-hidden="true"></i
-                  >Application Deadline : Jan 10, 2017
+                  >Application Deadline :
+                  {{ jobDetails?.jobDeadLine | date: "mediumDate" }}
                 </li>
               </ul>
             </div>
@@ -115,9 +119,9 @@
               ><i class="fa fa-briefcase" aria-hidden="true"></i>Apply For This
               Job</a
             >
-            <a class="btn btn-primary bookmark"
+            <!-- <a class="btn btn-primary bookmark"
               ><i class="fa fa-bookmark-o" aria-hidden="true"></i>Bookmark</a
-            >
+            > -->
           </div>
           <ul class="share-social">
             <li>Share this ad</li>
@@ -151,24 +155,7 @@
               <div class="description-info">
                 <h1>Description</h1>
                 <p>
-                  <span
-                    >Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    Duis aute irure dolor in reprehenderit in voluptate velit
-                    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-                    occaecat cupidatat non proident, sunt in culpa qui officia
-                    deserunt mollit anim id est laborum.</span
-                  >
-                </p>
-                <p>
-                  Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                  accusantium doloremque laudantium, totam rem aperiam, eaque
-                  ipsa quae ab illo inventore veritatis et quasi architecto
-                  beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem
-                  quia voluptas sit aspernatur aut odit aut fugit, sed quia
-                  consequuntur magni।
+                  <span>{{ jobDetails?.description }}</span>
                 </p>
               </div>
               <div class="responsibilities">
@@ -186,7 +173,8 @@
               </div>
               <div class="requirements">
                 <h1>Minimum Requirements</h1>
-                <ul>
+                <p>{{jobDetails?.requirements}}</p>
+                <!-- <ul>
                   <li>Bachelor's Degree</li>
                   <li>
                     2-5 years of relevant experience ( or equivalent educational
@@ -214,7 +202,7 @@
                     **All applicants must be eligible to work in the U.S.
                     without sponsorship
                   </li>
-                </ul>
+                </ul> -->
               </div>
             </div>
           </div>
@@ -225,7 +213,7 @@
                 <li>
                   <span class="icon"
                     ><i class="fa fa-bolt" aria-hidden="true"></i></span
-                  >Posted: 1 day ago
+                  >Posted: {{ jobDetails?.createdAt | date: "mediumDate" }}
                 </li>
                 <li>
                   <span class="icon"
@@ -236,39 +224,45 @@
                 <li>
                   <span class="icon"
                     ><i class="fa fa-industry" aria-hidden="true"></i></span
-                  >Industry: <a>Marketing and Advertising</a>
+                  >Industry: <a>{{ jobDetails?.industry }}</a>
                 </li>
                 <li>
                   <span class="icon"
                     ><i class="fa fa-line-chart" aria-hidden="true"></i></span
-                  >Experience: <a>Entry level</a>
+                  >Experience: <a>{{ jobDetails?.experience }}</a>
                 </li>
-                <li>
+                <!-- <li>
                   <span class="icon"
                     ><i class="fa fa-key" aria-hidden="true"></i></span
-                  >Job function: Advertising,Design, Art/Creative
-                </li>
+                  >Job function:{{ jobDetails?.function }}
+                </li> -->
               </ul>
             </div>
             <div class="section company-info">
               <h1>Company Info</h1>
               <ul>
-                <li>Compnay Name: <a>Dropbox Inc</a></li>
-                <li>Address: London, United Kingdom</li>
-                <li>Compnay SIze: 2k Employee</li>
-                <li>Industry: <a>Technology</a></li>
-                <li>Phone: +1234 567 8910</li>
+                <li>
+                  Compnay Name: <a>{{ jobDetails?.companyName }}</a>
+                </li>
+                <li>Address:{{ jobDetails?.address }}</li>
+                <li>Compnay SIze: {{ jobDetails?.companySize }} Employee</li>
+                <li>
+                  Industry: <a>{{ jobDetails?.industry }}</a>
+                </li>
+                <li>Phone: {{ jobDetails?.mobileNumber }}</li>
                 <li>
                   Email:
                   <a
                     ><span
                       class="__cf_email__"
                       data-cfemail="d4bdbab2bb94b0a6bba4b6bbacfab7bbb9"
-                      >[email&#160;protected]</span
+                      >{{ jobDetails?.email }}</span
                     ></a
                   >
                 </li>
-                <li>Website: <a>www.dropbox.com</a></li>
+                <li>
+                  Website: <a>{{ jobDetails?.companySite }}</a>
+                </li>
               </ul>
               <ul class="share-social">
                 <li>

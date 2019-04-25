@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'job-list', component: JobListComponent },
-  { path: 'job-details', component: JobDetailsComponent },
+  { path: 'job-details/:id', component: JobDetailsComponent },
   { path: 'sign-in', component: SignInComponent },
   { path: 'sign-up', component: SignUpComponent },
   { path: 'post-job', component: PostJobComponent },
