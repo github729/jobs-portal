@@ -22,7 +22,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { ProfileUpdateComponent } from './profile-update/profile-update.component';
 import { ResumeEditComponent } from './resume-edit/resume-edit.component';
 import { CloseAccountComponent } from './close-account/close-account.component';
-import { from } from 'rxjs';
+import { CKEditorModule } from 'ng2-ckeditor';
 
 @NgModule({
   declarations: [
@@ -50,6 +50,7 @@ import { from } from 'rxjs';
     HttpClientModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added
+    CKEditorModule,
     AppRoutingModule
   ],
   providers: [],

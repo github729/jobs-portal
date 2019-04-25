@@ -33,6 +33,7 @@
               "src/assets/js/price-range.js",
               "src/assets/js/main.js",
               "src/assets/js/switcher.js"
+
             ],
             "es5BrowserSupport": true
           },

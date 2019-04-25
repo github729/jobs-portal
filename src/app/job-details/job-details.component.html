@@ -95,12 +95,12 @@
                   >{{ jobDetails?.minSalary | currency: "USD" }} -
                   {{ jobDetails?.maxSalary | currency: "USD" }}
                 </li>
-                <li>
+                <!-- <li>
                   <a
                     ><i class="fa fa-tags" aria-hidden="true"></i>HR/Org.
                     Development</a
                   >
-                </li>
+                </li> -->
                 <li>
                   <i class="fa fa-hourglass-start" aria-hidden="true"></i
                   >Application Deadline :
@@ -115,7 +115,10 @@
         <!-- item-info -->
         <div class="social-media">
           <div class="button">
-            <a class="btn btn-primary"
+            <a
+              class="btn btn-primary"
+              href="{{ jobDetails?.applyUrl }}"
+              target="_blank"
               ><i class="fa fa-briefcase" aria-hidden="true"></i>Apply For This
               Job</a
             >
@@ -160,20 +163,11 @@
               </div>
               <div class="responsibilities">
                 <h1>Key Responsibilities:</h1>
-                <p>
-                  -Execute all visual design stages of website design from
-                  concept to final hand-off to development-Create print
-                  advertisements, social media advertisements, client collateral
-                  & digital resizes according to Client demands With direction
-                  of the Creative team, input into new design ideas for client
-                  branding-Update & keep all agency collateral materials,
-                  including keeping records of Client's logos, fonts, images,
-                  etc.
-                </p>
+                <p [innerHTML]="jobDetails?.function"></p>
               </div>
               <div class="requirements">
                 <h1>Minimum Requirements</h1>
-                <p>{{jobDetails?.requirements}}</p>
+                <p>{{ jobDetails?.requirements }}</p>
                 <!-- <ul>
                   <li>Bachelor's Degree</li>
                   <li>

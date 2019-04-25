@@ -6,3 +6,6 @@
   display: block;
   font-size: 100%;
 }
+.cke_bottom {
+  display: none !important;
+}

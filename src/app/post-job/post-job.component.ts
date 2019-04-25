@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { JobsService } from '../jobs.service';
 import { Router } from '@angular/router';
-declare var $: any;
 @Component({
   selector: 'app-post-job',
   templateUrl: './post-job.component.html',
@@ -10,6 +9,7 @@ declare var $: any;
 })
 export class PostJobComponent implements OnInit {
   jobForm: FormGroup;
+  ckeConfig: any;
 
   constructor(private _fb: FormBuilder,
     private jobsApi: JobsService,
@@ -17,21 +17,17 @@ export class PostJobComponent implements OnInit {
 
 
   ngOnInit() {
-    $(function () {
-      $('#editControls a').click(function (e) {
-        switch ($(this).data('role')) {
-          case 'h1':
-          case 'h2':
-          case 'p':
-            document.execCommand('formatBlock', false, $(this).data('role'));
-            break;
-          default:
-            document.execCommand($(this).data('role'), false, null);
-            break;
-        }
-
-      });
-    });
+    this.ckeConfig = {
+      height:100,
+      allowedContent: false,
+      fullPage: true,
+      toolbar: [
+        { name: "basicstyles", items: ["Bold", "Italic", "Underline", "RemoveFormat"] },
+        { name: "justify", items: ["JustifyLeft", "JustifyCenter", "JustifyRight", "JustifyBlock"] },
+        { name: "paragraph", items: ["NumberedList", "BulletedList"] },
+        { name: "links", items: ["Link", "Unlink"] },
+      ]
+    };
     this.jobForm = this._fb.group({
       category: [''],
       jobType: ['', Validators.required],

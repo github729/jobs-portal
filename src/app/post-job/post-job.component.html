@@ -127,7 +127,8 @@
                     />
                     <div
                       *ngIf="
-                        f.applyUrl.errors && (f.applyUrl.dirty || f.applyUrl.touched)
+                        f.applyUrl.errors &&
+                        (f.applyUrl.dirty || f.applyUrl.touched)
                       "
                       class="invalid-feedback"
                     >
@@ -142,13 +143,20 @@
                     >Minimum Requirements<span class="required">*</span></label
                   >
                   <div class="col-sm-9">
-                    <textarea
+                      <ckeditor
+                      formControlName="requirements"
+                      required
+                      [config]="ckeConfig"
+                      debounce="500"
+                    >
+                    </ckeditor>
+                    <!-- <textarea
                       class="form-control"
                       id="textarea"
                       placeholder="Write minimum requirements for your jobs"
                       rows="8"
                       formControlName="requirements"
-                    ></textarea>
+                    ></textarea> -->
                     <div
                       *ngIf="
                         f.requirements.errors &&
@@ -157,7 +165,7 @@
                       class="invalid-feedback"
                     >
                       <div *ngIf="f.requirements.errors.required">
-                        Minimum  Requirements is required
+                        Minimum Requirements is required
                       </div>
                     </div>
                   </div>
@@ -335,41 +343,13 @@
                     Key Responsibilities:<span class="required">*</span></label
                   >
                   <div class="col-sm-9">
-                    <!-- <input
-                      type="text"
-                      class="form-control"
-                      placeholder="human, reosurce, job, hrm"
+                    <ckeditor
                       formControlName="function"
-                    /> -->
-                    <div id="editparent">
-                      <div
-                        id="editControls"
-                        style="text-align:center;"
-                      >
-                        <div class="btn-group">
-                          <a class="btn" data-role="undo"
-                            ><i class="icon-undo"></i
-                          ></a>
-                        </div>
-                        <div class="btn-group">
-                          <a
-                            class="btn"
-                            data-role="insertUnorderedList"
-                            ><i class="fa fa-user"></i></a>
-                          <a class="btn" data-role="insertOrderedList"
-                            ><i class="icon-list-ol"></i
-                          ></a>
-                        </div>
-                      </div>
-                      <div id="editor" style="" contenteditable >
-                        <p>
-                         amet, consectetur adipisicing
-                          elit. Necessitatibus natus vero voluptatem aliquam
-                          molestias dicta aperiam dignissimos laudantium
-                          accusamus saepe!
-                        </p>
-                      </div>
-                    </div>
+                      required
+                      [config]="ckeConfig"
+                      debounce="500"
+                    >
+                    </ckeditor>
                     <div
                       *ngIf="
                         f.function.errors &&
