@@ -16,10 +16,8 @@
         <div class="col-lg-8 clearfix">
           <form [formGroup]="resumeForm" (ngSubmit)="postResume()">
             <fieldset>
-              <div
-                class="section express-yourself"
-                [formGroup]="resumeForm.get('basicInfo')"
-              >
+              <div class="section express-yourself">
+                <!-- [formGroup]="resumeForm.get('basicInfo')" -->
                 <h4>Express Yourself</h4>
                 <div class="row form-group">
                   <label class="col-sm-4 label-title">Full Name</label>
@@ -40,12 +38,12 @@
                   <div class="col-sm-8">
                     <textarea
                       class="form-control"
-                      formControlName="addInformation"
+                      formControlName="addInfo"
                       placeholder="Address: 123 West 12th Street, Suite 456 New York, NY 123456\n Phone: +012 345 678 910 \n Email: itsme@surzilegeek.com*"
                     ></textarea>
                   </div>
                 </div>
-                <div class="row form-group photos-resume">
+                <!-- <div class="row form-group photos-resume">
                   <label class="col-sm-4 label-title"
                     >Photos for your Resume</label
                   >
@@ -67,7 +65,7 @@
                       Upload Photo
                     </label>
                   </div>
-                </div>
+                </div> -->
               </div>
               <!-- postdetails -->
 
@@ -78,7 +76,7 @@
                     class="form-control"
                     placeholder="Write few lines about your career objective"
                     rows="8"
-                    formControlName="careerObject"
+                    formControlName="careerObjective"
                   ></textarea>
                 </div>
                 <span>5000 characters left</span>
@@ -125,15 +123,15 @@
                           type="text"
                           name="name"
                           class="form-control"
-                          placeholder="dd/mm/yy"
-                          formControlName="timePeriod"
+                          placeholder="ex, 2012"
+                          formControlName="joiningDate"
                         /><span>-</span>
                         <input
                           type="text"
                           name="name"
                           class="form-control pull-right"
-                          placeholder="dd/mm/yy"
-                          formControlName="timePeriod"
+                          placeholder="ex,2016"
+                          formControlName="relievingDate"
                         />
                       </div>
                     </div>
@@ -185,7 +183,7 @@
                           type="text"
                           class="form-control"
                           placeholder="ropbox"
-                          fromControlName="instituteName"
+                          formControlName="instituteName"
                         />
                       </div>
                     </div>
@@ -196,7 +194,7 @@
                           type="text"
                           class="form-control"
                           placeholder="Human Resource Manager"
-                          formControlName="degree"
+                          formControlName="qualification"
                         />
                       </div>
                     </div>
@@ -206,14 +204,25 @@
                         <input
                           type="text"
                           class="form-control"
-                          placeholder="dd/mm/yy"
-                          fromControlName="timeDuration"
+                          placeholder="ex,2010"
+                          formControlName="startingDate"
                         /><span>-</span>
                         <input
                           type="text"
                           class="form-control pull-right"
-                          placeholder="dd/mm/yy"
-                          fromControlName="timeDuration"
+                          placeholder="ex,2012"
+                          formControlName="endingDate"
+                        />
+                      </div>
+                    </div>
+                    <div class="row form-group">
+                      <label class="col-sm-3 label-title">Result</label>
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="ex,A grade or 60% or 550"
+                          formControlName="result"
                         />
                       </div>
                     </div>
@@ -224,7 +233,7 @@
                           class="form-control"
                           placeholder=""
                           rows="8"
-                          fromControlName="educationDescription"
+                          formControlName="description"
                         ></textarea>
                       </div>
                     </div>
@@ -247,12 +256,19 @@
               <div class="section special-qualification">
                 <h4>Special Qualification</h4>
                 <div class="form-group item-description">
-                  <textarea
+                  <!-- <textarea
                     class="form-control"
                     placeholder="Write few lines about your special qualification"
                     rows="8"
                     formControlName="specialQualification"
-                  ></textarea>
+                  ></textarea> -->
+                  <ckeditor
+                    formControlName="specialQualification"
+                    required
+                    [config]="ckeConfig"
+                    debounce="500"
+                  >
+                  </ckeditor>
                 </div>
               </div>
               <!-- special-qualification -->
@@ -278,7 +294,7 @@
                           name="name"
                           class="form-control"
                           placeholder="English"
-                          formControlName="languageName"
+                          formControlName="name"
                         />
                       </div>
                     </div>
@@ -289,72 +305,37 @@
                           <div class="rating">
                             <input
                               type="radio"
-                              id="star1"
-                              name="rating"
-                            /><label class="full" for="star1"></label>
+                              id="star1{{languageIndex}}"
+                              value="1"
+                              formControlName="rating"
+                            /><label class="full" for="star1{{languageIndex}}"></label>
 
                             <input
                               type="radio"
-                              id="star2"
-                              name="rating"
+                              id="star2{{languageIndex}}"
+                              value="2"
                               formControlName="rating"
-                            /><label class="half" for="star2"></label>
+                            /><label class="full" for="star2{{languageIndex}}"></label>
 
                             <input
                               type="radio"
-                              id="star3"
-                              name="rating"
+                              id="star3{{languageIndex}}"
                               formControlName="rating"
-                            /><label class="full" for="star3"></label>
+                            /><label class="full" for="star3{{languageIndex}}"></label>
 
                             <input
                               type="radio"
-                              id="star4"
-                              name="rating"
+                              id="star4{{languageIndex}}"
+                              value="4"
                               formControlName="rating"
-                            /><label class="half" for="star4"></label>
+                            /><label class="full" for="star4{{languageIndex}}"></label>
 
                             <input
                               type="radio"
-                              id="star5"
-                              name="rating"
+                              id="star5{{languageIndex}}"
+                              value="5"
                               formControlName="rating"
-                            /><label class="full" for="star5"></label>
-
-                            <input
-                              type="radio"
-                              id="star6"
-                              name="rating"
-                              formControlName="rating"
-                            /><label class="half" for="star6"></label>
-
-                            <input
-                              type="radio"
-                              id="star7"
-                              name="rating"
-                              formControlName="rating"
-                            /><label class="full" for="star7"></label>
-
-                            <input
-                              type="radio"
-                              id="star8"
-                              name="rating"
-                              formControlName="rating"
-                            /><label class="half" for="star8"></label>
-
-                            <input
-                              type="radio"
-                              id="star9"
-                              name="rating"
-                              formControlName="rating"
-                            /><label class="full" for="star9"></label>
-
-                            <input
-                              type="radio"
-                              id="star10"
-                              name="rating"
-                              formControlName="rating"
-                            /><label class="half" for="star10"></label>
+                            /><label class="full" for="star5{{languageIndex}}"></label>
                           </div>
                         </div>
                         <!-- rating-star -->
@@ -376,12 +357,10 @@
               </div>
               <!-- language-proficiency -->
 
-              <div
-                class="section company-information"
-                [formGroup]="resumeForm.get('personalDetails')"
-              >
+              <div class="section company-information">
+                <!-- [formGroup]="resumeForm.get('personalDetails')" -->
                 <h4>Personal Deatils</h4>
-                <div class="row form-group">
+                <!-- <div class="row form-group">
                   <label class="col-sm-3 label-title">Full Name</label>
                   <div class="col-sm-9">
                     <input
@@ -392,7 +371,7 @@
                       formControlName="fullName"
                     />
                   </div>
-                </div>
+                </div> -->
                 <div class="row form-group">
                   <label class="col-sm-3 label-title">Father's Name</label>
                   <div class="col-sm-9">

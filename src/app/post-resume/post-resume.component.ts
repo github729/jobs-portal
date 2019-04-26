@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
+import { JobsService } from '../jobs.service';
 
 @Component({
   selector: 'app-post-resume',
@@ -8,24 +9,44 @@ import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 })
 export class PostResumeComponent implements OnInit {
   resumeForm: FormGroup;
+  ckeConfig: { height: number; allowedContent: boolean; fullPage: boolean; toolbar: { name: string; items: string[]; }[]; };
 
 
 
-  constructor(private _fb: FormBuilder) { }
+  constructor(private _fb: FormBuilder,
+    private jobsApi: JobsService) {
+    this.ckeConfig = {
+      height: 100,
+      allowedContent: false,
+      fullPage: true,
+      toolbar: [
+        { name: "basicstyles", items: ["Bold", "Italic", "Underline", "RemoveFormat"] },
+        { name: "justify", items: ["JustifyLeft", "JustifyCenter", "JustifyRight", "JustifyBlock"] },
+        { name: "paragraph", items: ["NumberedList", "BulletedList"] },
+        { name: "links", items: ["Link", "Unlink"] },
+      ]
+    };
+  }
 
   ngOnInit() {
     this.resumeForm = this._fb.group({
-      basicInfo: this._fb.group({
-        fullName: ['', Validators.required],
-        addInformation: ['', Validators.required],
-        image: ['', Validators.required],
-      }),
-      careerObject: ['', Validators.required],
+      // basicInfo: this._fb.group({
+      fullName: ['', Validators.required],
+      addInfo: ['', Validators.required],
+      // image: ['', Validators.required],
+      // }),
+      careerObjective: ['', Validators.required],
       workHistory: this._fb.array([this.initWorkHistory()]),
       educationDetails: this._fb.array([this.initEducationDetails()]),
       specialQualification: ['', Validators.required],
       languageProficiency: this._fb.array([this.initLanguages()]),
-      personalDetails: this.initPersonalDetails(),
+      fatherName: ['', Validators.required],
+      motherName: ['', Validators.required],
+      dob: ['', Validators.required],
+      nationality: ['', Validators.required],
+      gender: ['', Validators.required],
+      address: ['', Validators.required],
+      // personalDetails: this.initPersonalDetails(),
       declaration: ['', Validators.required]
     });
   }
@@ -35,7 +56,8 @@ export class PostResumeComponent implements OnInit {
     return this._fb.group({
       companyName: ['', Validators.required],
       designation: ['', Validators.required],
-      timePeriod: ['', Validators.required],
+      joiningDate: ['', Validators.required],
+      relievingDate: ['', Validators.required],
       jobDescription: ['', Validators.required]
     });
   }
@@ -44,16 +66,18 @@ export class PostResumeComponent implements OnInit {
   initEducationDetails() {
     return this._fb.group({
       instituteName: ['', Validators.required],
-      degree: ['', Validators.required],
-      timeDuration: ['', Validators.required],
-      educationDescription: ['', Validators.required]
+      qualification: ['', Validators.required],
+      result: ['', Validators.required],
+      startingDate: ['', Validators.required],
+      endingDate: ['', Validators.required],
+      description: ['', Validators.required]
     });
   }
 
   // Initialize the Language
   initLanguages() {
     return this._fb.group({
-      languageName: ['', Validators.required],
+      name: ['', Validators.required],
       rating: ['', Validators.required]
     });
   }
@@ -61,7 +85,7 @@ export class PostResumeComponent implements OnInit {
   // Initialize the Personal Details
   initPersonalDetails() {
     return this._fb.group({
-      fullName: ['', Validators.required],
+      // fullName: ['', Validators.required],
       fatherName: ['', Validators.required],
       motherName: ['', Validators.required],
       dob: ['', Validators.required],
@@ -109,6 +133,8 @@ export class PostResumeComponent implements OnInit {
 
 
   postResume() {
-    console.log(this.resumeForm.value);
+    this.jobsApi.postResume(this.resumeForm.value).subscribe(res => {
+      console.log(res);
+    });
   }
 }

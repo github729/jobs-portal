@@ -2,30 +2,35 @@
   <div class="container">
     <div class="breadcrumb-section">
       <ol class="breadcrumb">
-        <li><a routerLink = "/home">Home</a></li>
+        <li><a routerLink="/home">Home</a></li>
         <li>Candidate Profile</li>
       </ol>
-      <h2 class="title">Jhon Doe Resume</h2>
+      <h2 class="title">{{ resumeDetails?.fullName | titlecase }}</h2>
     </div>
     <!-- breadcrumb-section -->
 
     <div class="resume-content">
       <div class="profile section clearfix">
         <div class="profile-logo">
-          <img class="img-fluid" src="assets/images/job/resume.jpg" alt="Image" />
+          <img
+            class="img-fluid"
+            src="assets/images/job/resume.jpg"
+            alt="Image"
+          />
         </div>
         <div class="profile-info">
-          <h1>Jhon Doe</h1>
+          <h1>{{ resumeDetails?.fullName }}</h1>
           <address>
             <p>
-              Address: 123 West 12th Street, Suite 456 New York, NY 123456
+              {{ resumeDetails?.address }}
               <br />
-              Phone: +012 345 678 910 <br />
-              Email:<a>
+              Phone: {{ resumeDetails?.user?.mobileNumber }} <br />
+              Email:
+              <a>
                 <span
                   class="__cf_email__"
                   data-cfemail="a8c1dcdbc5cde8dbdddad2c1c4cdcfcdcdc386cbc7c5"
-                  >[email&#160;protected]</span
+                  >{{ resumeDetails?.user?.email }}</span
                 ></a
               >
             </p>
@@ -41,23 +46,7 @@
         <div class="career-info">
           <h3>Career Objective</h3>
           <p>
-            <span
-              >Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est
-              laborum.</span
-            >
-          </p>
-          <p>
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-            accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-            quae ab illo inventore veritatis et quasi architecto beatae vitae
-            dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-            aspernatur aut odit aut fugit, sed quia consequuntur magni।
+            <span>{{ resumeDetails?.careerObjective }}</span>
           </p>
         </div>
       </div>
@@ -70,51 +59,14 @@
         <div class="work-info">
           <h3>Work History</h3>
           <ul>
-            <li>
+            <li *ngFor="let work of resumeDetails?.workHistories">
               <h4>
-                Senior Graphic Designer @ Buildomo <span>2012 - Present</span>
+                {{ work.designation | titlecase }} @
+                {{ work.companyName | titlecase }}
+                <span>{{ work.joiningDate }}- {{ work.relievingDate }}</span>
               </h4>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat.
-              </p>
-            </li>
-            <li>
-              <h4>Former Graphic Designer @ Ideame <span>2011 - 2012</span></h4>
-              <p>
-                Sed do eiusmod tempor incididunt ut labore et dolore magna
-                aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                ullamco laboris nisi ut aliquip ex ea commodo consequat.
-              </p>
-            </li>
-            <li>
-              <h4>Head of Design @ Titan Compnay <span>2005 - 2011</span></h4>
-              <p>
-                Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                cupidatat non proident.
-              </p>
-            </li>
-            <li>
-              <h4>Graphic Designer @ Precision <span>2004 - 2005</span></h4>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat.
-              </p>
-            </li>
-            <li>
-              <h4>
-                Graphic Designer (Intern) @ Costa Rica Fruit Compnay
-                <span>2002 - 2004</span>
-              </h4>
-              <p>
-                Incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                veniam, quis nostrud exercitation ullamco laboris nisi ut
-                aliquip ex ea commodo consequat.
+                {{ work.jobDescription }}
               </p>
             </li>
           </ul>
@@ -129,22 +81,26 @@
         <div class="educational-info">
           <h3>Education Background</h3>
           <ul>
-            <li>
-              <h4>Masters of Arts @ Montana Satet University</h4>
+            <li *ngFor="let education of resumeDetails?.education">
+              <h4>
+                {{ education?.qualification }} @ {{ education?.instituteName }}
+              </h4>
               <ul>
-                <li>Year: <span>1999 - 2001</span></li>
-                <li>Concentration/Major: <span>Major in Accounting</span></li>
-                <li>Course Duration: <span>2 Years</span></li>
-                <li>Result: <span>4.00</span></li>
+                <li>
+                  Year:
+                  <span
+                    >{{ education?.startingDate }} -
+                    {{ education?.endingDate }}</span
+                  >
+                </li>
+                <li>Course Duration: <span>{{education?.endingDate - education?.startingDate}}</span></li>
+                <li>Result: <span>{{education?.result}}</span></li>
               </ul>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat.
+                {{ education?.description }}
               </p>
             </li>
-            <li>
+            <!-- <li>
               <h4>Bachalor of Arts @ Universty of Bristol</h4>
               <ul>
                 <li>Year: <span>1999 - 2001</span></li>
@@ -173,7 +129,7 @@
                 cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
                 cupidatat non proident.
               </p>
-            </li>
+            </li> -->
           </ul>
         </div>
       </div>
@@ -185,7 +141,8 @@
         </div>
         <div class="qualification">
           <h3>Special Qualification:</h3>
-          <ul>
+          <p [innerHTML]="resumeDetails?.specialQualification"></p>
+          <!-- <ul>
             <li>
               <span>1.</span> 5 years+ experience designing and building
               products In the Design & IT industry.
@@ -196,7 +153,7 @@
             </li>
             <li><span>3.</span> Skilled at any Kind Design Tools.</li>
             <li><span>4.</span> Hard Worker & Quick Lerner.</li>
-          </ul>
+          </ul> -->
         </div>
       </div>
       <!-- educational-background -->
@@ -208,43 +165,16 @@
         <div class="proficiency">
           <h3>Language Proficiency</h3>
           <ul class="list-inline">
-            <li class="list-inline-item">
-              <h5>English</h5>
+            <li
+              class="list-inline-item"
+              *ngFor="let language of resumeDetails?.languages"
+            >
+              <h5>{{ language.name }}</h5>
               <ul>
                 <li><i class="fa fa-star" aria-hidden="true"></i></li>
                 <li><i class="fa fa-star" aria-hidden="true"></i></li>
                 <li><i class="fa fa-star" aria-hidden="true"></i></li>
                 <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
-              </ul>
-            </li>
-            <li class="list-inline-item">
-              <h5>German</h5>
-              <ul>
-                <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
-                <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
-              </ul>
-            </li>
-            <li class="list-inline-item">
-              <h5>Spanish</h5>
-              <ul>
-                <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                <li><i class="fa fa-star" aria-hidden="true"></i></li>
-              </ul>
-            </li>
-            <li class="list-inline-item">
-              <h5>Latin</h5>
-              <ul>
-                <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
-                <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
                 <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
               </ul>
             </li>
@@ -262,35 +192,31 @@
           <ul class="address">
             <li>
               <h5>Full Name</h5>
-              <span>:</span>Jhon Doe
+              <span>:</span>{{ resumeDetails?.fullName | titlecase}}
             </li>
             <li>
               <h5>Father's Name</h5>
-              <span>:</span>Robert Doe
+              <span>:</span>{{ resumeDetails?.fatherName | titlecase}}
             </li>
             <li>
               <h5>Mother's Name</h5>
-              <span>:</span>Ismatic Roderos Doe
+              <span>:</span>{{ resumeDetails?.motherName | titlecase}}
             </li>
             <li>
               <h5>Date of Birth</h5>
-              <span>:</span>26/01/1982
-            </li>
-            <li>
-              <h5>Birth Place</h5>
-              <span>:</span>United State of America
+              <span>:</span>{{ resumeDetails?.dob | date : 'mediumDate'}}
             </li>
             <li>
               <h5>Nationality</h5>
-              <span>:</span>Canadian
+              <span>:</span>{{ resumeDetails?.nationality | titlecase}}
             </li>
             <li>
-              <h5>Sex</h5>
-              <span>:</span>Male
+              <h5>Gender</h5>
+              <span>:</span>{{ resumeDetails?.gender | titlecase}}
             </li>
             <li>
               <h5>Address</h5>
-              <span>:</span>121 King Street, Melbourne Victoria, 1200 USA
+              <span>:</span>{{resumeDetails?.address}}
             </li>
           </ul>
         </div>
@@ -304,24 +230,7 @@
         <div class="declaration-info">
           <h3>Declaration</h3>
           <p>
-            <span
-              >Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est
-              laborum.</span
-            >
-          </p>
-          <p>
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-            accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-            quae ab illo inventore veritatis et quasi architecto beatae vitae
-            dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-            aspernatur aut odit aut fugit, sed quia consequuntur magni। dolores
-            eos qui ratione voluptatem sequi nesciunt.
+            <span>{{ resumeDetails?.declaration }}</span>
           </p>
         </div>
       </div>

@@ -46,6 +46,23 @@ export class JobsService {
         catchError(this.handleError)
       );
   }
+    // Post Job
+    postResume(resumeData) {
+      return this._http
+        .post(`${ENV.BASE_API}post-resume`, resumeData, this.httpOptions)
+        .pipe(
+          catchError(this.handleError)
+        );
+    }
+    // Get Resume for Login user Id
+    getResume(userId) {
+      return this._http
+        .get(`${ENV.BASE_API}resume/${userId}`, this.httpOptions)
+        .pipe(
+          catchError(this.handleError)
+        );
+    }
+
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.
