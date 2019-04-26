@@ -24,34 +24,35 @@
           <li class="active"><a routerLink="/home">Home</a></li>
           <li><a routerLink="job-list">Job list</a></li>
           <!-- <li><a href="details.html">Job Details</a></li> -->
-          <li><a routerLink="resume-details">Resume</a></li>
-          <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown"
-              >My Account<span class="caret"></span
-            ></a>
-            <ul class="dropdown-menu">
-              <li><a routerLink="/profile">Profile</a></li>
-              <li><a routerLink="/post-resume">Post Resume</a></li>
-              <li><a routerLink="/post-job">Job Post</a></li>
-              <li><a routerLink="/resume-edit">Edit Resume</a></li>
-              <li><a routerLink="/profile-update">Update Profile</a></li>
-              <!-- <li><a routerLink="applied-jobs">Applied Job</a></li> -->
-              <li><a routerLink="/delete-account">Close Account</a></li>
-            </ul>
-          </li>
+          <li><a (click)="resume()">Resume</a></li>
+
+            <li class="dropdown" *ngIf="currentUser">
+              <a class="dropdown-toggle" data-toggle="dropdown"
+                >My Account<span class="caret"></span
+              ></a>
+              <ul class="dropdown-menu">
+                <li><a routerLink="/profile">Profile</a></li>
+                <li><a routerLink="/post-resume">Post Resume</a></li>
+                <li><a routerLink="/post-job">Job Post</a></li>
+                <li><a routerLink="/resume-edit">Edit Resume</a></li>
+                <li><a routerLink="/profile-update">Update Profile</a></li>
+                <li><a (click)="logout()">Logout</a></li>
+                <li><a routerLink="/delete-account">Delete Account</a></li>
+              </ul>
+            </li>
         </ul>
       </div>
 
       <!-- nav-right -->
       <div class="nav-right">
-        <ul class="sign-in">
+        <ul class="sign-in" *ngIf="!currentUser">
           <li><i class="fa fa-user"></i></li>
           <li><a routerLink="sign-in">Sign In</a></li>
           <li><a routerLink="sign-up">Register</a></li>
         </ul>
         <!-- sign-in -->
 
-        <a routerLink="post-job" class="btn">Post Your Job</a>
+        <a (click)="postJob()" class="btn">Post Your Job</a>
       </div>
       <!-- nav-right -->
     </div>

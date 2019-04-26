@@ -9,45 +9,7 @@
     </div>
     <!-- breadcrumb-section -->
 
-    <div class="job-profile section">
-      <div class="user-profile">
-        <div class="user-images">
-          <img
-            src="assets/images/user.jpg"
-            alt="User Images"
-            class="img-fluid"
-          />
-        </div>
-        <div class="user">
-          <h2>Hello, <a>Jhon Doe</a></h2>
-          <h5>
-            You last logged in at: 10-01-2017 6:40 AM [ USA time (GMT +
-            6:00hrs)]
-          </h5>
-        </div>
-
-        <div class="favorites-user">
-          <div class="my-ads">
-            <a routerLink="applied-jobs">29<small>Apply Job</small></a>
-          </div>
-          <!-- <div class="favorites">
-            <a href="bookmark.html">18<small>Favorites</small></a>
-          </div> -->
-        </div>
-      </div>
-      <!-- user-profile -->
-
-      <ul class="user-menu">
-        <li><a routerLink="/profile">Account Info </a></li>
-        <li><a routerLink="/resume-details">View Resume</a></li>
-        <li><a routerLink="/resume-edit">Edit Resume</a></li>
-        <li><a routerLink="/profile-update">Profile Update</a></li>
-        <!-- <li><a href="bookmark.html">Bookmark</a></li> -->
-        <!-- <li class="active"><a routerLink="/applied-jobs">applied job</a></li> -->
-        <li><a routerLink="/delete-account">Close account</a></li>
-      </ul>
-    </div>
-    <!-- ad-profile -->
+    <app-user-info></app-user-info>
 
     <div class="resume-content">
       <div class="profile section clearfix">
@@ -147,36 +109,6 @@
                 {{ education?.description }}
               </p>
             </li>
-            <!-- <li>
-              <h4>Bachalor of Arts @ Universty of Bristol</h4>
-              <ul>
-                <li>Year: <span>1999 - 2001</span></li>
-                <li>Concentration/Major: <span>Major in Accounting</span></li>
-                <li>Course Duration: <span>2 Years</span></li>
-                <li>Result: <span>4.00</span></li>
-              </ul>
-              <p>
-                Sed do eiusmod tempor incididunt ut labore et dolore magna
-                aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                ullamco laboris nisi ut aliquip ex ea commodo consequat.
-              </p>
-            </li>
-            <li>
-              <h4>
-                Diploma in Graphics Design @ Cincinnati Christian University
-              </h4>
-              <ul>
-                <li>Year: <span>1999 - 2001</span></li>
-                <li>Concentration/Major: <span>Major in Accounting</span></li>
-                <li>Course Duration: <span>2 Years</span></li>
-                <li>Result: <span>4.00</span></li>
-              </ul>
-              <p>
-                Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                cupidatat non proident.
-              </p>
-            </li> -->
           </ul>
         </div>
       </div>
@@ -189,18 +121,6 @@
         <div class="qualification">
           <h3>Special Qualification:</h3>
           <p [innerHTML]="resumeDetails?.specialQualification"></p>
-          <!-- <ul>
-            <li>
-              <span>1.</span> 5 years+ experience designing and building
-              products In the Design & IT industry.
-            </li>
-            <li>
-              <span>2.</span> Passion for people-centered design, solid
-              intuition.
-            </li>
-            <li><span>3.</span> Skilled at any Kind Design Tools.</li>
-            <li><span>4.</span> Hard Worker & Quick Lerner.</li>
-          </ul> -->
         </div>
       </div>
       <!-- educational-background -->

@@ -10,11 +10,13 @@ import { JobsService } from '../jobs.service';
 export class PostResumeComponent implements OnInit {
   resumeForm: FormGroup;
   ckeConfig: { height: number; allowedContent: boolean; fullPage: boolean; toolbar: { name: string; items: string[]; }[]; };
+  currentUser: any;
 
 
 
   constructor(private _fb: FormBuilder,
     private jobsApi: JobsService) {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     this.ckeConfig = {
       height: 100,
       allowedContent: false,
@@ -133,8 +135,8 @@ export class PostResumeComponent implements OnInit {
 
 
   postResume() {
+    this.resumeForm.value.userId = this.currentUser.user.id;
     this.jobsApi.postResume(this.resumeForm.value).subscribe(res => {
-      console.log(res);
     });
   }
 }

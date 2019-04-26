@@ -1,0 +1,34 @@
+<div class="job-profile section">
+  <div class="user-profile">
+    <div class="user-images">
+      <img src="assets/images/user.jpg" alt="User Images" class="img-fluid" />
+    </div>
+    <div class="user">
+      <h2>Hello, <a>{{userDetails?.name | titlecase}}</a></h2>
+      <h5>
+        You last logged in at: 10-01-2017 6:40 AM [ USA time (GMT + 6:00hrs)]
+      </h5>
+    </div>
+
+    <!-- <div class="favorites-user">
+      <div class="my-ads">
+        <a routerLink="applied-jobs">29<small>Apply Job</small></a>
+      </div>
+      <div class="favorites">
+        <a href="bookmark.html">18<small>Favorites</small></a>
+      </div>
+    </div> -->
+  </div>
+  <!-- user-profile -->
+
+  <ul class="user-menu">
+    <li><a routerLink="/profile">Account Info </a></li>
+    <li><a routerLink="/resume-details">View Resume</a></li>
+    <li><a routerLink="/resume-edit">Edit Resume</a></li>
+    <li><a routerLink="/profile-update">Profile Update</a></li>
+    <!-- <li><a href="bookmark.html">Bookmark</a></li> -->
+    <!-- <li class="active"><a routerLink="/applied-jobs">applied job</a></li> -->
+    <li><a routerLink="/delete-account">Close account</a></li>
+  </ul>
+</div>
+<!-- ad-profile -->

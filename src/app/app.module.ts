@@ -23,6 +23,7 @@ import { ProfileUpdateComponent } from './profile-update/profile-update.componen
 import { ResumeEditComponent } from './resume-edit/resume-edit.component';
 import { CloseAccountComponent } from './close-account/close-account.component';
 import { CKEditorModule } from 'ng2-ckeditor';
+import { UserInfoComponent } from './user-info/user-info.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { CKEditorModule } from 'ng2-ckeditor';
     ProfileComponent,
     ProfileUpdateComponent,
     ResumeEditComponent,
-    CloseAccountComponent
+    CloseAccountComponent,
+    UserInfoComponent
   ],
   imports: [
     BrowserModule,

@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserService } from '../user.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'app-sign-in',
@@ -31,7 +32,8 @@ export class SignInComponent implements OnInit {
       // tslint:disable-next-line: no-string-literal
       if (res['success']) {
         // tslint:disable-next-line: no-string-literal
-        this.toastr.success(res['message'], 'Success');
+        HeaderComponent.updateUserStatus.next(true); // here!
+        this.toastr.success('You are Logged in Successfully', 'Success');
         this.router.navigate(['/job-list']);
       } else {
         this.toastr.error(res['message'], 'Failed');

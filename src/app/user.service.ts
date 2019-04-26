@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { throwError } from 'rxjs';
 import { ENV } from './app.settings';
-import { catchError } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +10,7 @@ import { catchError } from 'rxjs/operators';
 export class UserService {
 
   private httpOptions: any;
+  currentUser: any;
 
   constructor(private _http: HttpClient) {
     this.httpOptions = {
@@ -20,6 +21,28 @@ export class UserService {
       })
     };
   }
+  LoginUser(userData) {
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this._http.post(`${ENV.BASE_API}sign-in`, JSON.stringify(userData), { headers: headers })
+      .pipe(
+        tap((response: any) => {
+          if (response.success) {
+            this.currentUser = response.data;
+            const userObj: any = {};
+            userObj.user = response.data;
+            userObj.token = response.token;
+            localStorage.setItem('currentUser', JSON.stringify(userObj));
+          }
+        }),
+        catchError(this.handleError)
+      );
+  }
+  // logout event
+  public logout(): void {
+    this.currentUser = null;
+    localStorage.removeItem('currentUser');
+  }
+
   // Create User
   registerUser(userData) {
     return this._http
@@ -28,15 +51,22 @@ export class UserService {
         catchError(this.handleError)
       );
   }
-  // Login User
-  LoginUser(userData) {
+    // Create User
+    getUserById(userId) {
+      return this._http
+        .get(`${ENV.BASE_API}user/${userId}`, this.httpOptions)
+        .pipe(
+          catchError(this.handleError)
+        );
+    }
+  // Delete User
+  deleteUser(userId) {
     return this._http
-      .post(`${ENV.BASE_API}sign-in`, userData, this.httpOptions)
+      .delete(`${ENV.BASE_API}close-account/${userId}`, this.httpOptions)
       .pipe(
         catchError(this.handleError)
       );
   }
-
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.

@@ -50,7 +50,7 @@ export class PostJobComponent implements OnInit {
       email: ['', Validators.required],
       mobileNumber: ['', Validators.required],
       address: ['', Validators.required],
-      terms: ['',]
+      terms: ['']
     });
   }
   // convenience getter for easy access to form fields

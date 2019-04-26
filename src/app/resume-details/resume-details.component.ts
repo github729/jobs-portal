@@ -13,7 +13,6 @@ export class ResumeDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.jobsApi.getResume(1).subscribe(res => {
-      console.log(res);
       if (res['success']) {
         this.resumeDetails = res['data'];
       }
