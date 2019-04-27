@@ -39,10 +39,10 @@
                     <h5>
                       <a><i class="fa fa-caret-down"></i> All Categories</a>
                     </h5>
-                    <a
+                    <!-- <a
                       ><i class="icofont icofont-man-in-glasses"></i
                       >Engineer/Architects</a
-                    >
+                    > -->
                     <ul>
                       <li *ngFor="let category of categories">
                         <a>{{ category.category }} <span>(129)</span></a>
@@ -421,7 +421,7 @@
           <div class="section job-list-item">
             <div class="featured-top clearfix">
               <h4>Showing 1-{{ limit }} of {{ totalRecords | number }} jobs</h4>
-              <div class="dropdown pull-right">
+              <!-- <div class="dropdown pull-right">
                 <div class="dropdown category-dropdown">
                   <h5>Sort by:</h5>
                   <a data-toggle="dropdown"
@@ -433,8 +433,7 @@
                     <li><a>Most Popular</a></li>
                   </ul>
                 </div>
-                <!-- category-change -->
-              </div>
+              </div> -->
             </div>
             <!-- featured-top -->
 
@@ -514,6 +513,8 @@
             <!-- pagination  -->
             <pagination-controls
               (pageChange)="pageChanged($event)"
+              previousLabel="Previous"
+              nextLabel="Next"
             ></pagination-controls>
             <!-- pagination  -->
           </div>

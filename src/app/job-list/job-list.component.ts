@@ -14,7 +14,7 @@ export class JobListComponent implements OnInit {
   filterData: any = {}
   p: number = 1;
   totalRecords: any;
-  limit : number = 10;
+  limit : number = 2;
 
   constructor(private jobApi: JobsService) { }
 
