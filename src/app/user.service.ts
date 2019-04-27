@@ -51,14 +51,29 @@ export class UserService {
         catchError(this.handleError)
       );
   }
-    // Create User
-    getUserById(userId) {
-      return this._http
-        .get(`${ENV.BASE_API}user/${userId}`, this.httpOptions)
-        .pipe(
-          catchError(this.handleError)
-        );
-    }
+  // Create User
+  getUserById(userId) {
+    return this._http
+      .get(`${ENV.BASE_API}user/${userId}`, this.httpOptions)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+  // Update User
+  updateUser(userData) {
+    return this._http
+      .put(`${ENV.BASE_API}update-user`, userData, this.httpOptions)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+  changePwd(userData){
+    return this._http
+    .put(`${ENV.BASE_API}change-password`, userData, this.httpOptions)
+    .pipe(
+      catchError(this.handleError)
+    );
+  }
   // Delete User
   deleteUser(userId) {
     return this._http

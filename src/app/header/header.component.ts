@@ -40,8 +40,8 @@ export class HeaderComponent implements OnInit {
   }
   logout() {
     this.userApi.logout();
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     this.toastr.success('You have been logged out.', 'Success');
     this.router.navigate(['/home']);
-    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
 }

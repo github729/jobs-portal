@@ -1,0 +1,39 @@
+<div class="banner-form banner-form-full job-list-form">
+  <form [formGroup]="jobSearch" class="clearfix" (ngSubmit)="search()">
+    <!-- category-change -->
+    <div class="form-group">
+      <select class="form-control category-dropdown" formControlName="category">
+        <option value="" selected>Job Category</option>
+        <option
+          *ngFor="let category of categories"
+          value="{{ category.category }}"
+          >{{ category.category }}</option
+        >
+      </select>
+    </div>
+
+    <div class="form-group">
+      <select class="form-control language-dropdown" formControlName="state">
+        <option value="" selected>Job Location</option>
+        <option
+          *ngFor="let location of locations"
+          value="{{ location.state }}"
+          >{{ location.state }}</option
+        >
+      </select>
+    </div>
+    <div class="form-group">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Type your key word"
+        formControlName="keywords"
+      />
+    </div>
+
+    <button type="submit" class="btn btn-primary" value="Search">
+      Search
+    </button>
+  </form>
+</div>
+<!-- banner-form -->

@@ -24,7 +24,8 @@ import { ResumeEditComponent } from './resume-edit/resume-edit.component';
 import { CloseAccountComponent } from './close-account/close-account.component';
 import { CKEditorModule } from 'ng2-ckeditor';
 import { UserInfoComponent } from './user-info/user-info.component';
-
+import { JobSearchComponent } from './job-search/job-search.component';
+import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +44,8 @@ import { UserInfoComponent } from './user-info/user-info.component';
     ProfileUpdateComponent,
     ResumeEditComponent,
     CloseAccountComponent,
-    UserInfoComponent
+    UserInfoComponent,
+    JobSearchComponent
   ],
   imports: [
     BrowserModule,
@@ -53,6 +55,7 @@ import { UserInfoComponent } from './user-info/user-info.component';
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added
     CKEditorModule,
+    NgxPaginationModule,
     AppRoutingModule
   ],
   providers: [],

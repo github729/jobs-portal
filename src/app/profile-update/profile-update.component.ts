@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'app-profile-update',
@@ -10,14 +13,22 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class ProfileUpdateComponent implements OnInit {
   userDetails: any;
   currentUser: any;
-  profileUpdate: FormGroup
+  profileUpdate: FormGroup;
+  changePassword: FormGroup;
 
   constructor(private userApi: UserService,
-    private _fb: FormBuilder) {
+    private _fb: FormBuilder,
+    private toastr: ToastrService,
+    private router: Router) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
 
   ngOnInit() {
+    this.changePassword = this._fb.group({
+      oldPassword: ['', Validators.required],
+      newPassword: ['', Validators.required],
+      confirm_password: ['', Validators.required],
+    });
     this.userApi.getUserById(this.currentUser.user.id).subscribe(res => {
       if (res['success']) {
         this.userDetails = res['data'];
@@ -31,5 +42,26 @@ export class ProfileUpdateComponent implements OnInit {
       }
     });
   }
-
+  updateProfile() {
+    this.profileUpdate.value.userId = this.currentUser.user.id;
+    this.userApi.updateUser(this.profileUpdate.value).subscribe(res => {
+      if (res['success']) {
+        this.toastr.success(res['message'], 'Success');
+        this.router.navigate(['/profile']);
+      }
+    });
+  }
+  passwordChange() {
+    this.changePassword.value.userId = this.currentUser.user.id;
+    this.userApi.changePwd(this.changePassword.value).subscribe(res => {
+      if (res['success']) {
+        this.userApi.logout();
+        HeaderComponent.updateUserStatus.next(true); // here!
+        this.toastr.success(res['message'], 'Success');
+        this.router.navigate(['/home']);
+      } else {
+        this.toastr.error(res['message'], 'Failed');
+      }
+    });
+  }
 }

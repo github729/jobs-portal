@@ -28,11 +28,18 @@ export class JobsService {
         catchError(this.handleError)
       );
   }
-
-  // get all Jobs
-  getJobs() {
+  // Get all job Filters
+  getJobFilters() {
     return this._http
-      .get(`${ENV.BASE_API}jobs`, this.httpOptions)
+    .get(`${ENV.BASE_API}job-filters`, this.httpOptions)
+    .pipe(
+      catchError(this.handleError)
+    );
+  }
+  // get all Jobs
+  getJobs(filterData?) {
+    return this._http
+      .post(`${ENV.BASE_API}jobs`,filterData, this.httpOptions)
       .pipe(
         catchError(this.handleError)
       );
