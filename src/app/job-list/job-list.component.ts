@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit, OnChanges, AfterViewInit } from '@angular/core';
 import { JobsService } from '../jobs.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { JobsService } from '../jobs.service';
   templateUrl: './job-list.component.html',
   styleUrls: ['./job-list.component.css']
 })
-export class JobListComponent implements OnInit {
+export class JobListComponent implements OnInit,AfterViewInit{
   jobs: any;
   locations: any;
   categories: any;
@@ -34,7 +34,20 @@ export class JobListComponent implements OnInit {
       }
     })
   }
+  ngAfterViewInit() {
+    try {
+      (window['adsbygoogle'] = window['adsbygoogle'] || []).push({});
+    } catch (e) {
+      console.error("error");
+    }
 
+  }
+  allCategories() {
+    const filterData: any = {}
+    filterData.limit = this.limit;
+    filterData.offset = 0;
+    this.getJobs(filterData);
+  }
   getJobs(filterData?) {
     this.jobApi.getJobs(filterData).subscribe(res => {
       if (res['success']) {

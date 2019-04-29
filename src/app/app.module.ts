@@ -25,7 +25,8 @@ import { CloseAccountComponent } from './close-account/close-account.component';
 import { CKEditorModule } from 'ng2-ckeditor';
 import { UserInfoComponent } from './user-info/user-info.component';
 import { JobSearchComponent } from './job-search/job-search.component';
-import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
+import { NgxPaginationModule } from 'ngx-pagination'; // <-- import the module
+import { AdsenseModule } from 'ng2-adsense';
 @NgModule({
   declarations: [
     AppComponent,
