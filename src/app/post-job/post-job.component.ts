@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 export class PostJobComponent implements OnInit {
   jobForm: FormGroup;
   ckeConfig: any;
+  states: any;
+  cities: any;
 
   constructor(private _fb: FormBuilder,
     private jobsApi: JobsService,
@@ -17,8 +19,15 @@ export class PostJobComponent implements OnInit {
 
 
   ngOnInit() {
+    // Getting states
+    this.jobsApi.getStates().subscribe(res => {
+      if (res['success']) {
+        this.states = res['data'];
+      }
+    });
+    // Configure editor
     this.ckeConfig = {
-      height:100,
+      height: 100,
       allowedContent: false,
       fullPage: true,
       toolbar: [
@@ -35,7 +44,7 @@ export class PostJobComponent implements OnInit {
       applyUrl: ['', Validators.required],
       requirements: ['', [Validators.required, Validators.maxLength(5000)]],
       description: ['', [Validators.required, Validators.maxLength(5000)]],
-      country: ['', Validators.required],
+      city: ['', Validators.required],
       state: ['', Validators.required],
       minSalary: ['', Validators.required],
       maxSalary: ['', Validators.required],
@@ -63,6 +72,17 @@ export class PostJobComponent implements OnInit {
         this.router.navigate(['/job-list'])
       } else {
 
+      }
+    })
+  }
+  onChange(data) {
+    this.states.map(state => {
+      if (state.name === data) {
+        this.jobsApi.getCityBySateId(state.id).subscribe(res => {
+          if (res['success']) {
+            this.cities = res['data'];
+          }
+        })
       }
     })
   }

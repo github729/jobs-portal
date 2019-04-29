@@ -13,12 +13,12 @@
     </div>
 
     <div class="form-group">
-      <select class="form-control language-dropdown" formControlName="state">
+      <select class="form-control language-dropdown" formControlName="city">
         <option value="" selected>Job Location</option>
         <option
           *ngFor="let location of locations"
-          value="{{ location.state }}"
-          >{{ location.state }}</option
+          value="{{ location.city }}"
+          >{{ location.city }}</option
         >
       </select>
     </div>

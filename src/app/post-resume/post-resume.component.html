@@ -87,7 +87,7 @@
                 <h4>Work History</h4>
                 <div
                   *ngFor="
-                    let work of resumeForm.controls.workHistory.controls;
+                    let work of resumeForm['controls'].workHistory['controls'];
                     let workIndex = index
                   "
                 >
@@ -170,8 +170,8 @@
                 <h4>Education Background</h4>
                 <div
                   *ngFor="
-                    let education of resumeForm.controls.educationDetails
-                      .controls;
+                    let education of resumeForm['controls'].educationDetails
+                      ['controls'];
                     let educationIndex = index
                   "
                 >
@@ -280,8 +280,8 @@
                 <h4>Language Proficiency:</h4>
                 <div
                   *ngFor="
-                    let language of resumeForm.controls.languageProficiency
-                      .controls;
+                    let language of resumeForm['controls'].languageProficiency
+                      ['controls'];
                     let languageIndex = index
                   "
                 >
@@ -479,7 +479,7 @@
           <div class="section quick-rules">
             <h4>Quick rules</h4>
             <p class="lead">
-              Posting an ad on <a>Jobs.com</a> is free! However, all ads must
+              Posting an ad on <a>quikresults.com</a> is free! However, all ads must
               follow our rules:
             </p>
 

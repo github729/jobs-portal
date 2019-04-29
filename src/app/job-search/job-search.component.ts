@@ -20,7 +20,7 @@ export class JobSearchComponent implements OnInit {
   ngOnInit() {
     this.jobSearch = this._fb.group({
       category: [''],
-      state: [''],
+      city: [''],
       keywords: ['']
     });
     this.jobApi.getJobFilters().subscribe(res => {

@@ -14,7 +14,7 @@
     <div class="job-postdetails">
       <div class="row">
         <div class="col-lg-8">
-          <form [formGroup]="jobForm" (ngSubmit)="postJob(jobForm.value)">
+          <form [formGroup]="jobForm" (ngSubmit)="postJob()">
             <fieldset>
               <div class="section postdetails">
                 <h4>
@@ -143,7 +143,7 @@
                     >Minimum Requirements<span class="required">*</span></label
                   >
                   <div class="col-sm-9">
-                      <ckeditor
+                    <ckeditor
                       formControlName="requirements"
                       required
                       [config]="ckeConfig"
@@ -206,40 +206,46 @@
                   >
                   <div class="col-sm-9">
                     <div class="pull-left col-sm-6">
-                      <select class="form-control" formControlName="country">
-                        <option value="" selected>Select a Country</option>
-                        <option>Argentina</option>
-                        <option>Australia</option>
-                        <option>Belgium</option>
-                        <option>Brazil</option>
-                        <option>Cambodia</option>
-                        <div
-                          *ngIf="
-                            f.country.errors &&
-                            (f.country.dirty || f.country.touched)
-                          "
-                          class="invalid-feedback"
-                        >
-                          <div *ngIf="f.country.errors.required">
-                            Country is required
-                          </div>
-                        </div>
-                      </select>
-                    </div>
-                    <div class="pull-right col-sm-6">
-                      <select class="form-control" formControlName="state">
+                      <select
+                        class="form-control"
+                        formControlName="state"
+                        (change)="onChange($event.target.value)"
+                      >
                         <option value="" selected>Select a State</option>
-                        <option>State 1</option>
-                        <option>State 2</option>
-                        <option>State 3</option>
+                        <option
+                          *ngFor="let state of states"
+                          [value]="state.name"
+                        >
+                          {{ state.name }}</option
+                        >
                         <div
                           *ngIf="
                             f.state.errors && (f.state.dirty || f.state.touched)
                           "
                           class="invalid-feedback"
                         >
-                          <div *ngIf="f.coustatentry.errors.required">
+                          <div *ngIf="f.state.errors.required">
                             State is required
+                          </div>
+                        </div>
+                      </select>
+                    </div>
+                    <div class="pull-right col-sm-6">
+                      <select class="form-control" formControlName="city">
+                        <option value="" selected>Select a City</option>
+                        <option
+                          *ngFor="let city of cities"
+                          [value]="city.name"
+                          >{{ city.name }}</option
+                        >
+                        <div
+                          *ngIf="
+                            f.city.errors && (f.city.dirty || f.city.touched)
+                          "
+                          class="invalid-feedback"
+                        >
+                          <div *ngIf="f.city.errors.required">
+                            City is required
                           </div>
                         </div>
                       </select>
@@ -663,8 +669,8 @@
           <div class="section quick-rules">
             <h4>Quick rules</h4>
             <p class="lead">
-              Posting an ad on <a>jobs.com</a> is free! However, all ads must
-              follow our rules:
+              Posting an ad on <a>quikresults.com</a> is free! However, all ads
+              must follow our rules:
             </p>
 
             <ul>

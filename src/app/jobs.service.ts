@@ -44,7 +44,22 @@ export class JobsService {
         catchError(this.handleError)
       );
   }
-
+  // get all state
+  getStates() {
+    return this._http
+      .get(`${ENV.BASE_API}states`, this.httpOptions)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+    // get all cities based on state id
+    getCityBySateId(stateId) {
+      return this._http
+        .get(`${ENV.BASE_API}cities/${stateId}`, this.httpOptions)
+        .pipe(
+          catchError(this.handleError)
+        );
+    }
   // get job by id
   getJobById(jobId) {
     return this._http

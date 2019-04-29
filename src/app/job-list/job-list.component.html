@@ -45,7 +45,9 @@
                     > -->
                     <ul>
                       <li *ngFor="let category of categories">
-                        <a>{{ category.category }} <span>(129)</span></a>
+                        <a (click)="selectCategory(category)">{{
+                          category.category
+                        }}</a>
                       </li>
                     </ul>
                   </div>
@@ -167,6 +169,7 @@
                         type="checkbox"
                         value="Full Time"
                         name="full-time"
+                        (change)="selectJobType($event, 'Full Time')"
                         id="full-time"
                       />
                       Full Time</label
@@ -176,6 +179,7 @@
                         type="checkbox"
                         value="Part Time"
                         name="part-time"
+                        (change)="selectJobType($event, 'Part Time')"
                         id="part-time"
                       />
                       Part Time</label
@@ -185,6 +189,7 @@
                         type="checkbox"
                         name="contract"
                         id="contract"
+                        (change)="selectJobType($event, 'Contract')"
                         value="Contract"
                       />
                       Contract</label
@@ -194,6 +199,7 @@
                         type="checkbox"
                         name="intern"
                         id="intern"
+                        (change)="selectJobType($event, 'Freelance')"
                         value="Freelance"
                       />
                       Freelance</label
@@ -231,7 +237,7 @@
                         name="entry-level"
                         id="entry-level"
                         value="Entry Level"
-                        [(ngModel)]="jobType"
+                        (change)="selectExp($event, 'Entry Level')"
                       />
                       Entry Level</label
                     >
@@ -241,7 +247,7 @@
                         name="mid-level"
                         id="mid-level"
                         value="Mid Level"
-                        [(ngModel)]="jobType"
+                        (change)="selectExp($event, 'Mid Level')"
                       />
                       Mid Level</label
                     >
@@ -251,7 +257,7 @@
                         name="mid-senior"
                         id="mid-senior"
                         value="Mid-Senior Level"
-                        [(ngModel)]="jobType"
+                        (change)="selectExp($event, 'Mid-Senior Level')"
                       />
                       Mid-Senior Level</label
                     >
@@ -261,7 +267,7 @@
                         name="top-level"
                         id="top-level"
                         value="Top Level"
-                        [(ngModel)]="jobType"
+                        (change)="selectExp($event, 'Top Level')"
                       />
                       Top Level</label
                     >
@@ -302,6 +308,7 @@
                         type="checkbox"
                         [name]="company.companyName"
                         [value]="company.companyName"
+                        (change)="selectCompany($event, company)"
                       />
                       {{ company.companyName }}<br />
                     </div>
@@ -337,74 +344,15 @@
                       placeholder="Search Location"
                       class="form-control"
                     />
-                    <label
-                      for="{{ i }}"
-                      *ngFor="let location of locations; let i = index"
-                      ><input
+                    <div *ngFor="let location of locations">
+                      <input
                         type="checkbox"
-                        name="{{ i }}"
-                        id="{{ i }}"
-                        value="{{ location.state }}"
-                        [(ngModel)]="state"
+                        [name]="location.state"
+                        [value]="location.state"
+                        (change)="selectLocation($event, location)"
                       />
-                      {{ location.state }}, {{ location.country }}</label
-                    >
-                    <!-- <label for="kingdom"
-                      ><input type="checkbox" name="kingdom" id="kingdom" />
-                      United Kingdom</label
-                    >
-                    <label for="states"
-                      ><input type="checkbox" name="states" id="states" />
-                      United States</label
-                    >
-                    <label for="columbia"
-                      ><input type="checkbox" name="columbia" id="columbia" />
-                      British Columbia</label
-                    >
-                    <label for="australia"
-                      ><input type="checkbox" name="australia" id="australia" />
-                      Australia</label
-                    >
-                    <label for="germany"
-                      ><input type="checkbox" name="germany" id="germany" />
-                      Germany</label
-                    >
-                    <div class="see-more">
-                      <button type="button" class="show-more three">
-                        <i class="fa fa-plus-square-o" aria-hidden="true"></i
-                        >See More
-                      </button>
-                      <div class="more-category three">
-                        <label for="belgium"
-                          ><input
-                            type="checkbox"
-                            name="belgium"
-                            id="belgium"
-                          />Belgium</label
-                        >
-                        <label for="brazil"
-                          ><input
-                            type="checkbox"
-                            name="brazil"
-                            id="brazil"
-                          />Brazil</label
-                        >
-                        <label for="denmark"
-                          ><input
-                            type="checkbox"
-                            name="denmark"
-                            id="denmark"
-                          />Denmark</label
-                        >
-                        <label for="indonesia"
-                          ><input
-                            type="checkbox"
-                            name="indonesia"
-                            id="indonesia"
-                          />Indonesia</label
-                        >
-                      </div>
-                    </div> -->
+                      {{ location.city }},{{ location.state }}<br />
+                    </div>
                   </div>
                   <!-- panel-body -->
                 </div>
@@ -417,7 +365,7 @@
         <!-- accordion-->
 
         <!-- recommended-ads -->
-        <div class="col-md-8 col-lg-7">
+        <div class="col-md-8 col-lg-8">
           <div class="section job-list-item">
             <div class="featured-top clearfix">
               <h4>Showing 1-{{ limit }} of {{ totalRecords | number }} jobs</h4>
@@ -474,7 +422,7 @@
                       <li>
                         <a
                           ><i class="fa fa-map-marker" aria-hidden="true"></i
-                          >{{ job.state }}, {{ job.country }}
+                          >{{ job.city }},{{ job.state }}
                         </a>
                       </li>
                       <li>
@@ -538,7 +486,7 @@
     <div class="row">
       <div class="col-sm-12 text-center">
         <h2 class="title">Add your resume and let your next job find you.</h2>
-        <h4>Post your Resume for free on <a>Jobs.com</a></h4>
+        <h4>Post your Resume for free on <a>quikresults.com</a></h4>
         <a routerLink="/post-resume" class="btn btn-primary">Add Your Resume</a>
       </div>
     </div>

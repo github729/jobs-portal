@@ -660,7 +660,8 @@ a.verified i {
 .latest-jobs-ads {
 	margin-bottom: 15px;
 	background-color: #fff;
-	padding: 15px 30px;
+  padding: 15px 30px;
+  margin-top: 55px;
 }
 
 .job-ad-item .ad-info span+a {

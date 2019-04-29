@@ -9,3 +9,6 @@
 .cke_bottom {
   display: none !important;
 }
+.accordion .panel-body a::active {
+  color: #00a651;
+}
