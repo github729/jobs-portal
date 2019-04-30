@@ -1,58 +1,62 @@
-<div class="banner-job">
-  <div class="banner-overlay"></div>
-  <div class="container text-center">
-    <h1 class="title">The Easiest Way to Get Your New Job</h1>
-    <h3>We offer 12000 jobs vacation right now</h3>
-    <div class="banner-form">
-      <form action="#" class="clearfix">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Type your key word"
-        />
-        <div class="dropdown category-dropdown">
-          <a data-toggle="dropdown"
-            ><span class="change-text">Job Location</span>
-            <i class="fa fa-angle-down"></i
-          ></a>
-          <ul class="dropdown-menu category-change">
-            <li><a>Location 1</a></li>
-            <li><a>Location 2</a></li>
-            <li><a>Location 3</a></li>
-          </ul>
-        </div>
-        <!-- category-change -->
-        <button type="submit" class="btn btn-primary" value="Search">
-          Search
-        </button>
-      </form>
-    </div>
-    <!-- banner-form -->
-
-    <ul class="banner-socail list-inline">
-      <li>
-        <a title="Facebook"><i class="fa fa-facebook"></i></a>
-      </li>
-      <li>
-        <a title="Twitter"><i class="fa fa-twitter"></i></a>
-      </li>
-      <li>
-        <a title="Google Plus"><i class="fa fa-google-plus"></i></a>
-      </li>
-      <li>
-        <a title="Youtube"><i class="fa fa-youtube"></i></a>
-      </li>
-    </ul>
-    <!-- banner-socail -->
-  </div>
-  <!-- container -->
-</div>
 <!-- banner-section -->
 
 <div class="page">
   <div class="container">
     <!-- category ad -->
 
+    <div class="section search-form latest-jobs-ads">
+      <div class="text-center">
+        <h1 class="title">The Easiest Way to Get Your New Job</h1>
+        <h3>We offer 12000 jobs vacation right now</h3>
+        <!-- <div class="banner-form"> -->
+        <div class="banner-form banner-form-full job-list-form">
+          <form [formGroup]="jobSearch" class="clearfix" (ngSubmit)="search()">
+            <!-- category-change -->
+            <div class="form-group">
+              <select
+                class="form-control category-dropdown"
+                formControlName="category"
+              >
+                <option value="" selected>Job Category</option>
+                <option
+                  *ngFor="let category of categories"
+                  value="{{ category.category }}"
+                  >{{ category.category }}</option
+                >
+              </select>
+            </div>
+
+            <div class="form-group">
+              <select
+                class="form-control language-dropdown"
+                formControlName="city"
+              >
+                <option value="" selected>Job Location</option>
+                <option
+                  *ngFor="let location of locations"
+                  value="{{ location.city }}"
+                  >{{ location.city }}</option
+                >
+              </select>
+            </div>
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Type your key word"
+                formControlName="keywords"
+              />
+            </div>
+
+            <button type="submit" class="btn btn-primary" value="Search">
+              Search
+            </button>
+          </form>
+        </div>
+
+        <!-- banner-form -->
+      </div>
+    </div>
     <div class="section latest-jobs-ads">
       <div class="section-title tab-manu">
         <h4>Latest Jobs</h4>
@@ -809,9 +813,7 @@
     </div>
     <!-- ad-section -->
 
-
     <!-- workshop-traning -->
-
 
     <!-- cta -->
   </div>

@@ -14,16 +14,13 @@ export class UserService {
 
   constructor(private _http: HttpClient) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-
     this.httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         // tslint:disable-next-line: object-literal-key-quotes
-        'Authorization': 'Jobs'
+        'Authorization': this.currentUser != null ? this.currentUser.token : 'Jobs'
       })
     };
-    console.log(this.currentUser);
-
   }
   LoginUser(userData) {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');

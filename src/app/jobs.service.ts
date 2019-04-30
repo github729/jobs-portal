@@ -14,11 +14,10 @@ export class JobsService {
 
   constructor(private _http: HttpClient) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    console.log(this.currentUser);
     this.httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': this.currentUser != 'undefined' ? this.currentUser.token:'Jobs'
+        'Authorization': this.currentUser != null ? this.currentUser.token:'Jobs'
       })
     };
   }

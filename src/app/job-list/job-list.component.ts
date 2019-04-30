@@ -1,8 +1,9 @@
 import { Component, OnInit, OnChanges, AfterViewInit } from '@angular/core';
 import { JobsService } from '../jobs.service';
 import { UserService } from '../user.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-job-list',
@@ -23,9 +24,12 @@ export class JobListComponent implements OnInit, AfterViewInit {
   selectedExp: any = [];
   selectedJobType: any = [];
   currentUser: any;
+  jobSearch: FormGroup;
 
   constructor(private jobApi: JobsService,
-    private toastr : ToastrService,
+    private _fb: FormBuilder,
+    private route: ActivatedRoute,
+    private toastr: ToastrService,
     private router: Router) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
@@ -33,7 +37,26 @@ export class JobListComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.filterData.limit = this.limit;
     this.filterData.offset = 0;
-    this.getJobs(this.filterData);
+    this.route.queryParams
+      .subscribe(params => {
+        if (Object.keys(params).length > 0) {
+          this.jobSearch = this._fb.group({
+            category: [params.category],
+            city: [params.city],
+            keywords: [params.keyWords]
+          });
+          this.filterData = this.jobSearch.value;
+          this.filterJobs(this.jobSearch.value)
+        } else {
+          this.jobSearch = this._fb.group({
+            category: [''],
+            city: [''],
+            keywords: ['']
+          });
+          this.getJobs(this.filterData);
+        }
+      });
+
     this.jobApi.getJobFilters().subscribe(res => {
       if (res['success']) {
         this.locations = res['locations'];
@@ -49,18 +72,17 @@ export class JobListComponent implements OnInit, AfterViewInit {
       } catch (e) {
         console.error("error");
       }
-    }, 2000);
+    }, 200);
   }
   allCategories() {
-    const filterData: any = {}
-    filterData.limit = this.limit;
-    filterData.offset = 0;
-    this.getJobs(filterData);
+    delete this.filterData.category
+    this.filterData.limit = this.limit;
+    this.filterData.offset = 0;
+    this.getJobs(this.filterData);
   }
   getJobs(filterData?) {
     this.jobApi.getJobs(filterData).subscribe(res => {
       if (res['success']) {
-        this.p = 1;
         this.jobs = res['data'];
         this.totalRecords = res['recordsTotal'];
       }
@@ -74,11 +96,10 @@ export class JobListComponent implements OnInit, AfterViewInit {
     this.getJobs(searchData);
   }
   pageChanged(page) {
-    const data: any = {};
     this.p = page;
-    data.offset = (page - 1) * this.limit;
-    data.limit = this.limit;
-    this.getJobs(data);
+    this.filterData.offset = (page - 1) * this.limit;
+    this.filterData.limit = this.limit;
+    this.getJobs(this.filterData);
   }
   selectCompany(type, data) {
     if (type.target.checked) {
@@ -136,7 +157,7 @@ export class JobListComponent implements OnInit, AfterViewInit {
   }
   jobDetailView(jobId) {
     if (this.currentUser) {
-      this.router.navigate(['/job-details',jobId]);
+      this.router.navigate(['/job-details', jobId]);
     } else {
       this.toastr.info('Please login to apply for a job', 'Info!');
     }
