@@ -64,7 +64,7 @@ import { GoogleAdComponent } from './google-ad/google-ad.component';
     AppRoutingModule,
     AdsenseModule.forRoot({
       adClient: 'ca-pub-8450887295815397',
-      adSlot: 2335979029,
+      adSlot: 7948811743,
     })
   ],
   providers: [],
