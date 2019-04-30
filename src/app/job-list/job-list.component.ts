@@ -4,13 +4,18 @@ import { UserService } from '../user.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { window } from 'rxjs/operators';
+declare interface Window {
+  adsbygoogle: any[];
+}
+declare var adsbygoogle: any[];
 
 @Component({
   selector: 'app-job-list',
   templateUrl: './job-list.component.html',
   styleUrls: ['./job-list.component.css']
 })
-export class JobListComponent implements OnInit, AfterViewInit {
+export class JobListComponent implements OnInit {
   jobs: any;
   locations: any;
   categories: any;
@@ -31,6 +36,7 @@ export class JobListComponent implements OnInit, AfterViewInit {
     private route: ActivatedRoute,
     private toastr: ToastrService,
     private router: Router) {
+
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
 
@@ -65,15 +71,7 @@ export class JobListComponent implements OnInit, AfterViewInit {
       }
     })
   }
-  ngAfterViewInit() {
-    setTimeout(() => {
-      try {
-        (window['adsbygoogle'] = window['adsbygoogle'] || []).push({});
-      } catch (e) {
-        console.error("error");
-      }
-    }, 200);
-  }
+
   allCategories() {
     delete this.filterData.category
     this.filterData.limit = this.limit;

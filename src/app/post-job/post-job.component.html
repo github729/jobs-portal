@@ -629,27 +629,24 @@
               <!-- section -->
 
               <div class="checkbox section agreement">
-                <label for="send">
-                  <input
-                    type="checkbox"
-                    name="send"
-                    id="send"
-                    formControlName="terms"
-                  />
-                  You agree to our <a>Terms of Use</a> and
-                  <a>Privacy Policy</a> and acknowledge that you are the
-                  rightful owner of this item and using Jobs to find a genuine
-                  buyer.
+                <input
+                  type="checkbox"
+                  name="send"
+                  id="send"
+                  formControlName="terms"
+                />
+                You agree to our <a>Terms of Use</a> and
+                <a>Privacy Policy</a> and acknowledge that you are the rightful
+                owner of this item and using Jobs to find a genuine buyer.<br /><br>
 
-                  <div
-                    *ngIf="f.terms.errors && (f.terms.dirty || f.terms.touched)"
-                    class="invalid-feedback"
-                  >
-                    <div *ngIf="f.terms.errors.required">
-                      Please Accept Terms And Conditions
-                    </div>
+                <div
+                  *ngIf="f.terms.errors && (f.terms.dirty || f.terms.touched)"
+                  class="invalid-feedback"
+                >
+                  <div *ngIf="f.terms.errors.required">
+                    Please Accept Terms And Conditions
                   </div>
-                </label>
+                </div>
                 <button
                   type="submit"
                   class="btn btn-primary"

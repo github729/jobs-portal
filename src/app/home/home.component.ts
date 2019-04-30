@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { JobsService } from '../jobs.service';
@@ -8,7 +8,7 @@ import { JobsService } from '../jobs.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit,AfterViewInit {
 
   locations: any;
   categories: any;
@@ -31,6 +31,13 @@ export class HomeComponent implements OnInit {
         this.categories = res['categories'];
       }
     });
+  }
+  ngAfterViewInit() {
+    try{
+      (window['adsbygoogle'] = window['adsbygoogle'] || []).push({});
+    }catch(e){
+      console.error("error");
+    }
   }
   search() {
     this.router.navigate(['/job-list'],

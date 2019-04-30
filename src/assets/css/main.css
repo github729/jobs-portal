@@ -214,7 +214,8 @@ textarea {
 	color: #0a0a0a;
 	padding: 15px 12px;
 	display: block;
-	text-transform: uppercase;
+  text-transform: uppercase;
+  cursor: pointer;
 }
 
 .nav li a:hover,
@@ -2046,7 +2047,7 @@ input:-moz-placeholder {
 }
 
 .footer-bottom {
- 	background-color: #f7f7f7;
+ 	background-color: #fff;
  	color: #6e6e6e;
  	font-size: 14px;
  	padding: 19px 0 12px;
@@ -2398,7 +2399,7 @@ input:-moz-placeholder {
 .banner-form-full.job-list-form {
 	margin-top: 0;
 	background-color: rgba(0, 0, 0, 0.14);
-	padding: 10px 15px;
+  padding: 1px 15px 15px 15px;
 }
 
 
@@ -2445,7 +2446,7 @@ input:-moz-placeholder {
 }
 
 .social-media .btn.btn-primary {
-	background-color: #93c949;
+	background-color: #0d79bf;
 	margin-top: 0;
 	padding: 10px 20px;
 }

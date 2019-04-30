@@ -3,7 +3,7 @@
     <div class="user-account-content">
       <div class="user-account job-user-account">
         <h2>Create An Account</h2>
-        <ul class="nav nav-tabs text-center" role="tablist">
+        <!-- <ul class="nav nav-tabs text-center" role="tablist">
           <li role="presentation">
             <a
               class="active"
@@ -11,19 +11,10 @@
               aria-controls="find-job"
               role="tab"
               data-toggle="tab"
-              >Find A Job</a
+              >Register</a
             >
           </li>
-          <li role="presentation">
-            <a
-              href="#post-job"
-              aria-controls="post-job"
-              role="tab"
-              data-toggle="tab"
-              >Post A Job</a
-            >
-          </li>
-        </ul>
+        </ul> -->
 
         <div class="tab-content">
           <div role="tabpanel" class="tab-pane active show" id="find-job">
@@ -128,8 +119,8 @@
                 <!-- select -->
                 <select class="form-control" formControlName="role">
                   <option value="" selected>Select Role</option>
-                  <option value="Employee">Employee</option>
-                  <option value="Employer">Employer</option>
+                  <option value="Student">Student</option>
+                  <option value="Company">Company</option>
                   <div
                     *ngIf="f.role.errors && (f.role.dirty || f.role.touched)"
                     class="invalid-feedback"
@@ -140,8 +131,8 @@
                   </div> </select
                 ><!-- select -->
               </div>
-              <div class="form-group">
-                <!-- select -->
+              <!-- <div class="form-group">
+
                 <select class="form-control" formControlName="city">
                   <option value="" selected>Select City</option>
                   <option value="London UK">London UK</option>
@@ -155,9 +146,9 @@
                     <div *ngIf="f.city.errors.required">
                       City is required
                     </div>
-                  </div> </select
-                ><!-- select -->
-              </div>
+                  </div> </select>
+
+              </div> -->
 
               <div class="checkbox">
                 <label class="pull-left checked" for="signing"

@@ -28,6 +28,7 @@ import { JobSearchComponent } from './job-search/job-search.component';
 import { NgxPaginationModule } from 'ngx-pagination'; // <-- import the module
 import { AdsenseModule } from 'ng2-adsense';
 import { LoaderComponent } from './loader.component';
+import { GoogleAdComponent } from './google-ad/google-ad.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +49,8 @@ import { LoaderComponent } from './loader.component';
     CloseAccountComponent,
     UserInfoComponent,
     JobSearchComponent,
-    LoaderComponent
+    LoaderComponent,
+    GoogleAdComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +61,11 @@ import { LoaderComponent } from './loader.component';
     ToastrModule.forRoot(), // ToastrModule added
     CKEditorModule,
     NgxPaginationModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AdsenseModule.forRoot({
+      adClient: 'ca-pub-8450887295815397',
+      adSlot: 2335979029,
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

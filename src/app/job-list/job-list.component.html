@@ -1,5 +1,5 @@
 <section class="job-bg page job-list-page">
-  <div class="container" *ngIf="jobs != 'undefined'; else loaderBlock">
+  <div class="container" *ngIf="jobs != undefined; else loaderBlock">
     <div class="breadcrumb-section">
       <!-- breadcrumb -->
       <ol class="breadcrumb">
@@ -11,7 +11,11 @@
     </div>
 
     <div class="banner-form banner-form-full job-list-form">
-      <form [formGroup]="jobSearch" class="clearfix" (ngSubmit)="search()">
+      <form
+        [formGroup]="jobSearch"
+        class="clearfix"
+        (ngSubmit)="filterJobs(jobSearch.value)"
+      >
         <!-- category-change -->
         <div class="form-group">
           <select
@@ -41,7 +45,7 @@
           <input
             type="text"
             class="form-control"
-            placeholder="Type your key word"
+            placeholder="Type your skills  or technologies known"
             formControlName="keywords"
           />
         </div>
@@ -82,10 +86,6 @@
                         ><i class="fa fa-caret-down"></i> All Categories</a
                       >
                     </h5>
-                    <!-- <a
-                      ><i class="icofont icofont-man-in-glasses"></i
-                      >Engineer/Architects</a
-                    > -->
                     <ul>
                       <li *ngFor="let category of categories">
                         <a (click)="selectCategory(category)">{{
@@ -98,93 +98,6 @@
                 </div>
               </div>
               <!-- card -->
-
-              <!-- <div class="card panel-faq">
-                <div class="card-header">
-                  <button
-                    class="collapsed"
-                    data-toggle="collapse"
-                    data-target="#accordion-two"
-                    aria-expanded="true"
-                    aria-controls="accordion-two"
-                  >
-                    Date Posted
-                  </button>
-                </div>
-
-                <div
-                  id="accordion-two"
-                  class="collapse"
-                  data-parent="#tr-accordion"
-                >
-                  <div class="panel-body">
-                    <label for="today"
-                      ><input type="checkbox" name="today" id="today" />
-                      Today</label
-                    >
-                    <label for="7-days"
-                      ><input type="checkbox" name="7-days" id="7-days" /> 7
-                      days</label
-                    >
-                    <label for="30-days"
-                      ><input type="checkbox" name="30-days" id="30-days" /> 30
-                      days</label
-                    >
-                  </div>
-                </div>
-              </div> -->
-              <!-- panel -->
-
-              <!-- <div class="card  panel-faq">
-                <div class="card-header">
-                  <button
-                    class="collapsed"
-                    data-toggle="collapse"
-                    data-target="#accordion-three"
-                    aria-expanded="true"
-                    aria-controls="accordion-three"
-                  >
-                    Salary Range
-                  </button>
-                </div>
-
-                <div
-                  id="accordion-three"
-                  class="collapse"
-                  data-parent="#tr-accordion"
-                >
-                  <div class="panel-body">
-                    <div class="price-range">
-                      <div class="price">
-                        <span>$100 - <strong>$700</strong></span>
-                        <div class="dropdown category-dropdown pull-right">
-                          <a data-toggle="dropdown"
-                            ><span class="change-text">USD</span
-                            ><i class="fa fa-caret-square-o-down"></i
-                          ></a>
-                          <ul class="dropdown-menu category-change">
-                            <li><a>USD</a></li>
-                            <li><a>AUD</a></li>
-                            <li><a>EUR</a></li>
-                            <li><a>GBP</a></li>
-                            <li><a>JPY</a></li>
-                          </ul>
-                        </div>
-                        <input
-                          type="text"
-                          value=""
-                          data-slider-min="0"
-                          data-slider-max="700"
-                          data-slider-step="5"
-                          data-slider-value="[250,450]"
-                          id="price"
-                        /><br />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div> -->
-              <!-- panel -->
 
               <div class="card panel-faq">
                 <div class="card-header">
@@ -207,46 +120,38 @@
                 >
                   <!-- panel-body -->
                   <div class="panel-body">
-                    <label for="full-time"
-                      ><input
-                        type="checkbox"
-                        value="Full Time"
-                        name="full-time"
-                        (change)="selectJobType($event, 'Full Time')"
-                        id="full-time"
-                      />
-                      Full Time</label
-                    >
-                    <label for="part-time"
-                      ><input
-                        type="checkbox"
-                        value="Part Time"
-                        name="part-time"
-                        (change)="selectJobType($event, 'Part Time')"
-                        id="part-time"
-                      />
-                      Part Time</label
-                    >
-                    <label for="contract"
-                      ><input
-                        type="checkbox"
-                        name="contract"
-                        id="contract"
-                        (change)="selectJobType($event, 'Contract')"
-                        value="Contract"
-                      />
-                      Contract</label
-                    >
-                    <label for="intern"
-                      ><input
-                        type="checkbox"
-                        name="intern"
-                        id="intern"
-                        (change)="selectJobType($event, 'Freelance')"
-                        value="Freelance"
-                      />
-                      Freelance</label
-                    >
+                    <input
+                      type="checkbox"
+                      value="Full Time"
+                      name="full-time"
+                      (change)="selectJobType($event, 'Full Time')"
+                      id="full-time"
+                    />
+                    Full Time<br />
+                    <input
+                      type="checkbox"
+                      value="Part Time"
+                      name="part-time"
+                      (change)="selectJobType($event, 'Part Time')"
+                      id="part-time"
+                    />
+                    Part Time<br />
+                    <input
+                      type="checkbox"
+                      name="contract"
+                      id="contract"
+                      (change)="selectJobType($event, 'Contract')"
+                      value="Contract"
+                    />
+                    Contract<br />
+                    <input
+                      type="checkbox"
+                      name="intern"
+                      id="intern"
+                      (change)="selectJobType($event, 'Freelance')"
+                      value="Freelance"
+                    />
+                    Freelance<br />
                   </div>
                   <!-- panel-body -->
                 </div>
@@ -274,46 +179,38 @@
                 >
                   <!-- panel-body -->
                   <div class="panel-body">
-                    <label for="entry-level"
-                      ><input
-                        type="checkbox"
-                        name="entry-level"
-                        id="entry-level"
-                        value="Entry Level"
-                        (change)="selectExp($event, 'Entry Level')"
-                      />
-                      Entry Level</label
-                    >
-                    <label for="mid-level"
-                      ><input
-                        type="checkbox"
-                        name="mid-level"
-                        id="mid-level"
-                        value="Mid Level"
-                        (change)="selectExp($event, 'Mid Level')"
-                      />
-                      Mid Level</label
-                    >
-                    <label for="mid-senior"
-                      ><input
-                        type="checkbox"
-                        name="mid-senior"
-                        id="mid-senior"
-                        value="Mid-Senior Level"
-                        (change)="selectExp($event, 'Mid-Senior Level')"
-                      />
-                      Mid-Senior Level</label
-                    >
-                    <label for="top-level"
-                      ><input
-                        type="checkbox"
-                        name="top-level"
-                        id="top-level"
-                        value="Top Level"
-                        (change)="selectExp($event, 'Top Level')"
-                      />
-                      Top Level</label
-                    >
+                    <input
+                      type="checkbox"
+                      name="entry-level"
+                      id="entry-level"
+                      value="Entry Level"
+                      (change)="selectExp($event, 'Entry Level')"
+                    />
+                    Entry Level<br />
+                    <input
+                      type="checkbox"
+                      name="mid-level"
+                      id="mid-level"
+                      value="Mid Level"
+                      (change)="selectExp($event, 'Mid Level')"
+                    />
+                    Mid Level<br />
+                    <input
+                      type="checkbox"
+                      name="mid-senior"
+                      id="mid-senior"
+                      value="Mid-Senior Level"
+                      (change)="selectExp($event, 'Mid-Senior Level')"
+                    />
+                    Mid-Senior Level<br />
+                    <input
+                      type="checkbox"
+                      name="top-level"
+                      id="top-level"
+                      value="Top Level"
+                      (change)="selectExp($event, 'Top Level')"
+                    />
+                    Top Level<br />
                   </div>
                   <!-- panel-body -->
                 </div>
@@ -409,7 +306,10 @@
 
         <!-- recommended-ads -->
         <div class="col-md-8 col-lg-8">
-          <div class="section job-list-item">
+          <div
+            class="section job-list-item"
+            *ngIf="totalRecords > 0; else noRecords"
+          >
             <div class="featured-top clearfix">
               <h4>Showing 1-{{ limit }} of {{ totalRecords | number }} jobs</h4>
               <!-- <div class="dropdown pull-right">
@@ -445,7 +345,7 @@
                   <div class="item-image">
                     <a (click)="jobDetailView(job.id)"
                       ><img
-                        src="assets/images/job/1.png"
+                        src="assets/images/job/default.png"
                         alt="Image"
                         class="img-fluid"
                     /></a>
@@ -492,19 +392,7 @@
             <!-- job-ad-item -->
 
             <div class="ad-section text-center">
-              <!-- <a
-                ><img
-                  src="assets/images/ads/3.jpg"
-                  alt="Image"
-                  class="img-fluid"
-              /></a> -->
-              <ins
-                class="adsbygoogle"
-                style="display:block"
-                data-ad-client="ca-pub-8450887295815397"
-                data-ad-slot="2335979029"
-                data-ad-format="auto"
-              ></ins>
+              <app-google-ad></app-google-ad>
             </div>
             <!-- ad-section -->
 
@@ -516,18 +404,17 @@
             ></pagination-controls>
             <!-- pagination  -->
           </div>
+          <ng-template #noRecords>
+            <div class="section job-list-item text-center">
+              <h5>No Jobs Found</h5>
+            </div>
+          </ng-template>
         </div>
         <!-- recommended-ads -->
 
         <div class="col-md-2 d-none d-lg-block">
           <div class="advertisement text-center">
-            <ins
-              class="adsbygoogle"
-              style="display:block"
-              data-ad-client="ca-pub-8450887295815397"
-              data-ad-slot="2335979029"
-              data-ad-format="auto"
-            ></ins>
+            <app-google-ad></app-google-ad>
           </div>
         </div>
       </div>

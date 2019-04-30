@@ -24,29 +24,16 @@ export class SignUpComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', Validators.required],
       mobileNumber: ['', Validators.required],
-      city: ['', Validators.required],
+      city: [''],
       role: ['', Validators.required],
     });
-    // this.employerSignUpForm = this._fb.group({
-    //   employerName: ['', Validators.required],
-    //   email: ['', [Validators.required, Validators.email]],
-    //   password: ['', [Validators.required, Validators.minLength(6)]],
-    //   confirmPassword: ['', Validators.required],
-    //   mobileNumber: ['', Validators.required],
-    // });
   }
   // convenience getter for easy access to form fields
   get f() { return this.employeeSignUpForm.controls; }
 
-
-  // employerSignUp(userData) {
-
-  // }
   employeeSignUp(userData) {
     this.userApi.registerUser(userData).subscribe(res => {
-      // tslint:disable-next-line: no-string-literal
       if (res['success']) {
-        // tslint:disable-next-line: no-string-literal
         this.toastr.success(res['message'], 'Success');
       }
     });
