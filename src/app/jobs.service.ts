@@ -10,13 +10,15 @@ import { ENV } from './app.settings';
 export class JobsService {
 
   private httpOptions: any;
+  currentUser: any;
 
   constructor(private _http: HttpClient) {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    console.log(this.currentUser);
     this.httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        // tslint:disable-next-line: object-literal-key-quotes
-        'Authorization': 'online-quiz'
+        'Authorization': this.currentUser != 'undefined' ? this.currentUser.token:'Jobs'
       })
     };
   }
@@ -31,15 +33,15 @@ export class JobsService {
   // Get all job Filters
   getJobFilters() {
     return this._http
-    .get(`${ENV.BASE_API}job-filters`, this.httpOptions)
-    .pipe(
-      catchError(this.handleError)
-    );
+      .get(`${ENV.BASE_API}job-filters`, this.httpOptions)
+      .pipe(
+        catchError(this.handleError)
+      );
   }
   // get all Jobs
   getJobs(filterData?) {
     return this._http
-      .post(`${ENV.BASE_API}jobs`,filterData, this.httpOptions)
+      .post(`${ENV.BASE_API}jobs`, filterData, this.httpOptions)
       .pipe(
         catchError(this.handleError)
       );
@@ -52,14 +54,14 @@ export class JobsService {
         catchError(this.handleError)
       );
   }
-    // get all cities based on state id
-    getCityBySateId(stateId) {
-      return this._http
-        .get(`${ENV.BASE_API}cities/${stateId}`, this.httpOptions)
-        .pipe(
-          catchError(this.handleError)
-        );
-    }
+  // get all cities based on state id
+  getCityBySateId(stateId) {
+    return this._http
+      .get(`${ENV.BASE_API}cities/${stateId}`, this.httpOptions)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
   // get job by id
   getJobById(jobId) {
     return this._http

@@ -13,13 +13,17 @@ export class UserService {
   currentUser: any;
 
   constructor(private _http: HttpClient) {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
     this.httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         // tslint:disable-next-line: object-literal-key-quotes
-        'Authorization': 'online-quiz'
+        'Authorization': 'Jobs'
       })
     };
+    console.log(this.currentUser);
+
   }
   LoginUser(userData) {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
@@ -67,12 +71,12 @@ export class UserService {
         catchError(this.handleError)
       );
   }
-  changePwd(userData){
+  changePwd(userData) {
     return this._http
-    .put(`${ENV.BASE_API}change-password`, userData, this.httpOptions)
-    .pipe(
-      catchError(this.handleError)
-    );
+      .put(`${ENV.BASE_API}change-password`, userData, this.httpOptions)
+      .pipe(
+        catchError(this.handleError)
+      );
   }
   // Delete User
   deleteUser(userId) {

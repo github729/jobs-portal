@@ -27,6 +27,7 @@ import { UserInfoComponent } from './user-info/user-info.component';
 import { JobSearchComponent } from './job-search/job-search.component';
 import { NgxPaginationModule } from 'ngx-pagination'; // <-- import the module
 import { AdsenseModule } from 'ng2-adsense';
+import { LoaderComponent } from './loader.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +47,8 @@ import { AdsenseModule } from 'ng2-adsense';
     ResumeEditComponent,
     CloseAccountComponent,
     UserInfoComponent,
-    JobSearchComponent
+    JobSearchComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,

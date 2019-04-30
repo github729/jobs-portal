@@ -1,12 +1,15 @@
 import { Component, OnInit, OnChanges, AfterViewInit } from '@angular/core';
 import { JobsService } from '../jobs.service';
+import { UserService } from '../user.service';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-job-list',
   templateUrl: './job-list.component.html',
   styleUrls: ['./job-list.component.css']
 })
-export class JobListComponent implements OnInit,AfterViewInit{
+export class JobListComponent implements OnInit, AfterViewInit {
   jobs: any;
   locations: any;
   categories: any;
@@ -19,8 +22,13 @@ export class JobListComponent implements OnInit,AfterViewInit{
   selectedLocations: any = [];
   selectedExp: any = [];
   selectedJobType: any = [];
+  currentUser: any;
 
-  constructor(private jobApi: JobsService) { }
+  constructor(private jobApi: JobsService,
+    private toastr : ToastrService,
+    private router: Router) {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  }
 
   ngOnInit() {
     this.filterData.limit = this.limit;
@@ -35,12 +43,13 @@ export class JobListComponent implements OnInit,AfterViewInit{
     })
   }
   ngAfterViewInit() {
-    try {
-      (window['adsbygoogle'] = window['adsbygoogle'] || []).push({});
-    } catch (e) {
-      console.error("error");
-    }
-
+    setTimeout(() => {
+      try {
+        (window['adsbygoogle'] = window['adsbygoogle'] || []).push({});
+      } catch (e) {
+        console.error("error");
+      }
+    }, 2000);
   }
   allCategories() {
     const filterData: any = {}
@@ -51,6 +60,7 @@ export class JobListComponent implements OnInit,AfterViewInit{
   getJobs(filterData?) {
     this.jobApi.getJobs(filterData).subscribe(res => {
       if (res['success']) {
+        this.p = 1;
         this.jobs = res['data'];
         this.totalRecords = res['recordsTotal'];
       }
@@ -123,5 +133,12 @@ export class JobListComponent implements OnInit,AfterViewInit{
   selectCategory(data) {
     this.filterData.category = data.category;
     this.getJobs(this.filterData);
+  }
+  jobDetailView(jobId) {
+    if (this.currentUser) {
+      this.router.navigate(['/job-details',jobId]);
+    } else {
+      this.toastr.info('Please login to apply for a job', 'Info!');
+    }
   }
 }

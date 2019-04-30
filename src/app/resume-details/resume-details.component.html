@@ -1,5 +1,5 @@
 <section class=" job-bg page  ad-profile-page">
-  <div class="container">
+  <div class="container" *ngIf="resumeDetails != 'undefined'; else loaderBlock">
     <div class="breadcrumb-section">
       <ol class="breadcrumb">
         <li><a routerLink="/home">Home</a></li>
@@ -59,7 +59,7 @@
         <div class="work-info">
           <h3>Work History</h3>
           <ul>
-            <li *ngFor="let work of resumeDetails?.workHistories">
+            <li *ngFor="let work of resumeDetails?.workhistories">
               <h4>
                 {{ work.designation | titlecase }} @
                 {{ work.companyName | titlecase }}
@@ -93,8 +93,15 @@
                     {{ education?.endingDate }}</span
                   >
                 </li>
-                <li>Course Duration: <span>{{education?.endingDate - education?.startingDate}}</span></li>
-                <li>Result: <span>{{education?.result}}</span></li>
+                <li>
+                  Course Duration:
+                  <span>{{
+                    education?.endingDate - education?.startingDate
+                  }}</span>
+                </li>
+                <li>
+                  Result: <span>{{ education?.result }}</span>
+                </li>
               </ul>
               <p>
                 {{ education?.description }}
@@ -142,18 +149,6 @@
         <div class="qualification">
           <h3>Special Qualification:</h3>
           <p [innerHTML]="resumeDetails?.specialQualification"></p>
-          <!-- <ul>
-            <li>
-              <span>1.</span> 5 years+ experience designing and building
-              products In the Design & IT industry.
-            </li>
-            <li>
-              <span>2.</span> Passion for people-centered design, solid
-              intuition.
-            </li>
-            <li><span>3.</span> Skilled at any Kind Design Tools.</li>
-            <li><span>4.</span> Hard Worker & Quick Lerner.</li>
-          </ul> -->
         </div>
       </div>
       <!-- educational-background -->
@@ -170,13 +165,7 @@
               *ngFor="let language of resumeDetails?.languages"
             >
               <h5>{{ language.name }}</h5>
-              <ul>
-                <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
-              </ul>
+              <label>Rating: {{ language.rating }} </label>
             </li>
           </ul>
         </div>
@@ -192,31 +181,31 @@
           <ul class="address">
             <li>
               <h5>Full Name</h5>
-              <span>:</span>{{ resumeDetails?.fullName | titlecase}}
+              <span>:</span>{{ resumeDetails?.fullName | titlecase }}
             </li>
             <li>
               <h5>Father's Name</h5>
-              <span>:</span>{{ resumeDetails?.fatherName | titlecase}}
+              <span>:</span>{{ resumeDetails?.fatherName | titlecase }}
             </li>
             <li>
               <h5>Mother's Name</h5>
-              <span>:</span>{{ resumeDetails?.motherName | titlecase}}
+              <span>:</span>{{ resumeDetails?.motherName | titlecase }}
             </li>
             <li>
               <h5>Date of Birth</h5>
-              <span>:</span>{{ resumeDetails?.dob | date : 'mediumDate'}}
+              <span>:</span>{{ resumeDetails?.dob | date: "mediumDate" }}
             </li>
             <li>
               <h5>Nationality</h5>
-              <span>:</span>{{ resumeDetails?.nationality | titlecase}}
+              <span>:</span>{{ resumeDetails?.nationality | titlecase }}
             </li>
             <li>
               <h5>Gender</h5>
-              <span>:</span>{{ resumeDetails?.gender | titlecase}}
+              <span>:</span>{{ resumeDetails?.gender | titlecase }}
             </li>
             <li>
               <h5>Address</h5>
-              <span>:</span>{{resumeDetails?.address}}
+              <span>:</span>{{ resumeDetails?.address }}
             </li>
           </ul>
         </div>
@@ -245,5 +234,8 @@
     <!-- resume-content -->
   </div>
   <!-- container -->
+  <ng-template #loaderBlock>
+    <app-loader></app-loader>
+  </ng-template>
 </section>
 <!-- ad-profile-page -->

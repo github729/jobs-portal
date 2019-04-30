@@ -1,5 +1,5 @@
 <section class="job-bg page job-list-page">
-  <div class="container">
+  <div class="container" *ngIf="jobs != 'undefined'; else loaderBlock">
     <div class="breadcrumb-section">
       <!-- breadcrumb -->
       <ol class="breadcrumb">
@@ -402,7 +402,7 @@
               <div class="item-info">
                 <div class="item-image-box">
                   <div class="item-image">
-                    <a routerLink="/job-details/{{ job.id }}"
+                    <a (click)="jobDetailView(job.id)"
                       ><img
                         src="assets/images/job/1.png"
                         alt="Image"
@@ -414,7 +414,7 @@
 
                 <div class="ad-info">
                   <span
-                    ><a routerLink="/job-details/{{ job.id }}" class="title">{{
+                    ><a (click)="jobDetailView(job.id)" class="title">{{
                       job.category | titlecase
                     }}</a>
                     @ <a>{{ job.companyName | titlecase }}</a></span
@@ -451,12 +451,19 @@
             <!-- job-ad-item -->
 
             <div class="ad-section text-center">
-              <a
+              <!-- <a
                 ><img
                   src="assets/images/ads/3.jpg"
                   alt="Image"
                   class="img-fluid"
-              /></a>
+              /></a> -->
+              <ins
+                class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-8450887295815397"
+                data-ad-slot="2335979029"
+                data-ad-format="auto"
+              ></ins>
             </div>
             <!-- ad-section -->
 
@@ -486,6 +493,9 @@
     </div>
   </div>
   <!-- container -->
+  <ng-template #loaderBlock>
+    <app-loader></app-loader>
+  </ng-template>
 </section>
 <!-- main -->
 
