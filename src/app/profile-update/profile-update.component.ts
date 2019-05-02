@@ -36,7 +36,7 @@ export class ProfileUpdateComponent implements OnInit {
           name: [this.userDetails.name, Validators.required],
           email: [this.userDetails.email, Validators.required],
           role: [this.userDetails.role, Validators.required],
-          city: [this.userDetails.city, Validators.required],
+          // city: [this.userDetails.city, Validators.required],
           mobileNumber: [this.userDetails.mobileNumber, Validators.required]
         });
       }

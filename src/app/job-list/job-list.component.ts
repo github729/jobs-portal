@@ -160,10 +160,6 @@ export class JobListComponent implements OnInit, AfterViewInit {
     this.getJobs(this.filterData);
   }
   jobDetailView(jobId) {
-    if (this.currentUser) {
-      this.router.navigate(['/job-details', jobId]);
-    } else {
-      this.toastr.info('Please login to apply for a job', 'Info!');
-    }
+    this.router.navigate(['/job-details', jobId]);
   }
 }

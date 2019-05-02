@@ -45,6 +45,14 @@ export class JobsService {
         catchError(this.handleError)
       );
   }
+  // get top five jobs based on posted date
+  topFiveJobs(){
+    return this._http
+    .get(`${ENV.BASE_API}top-five-jobs`, this.httpOptions)
+    .pipe(
+      catchError(this.handleError)
+    );
+  }
   // get all state
   getStates() {
     return this._http

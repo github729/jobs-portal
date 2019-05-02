@@ -52,7 +52,7 @@
         </ul>
         <!-- sign-in -->
 
-        <a (click)="postJob()" class="btn">Post Your Job</a>
+        <a (click)="postJob()" class="btn" *ngIf="currentUser?currentUser?.user?.role === 'Recruiter':true">Post Your Job</a>
       </div>
       <!-- nav-right -->
     </div>

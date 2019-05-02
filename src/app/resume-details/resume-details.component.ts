@@ -8,13 +8,23 @@ import { JobsService } from '../jobs.service';
 })
 export class ResumeDetailsComponent implements OnInit {
   resumeDetails: any;
+  currentUser: any;
+  message: any;
+  loader: boolean = true;
 
-  constructor(private jobsApi: JobsService) { }
+  constructor(private jobsApi: JobsService) {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  }
 
   ngOnInit() {
-    this.jobsApi.getResume(1).subscribe(res => {
+    this.jobsApi.getResume(this.currentUser.user.id).subscribe(res => {
       if (res['success']) {
         this.resumeDetails = res['data'];
+        this.loader = false;
+      }
+      else {
+        this.message = res['message'];
+        this.loader = false;
       }
     });
   }

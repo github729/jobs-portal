@@ -50,8 +50,11 @@
                 </li>
                 <li>
                   <i class="fa fa-money" aria-hidden="true"></i
-                  >{{ jobDetails?.minSalary | currency: "USD" }} -
-                  {{ jobDetails?.maxSalary | currency: "USD" }}
+                  >{{
+                    jobDetails?.minSalary | currency: "INR":"symbol":"1.0"
+                  }}
+                  -
+                  {{ jobDetails?.maxSalary | currency: "INR":"symbol":"1.0" }}
                 </li>
                 <li>
                   <i class="fa fa-hourglass-start" aria-hidden="true"></i

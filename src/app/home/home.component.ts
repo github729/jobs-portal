@@ -31,6 +31,12 @@ export class HomeComponent implements OnInit,AfterViewInit {
         this.categories = res['categories'];
       }
     });
+    this.jobApi.topFiveJobs().subscribe(res => {
+      if (res['success']) {
+        this.jobs = res['data'];
+        console.log(this.jobs);
+      }
+    });
   }
   ngAfterViewInit() {
     try{

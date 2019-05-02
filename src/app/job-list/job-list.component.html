@@ -377,8 +377,11 @@
                       <li>
                         <a
                           ><i class="fa fa-money" aria-hidden="true"></i
-                          >{{ job.minSalary | currency: "USD" }} -
-                          {{ job.maxSalary | currency: "USD" }}
+                          >{{
+                            job.minSalary | currency: "INR":"symbol":"1.0"
+                          }}
+                          -
+                          {{ job.maxSalary | currency: "INR":"symbol":"1.0" }}
                         </a>
                       </li>
                     </ul>

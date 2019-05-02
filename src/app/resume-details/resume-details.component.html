@@ -1,5 +1,5 @@
 <section class=" job-bg page  ad-profile-page">
-  <div class="container" *ngIf="resumeDetails != undefined; else loaderBlock">
+  <div class="container" *ngIf="!loader; else loaderBlock">
     <div class="breadcrumb-section">
       <ol class="breadcrumb">
         <li><a routerLink="/home">Home</a></li>
@@ -9,7 +9,10 @@
     </div>
     <!-- breadcrumb-section -->
 
-    <div class="resume-content">
+    <div
+      class="resume-content"
+      *ngIf="resumeDetails != undefined; else noRecords"
+    >
       <div class="profile section clearfix">
         <!-- <div class="profile-logo">
           <img
@@ -231,6 +234,11 @@
         <a class="btn">Download Resume as doc</a>
       </div>
     </div>
+    <ng-template #noRecords>
+      <div class="no-records profile section clearfix">
+        <h5>Please Post Your Resume to get more jobs</h5>
+      </div>
+    </ng-template>
     <!-- resume-content -->
   </div>
   <!-- container -->

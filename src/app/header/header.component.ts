@@ -35,7 +35,7 @@ export class HeaderComponent implements OnInit {
     if (this.currentUser) {
       this.router.navigate(['/post-job']);
     } else {
-      this.toastr.info('Please Login', 'Info!');
+      this.toastr.info('Please login as recruiter to post job', 'Info!');
     }
   }
   logout() {
