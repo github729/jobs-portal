@@ -60,22 +60,10 @@
     <div class="section latest-jobs-ads">
       <div class="section-title tab-manu">
         <h4>Latest Jobs</h4>
-        <!-- Nav tabs -->
-        <!-- <ul class="nav nav-tabs" role="tablist">
-          <li role="presentation">
-            <a>Hot Jobs</a>
-          </li>
-          <li role="presentation">
-            <a>Recent Jobs</a>
-          </li>
-          <li role="presentation">
-            <a>Popular Jobs</a>
-          </li>
-        </ul> -->
       </div>
 
       <div class="tab-content">
-        <div class="job-ad-item" *ngFor="let job of jobs">
+        <div class="job-ad-item" *ngFor="let job of jobs; let i = index">
           <div class="item-info">
             <div class="item-image-box">
               <div class="item-image">
@@ -128,7 +116,9 @@
               >
             </div>
           </div>
-          <app-google-ad></app-google-ad>
+          <div *ngIf="i === 0 || i === 1">
+            <app-google-ad></app-google-ad>
+          </div>
           <!-- item-info -->
         </div>
         <!-- ad-item -->

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserService } from '../user.service';
 import { ToastrService } from 'ngx-toastr';
+import {  Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -15,6 +16,7 @@ export class SignUpComponent implements OnInit {
 
   constructor(private _fb: FormBuilder,
               private userApi: UserService,
+              private router: Router,
               private toastr: ToastrService) { }
 
   ngOnInit() {
@@ -35,6 +37,7 @@ export class SignUpComponent implements OnInit {
     this.userApi.registerUser(userData).subscribe(res => {
       if (res['success']) {
         this.toastr.success(res['message'], 'Success');
+        this.router.navigate(['/sign-in'])
       }
     });
   }

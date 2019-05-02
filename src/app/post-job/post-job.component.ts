@@ -46,8 +46,8 @@ export class PostJobComponent implements OnInit {
       description: ['', [Validators.required, Validators.maxLength(5000)]],
       city: ['', Validators.required],
       state: ['', Validators.required],
-      minSalary: ['', Validators.required],
-      maxSalary: ['', Validators.required],
+      minSalary: [''],
+      maxSalary: [''],
       salaryType: ['', Validators.required],
       experience: ['', Validators.required],
       function: ['', Validators.required],
@@ -56,8 +56,8 @@ export class PostJobComponent implements OnInit {
       companyName: ['', Validators.required],
       companySize: ['', Validators.required],
       companySite: ['', Validators.required],
-      email: ['', Validators.required],
-      mobileNumber: ['', Validators.required],
+      email: [''],
+      mobileNumber: [''],
       address: ['', Validators.required],
       terms: ['']
     });

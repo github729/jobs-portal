@@ -24,22 +24,46 @@
           <li class="active"><a routerLink="/home">Home</a></li>
           <li><a routerLink="job-list">Job list</a></li>
           <!-- <li><a href="details.html">Job Details</a></li> -->
-          <li><a (click)="resume()">Resume</a></li>
+          <li>
+            <a
+              (click)="resume()"
+              *ngIf="currentUser?.user?.role !== 'Recruiter'"
+              >Resume</a
+            >
+          </li>
 
-            <li class="dropdown" *ngIf="currentUser">
-              <a class="dropdown-toggle" data-toggle="dropdown"
-                >My Account<span class="caret"></span
-              ></a>
-              <ul class="dropdown-menu">
-                <li><a routerLink="/profile">Profile</a></li>
-                <li><a routerLink="/post-resume">Post Resume</a></li>
-                <li><a routerLink="/post-job">Job Post</a></li>
-                <!-- <li><a routerLink="/resume-edit">Edit Resume</a></li> -->
-                <li><a routerLink="/profile-update">Update Profile</a></li>
-                <li><a (click)="logout()">Logout</a></li>
-                <li><a routerLink="/delete-account">Delete Account</a></li>
-              </ul>
-            </li>
+          <li class="dropdown" *ngIf="currentUser">
+            <a class="dropdown-toggle" data-toggle="dropdown"
+              >My Account<span class="caret"></span
+            ></a>
+            <ul class="dropdown-menu">
+              <li>
+                <a
+                  routerLink="/profile"
+                  *ngIf="currentUser?.user?.role !== 'Recruiter'"
+                  >Profile</a
+                >
+              </li>
+              <li>
+                <a
+                  routerLink="/post-resume"
+                  *ngIf="currentUser?.user?.role !== 'Recruiter'"
+                  >Post Resume</a
+                >
+              </li>
+              <li>
+                <a
+                  routerLink="/post-job"
+                  *ngIf="currentUser?.user?.role === 'Recruiter'"
+                  >Job Post</a
+                >
+              </li>
+              <!-- <li><a routerLink="/resume-edit">Edit Resume</a></li> -->
+              <li><a routerLink="/profile-update">Update Profile</a></li>
+              <li><a (click)="logout()">Logout</a></li>
+              <li><a routerLink="/delete-account">Delete Account</a></li>
+            </ul>
+          </li>
         </ul>
       </div>
 
@@ -52,7 +76,12 @@
         </ul>
         <!-- sign-in -->
 
-        <a (click)="postJob()" class="btn" *ngIf="currentUser?currentUser?.user?.role === 'Recruiter':true">Post Your Job</a>
+        <a
+          (click)="postJob()"
+          class="btn"
+          *ngIf="currentUser ? currentUser?.user?.role === 'Recruiter' : true"
+          >Post Your Job</a
+        >
       </div>
       <!-- nav-right -->
     </div>
