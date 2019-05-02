@@ -15,7 +15,7 @@ declare var adsbygoogle: any[];
   templateUrl: './job-list.component.html',
   styleUrls: ['./job-list.component.css']
 })
-export class JobListComponent implements OnInit {
+export class JobListComponent implements OnInit, AfterViewInit {
   jobs: any;
   locations: any;
   categories: any;
@@ -71,7 +71,13 @@ export class JobListComponent implements OnInit {
       }
     })
   }
-
+  ngAfterViewInit() {
+    try {
+      (window['adsbygoogle'] = window['adsbygoogle'] || []).push({});
+    } catch (e) {
+      console.error("error");
+    }
+  }
   allCategories() {
     delete this.filterData.category
     this.filterData.limit = this.limit;
