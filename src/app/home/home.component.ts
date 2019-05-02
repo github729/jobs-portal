@@ -8,7 +8,7 @@ import { JobsService } from '../jobs.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit,AfterViewInit {
+export class HomeComponent implements OnInit, AfterViewInit {
 
   locations: any;
   categories: any;
@@ -34,14 +34,13 @@ export class HomeComponent implements OnInit,AfterViewInit {
     this.jobApi.topFiveJobs().subscribe(res => {
       if (res['success']) {
         this.jobs = res['data'];
-        console.log(this.jobs);
       }
     });
   }
   ngAfterViewInit() {
-    try{
+    try {
       (window['adsbygoogle'] = window['adsbygoogle'] || []).push({});
-    }catch(e){
+    } catch (e) {
       console.error("error");
     }
   }

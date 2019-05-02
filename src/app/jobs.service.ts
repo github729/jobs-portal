@@ -14,6 +14,7 @@ export class JobsService {
 
   constructor(private _http: HttpClient) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
     this.httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
