@@ -10,20 +10,19 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class CloseAccountComponent implements OnInit {
   userId: any;
+  currentUser: any;
 
   constructor(private userApi: UserService,
-              private route : ActivatedRoute,
-              private toastr: ToastrService) { }
+    private route: ActivatedRoute,
+    private toastr: ToastrService) { }
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
-      this.userId = params.id;
-    });
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
   deleteClose() {
-    this.userApi.deleteUser(this.userId).subscribe(res => {
+    this.userApi.deleteUser(this.currentUser.user.id).subscribe(res => {
       if (res['success']) {
-        this.toastr.success(res['message'],'Success');
+        this.toastr.success(res['message'], 'Success');
       }
     });
   }

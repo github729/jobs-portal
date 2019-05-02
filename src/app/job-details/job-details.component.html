@@ -50,9 +50,7 @@
                 </li>
                 <li>
                   <i class="fa fa-money" aria-hidden="true"></i
-                  >{{
-                    jobDetails?.minSalary | currency: "INR":"symbol":"1.0"
-                  }}
+                  >{{ jobDetails?.minSalary | currency: "INR":"symbol":"1.0" }}
                   -
                   {{ jobDetails?.maxSalary | currency: "INR":"symbol":"1.0" }}
                 </li>
@@ -135,12 +133,12 @@
                     ><i class="fa fa-bolt" aria-hidden="true"></i></span
                   >Posted: {{ jobDetails?.createdAt | date: "mediumDate" }}
                 </li>
-                <li>
+                <!-- <li>
                   <span class="icon"
                     ><i class="fa fa-user-plus" aria-hidden="true"></i
                   ></span>
                   Job poster: <a>Lance Ladaga</a>
-                </li>
+                </li> -->
                 <li>
                   <span class="icon"
                     ><i class="fa fa-industry" aria-hidden="true"></i></span
@@ -165,7 +163,9 @@
                   Compnay Name: <a>{{ jobDetails?.companyName }}</a>
                 </li>
                 <li>Address:{{ jobDetails?.address }}</li>
-                <li>Compnay SIze: {{ jobDetails?.companySize }} Employee</li>
+                <li *ngIf="jobDetails?.companySize != 0">
+                  Compnay SIze: {{ jobDetails?.companySize }} Employee
+                </li>
                 <li>
                   Industry: <a>{{ jobDetails?.industry }}</a>
                 </li>
