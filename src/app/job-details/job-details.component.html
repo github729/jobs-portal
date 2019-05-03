@@ -18,45 +18,31 @@
         <div class="item-info">
           <div class="item-image-box">
             <div class="item-image">
-              <img
-                src="assets/images/job/default.png"
-                alt="Image"
-                class="img-fluid"
-              />
+              <img src="assets/images/job/default.png" alt="Image" class="img-fluid" />
             </div>
             <!-- item-image -->
           </div>
 
           <div class="ad-info">
-            <span
-              ><span
-                ><a class="title">{{ jobDetails?.category }}</a></span
-              >
-              @ <a>{{ jobDetails?.companyName }}</a></span
-            >
+            <span><span><a class="title">{{ jobDetails?.category }}</a></span>
+              @ <a>{{ jobDetails?.companyName }}</a></span>
             <div class="ad-meta">
               <ul>
                 <li>
-                  <a
-                    ><i class="fa fa-map-marker" aria-hidden="true"></i
-                    >{{ jobDetails?.state }}, {{ jobDetails?.country }}</a
-                  >
+                  <a><i class="fa fa-map-marker" aria-hidden="true"></i>{{ jobDetails?.state }},
+                    {{ jobDetails?.country }}</a>
                 </li>
                 <li>
-                  <a
-                    ><i class="fa fa-clock-o" aria-hidden="true"></i
-                    >{{ jobDetails?.jobType }}</a
-                  >
+                  <a><i class="fa fa-clock-o" aria-hidden="true"></i>{{ jobDetails?.jobType }}</a>
                 </li>
-                <li>
-                  <i class="fa fa-money" aria-hidden="true"></i
-                  >{{ jobDetails?.minSalary | currency: "INR":"symbol":"1.0" }}
+                <li *ngIf="jobDetails?.minSalary != 0 || jobDetails?.maxSalary != 0">
+                  <i class="fa fa-money"
+                    aria-hidden="true"></i>{{ jobDetails?.minSalary | currency: "INR":"symbol":"1.0" }}
                   -
                   {{ jobDetails?.maxSalary | currency: "INR":"symbol":"1.0" }}
                 </li>
-                <li>
-                  <i class="fa fa-hourglass-start" aria-hidden="true"></i
-                  >Application Deadline :
+                <li *ngIf="jobDetails?.jobDeadLine != undefined">
+                  <i class="fa fa-hourglass-start" aria-hidden="true"></i>Application Deadline :
                   {{ jobDetails?.jobDeadLine | date: "mediumDate" }}
                 </li>
               </ul>
@@ -68,13 +54,9 @@
         <!-- item-info -->
         <div class="social-media">
           <div class="button">
-            <a
-              class="btn btn-primary"
-              href="{{ jobDetails?.applyUrl }}"
-              target="_blank"
-              ><i class="fa fa-briefcase" aria-hidden="true"></i>Apply For This
-              Job</a
-            >
+            <a class="btn btn-primary" href="{{ jobDetails?.applyUrl }}" target="_blank"><i class="fa fa-briefcase"
+                aria-hidden="true"></i>Apply For This
+              Job</a>
             <!-- <a class="btn btn-primary bookmark"
               ><i class="fa fa-bookmark-o" aria-hidden="true"></i>Bookmark</a
             > -->
@@ -120,7 +102,7 @@
               </div>
               <div class="requirements">
                 <h1>Minimum Requirements</h1>
-                <p>{{ jobDetails?.requirements }}</p>
+                <p [innerHTML]="jobDetails?.requirements"></p>
               </div>
             </div>
           </div>
@@ -129,9 +111,8 @@
               <h1>Short Info</h1>
               <ul>
                 <li>
-                  <span class="icon"
-                    ><i class="fa fa-bolt" aria-hidden="true"></i></span
-                  >Posted: {{ jobDetails?.createdAt | date: "mediumDate" }}
+                  <span class="icon"><i class="fa fa-bolt" aria-hidden="true"></i></span>Posted:
+                  {{ jobDetails?.createdAt | date: "mediumDate" }}
                 </li>
                 <!-- <li>
                   <span class="icon"
@@ -140,14 +121,12 @@
                   Job poster: <a>Lance Ladaga</a>
                 </li> -->
                 <li>
-                  <span class="icon"
-                    ><i class="fa fa-industry" aria-hidden="true"></i></span
-                  >Industry: <a>{{ jobDetails?.industry }}</a>
+                  <span class="icon"><i class="fa fa-industry" aria-hidden="true"></i></span>Industry:
+                  <a>{{ jobDetails?.industry }}</a>
                 </li>
                 <li>
-                  <span class="icon"
-                    ><i class="fa fa-line-chart" aria-hidden="true"></i></span
-                  >Experience: <a>{{ jobDetails?.experience }}</a>
+                  <span class="icon"><i class="fa fa-line-chart" aria-hidden="true"></i></span>Experience:
+                  <a>{{ jobDetails?.experience }}</a>
                 </li>
                 <!-- <li>
                   <span class="icon"
@@ -162,23 +141,18 @@
                 <li>
                   Compnay Name: <a>{{ jobDetails?.companyName }}</a>
                 </li>
-                <li>Address:{{ jobDetails?.address }}</li>
+                <li *ngIf="jobDetails?.address != ''">Address:{{ jobDetails?.address }}</li>
                 <li *ngIf="jobDetails?.companySize != 0">
                   Compnay SIze: {{ jobDetails?.companySize }} Employee
                 </li>
                 <li>
                   Industry: <a>{{ jobDetails?.industry }}</a>
                 </li>
-                <li>Phone: {{ jobDetails?.mobileNumber }}</li>
-                <li>
+                <li *ngIf="jobDetails?.mobileNumber != ''">Phone: {{ jobDetails?.mobileNumber }}</li>
+                <li *ngIf="jobDetails?.email != ''">
                   Email:
-                  <a
-                    ><span
-                      class="__cf_email__"
-                      data-cfemail="d4bdbab2bb94b0a6bba4b6bbacfab7bbb9"
-                      >{{ jobDetails?.email }}</span
-                    ></a
-                  >
+                  <a><span class="__cf_email__"
+                      data-cfemail="d4bdbab2bb94b0a6bba4b6bbacfab7bbb9">{{ jobDetails?.email }}</span></a>
                 </li>
                 <li>
                   Website: <a>{{ jobDetails?.companySite }}</a>
@@ -186,22 +160,16 @@
               </ul>
               <ul class="share-social">
                 <li>
-                  <a
-                    ><i class="fa fa-facebook-official" aria-hidden="true"></i
-                  ></a>
+                  <a><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
                 </li>
                 <li>
                   <a><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
                 </li>
                 <li>
-                  <a
-                    ><i class="fa fa-google-plus-square" aria-hidden="true"></i
-                  ></a>
+                  <a><i class="fa fa-google-plus-square" aria-hidden="true"></i></a>
                 </li>
                 <li>
-                  <a
-                    ><i class="fa fa-linkedin-square" aria-hidden="true"></i
-                  ></a>
+                  <a><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
                 </li>
               </ul>
             </div>

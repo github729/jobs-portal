@@ -98,7 +98,7 @@
                       >{{ job.jobType }}
                     </a>
                   </li>
-                  <li>
+                  <li *ngIf="job.minSalary != 0 || job.maxSalary != 0">
                     <a
                       ><i class="fa fa-money" aria-hidden="true"></i
                       >{{ job.minSalary | currency: "INR":"symbol":"1.0" }} -

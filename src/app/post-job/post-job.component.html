@@ -18,12 +18,10 @@
             <fieldset>
               <div class="section postdetails">
                 <h4>
-                  Post Your Job<span class="pull-right"
-                    >* Mandatory Fields</span
-                  >
+                  Post Your Job<span class="pull-right">* Mandatory Fields</span>
                 </h4>
                 <div class="row form-group add-title">
-                  <label class="col-sm-3 label-title">Job Category</label>
+                  <label class="col-sm-3 label-title">Job Category<span class="required">*</span></label>
                   <div class="col-sm-9">
                     <select class="form-control" formControlName="category">
                       <option value="" selected>Select a category</option>
@@ -31,13 +29,10 @@
                       <option>Program Development</option>
                       <option>Project Manager</option>
                       <option>Graphics Designer</option>
-                      <div
-                        *ngIf="
+                      <div *ngIf="
                           f.category.errors &&
                           (f.category.dirty || f.category.touched)
-                        "
-                        class="invalid-feedback"
-                      >
+                        " class="invalid-feedback">
                         <div *ngIf="f.category.errors.required">
                           Category is required
                         </div>
@@ -46,45 +41,20 @@
                   </div>
                 </div>
                 <div class="row form-group">
-                  <label class="col-sm-3"
-                    >Job Type<span class="required">*</span></label
-                  >
+                  <label class="col-sm-3">Job Type<span class="required">*</span></label>
                   <div class="col-sm-9 user-type">
-                    <input
-                      type="radio"
-                      value="full-time"
-                      id="full-time"
-                      formControlName="jobType"
-                    />
+                    <input type="radio" value="full-time" id="full-time" formControlName="jobType" />
                     <label for="full-time">Full Time</label>
-                    <input
-                      type="radio"
-                      value="part-time"
-                      id="part-time"
-                      formControlName="jobType"
-                    />
+                    <input type="radio" value="part-time" id="part-time" formControlName="jobType" />
                     <label for="part-time">Part Time</label>
-                    <input
-                      type="radio"
-                      value="freelance"
-                      id="freelance"
-                      formControlName="jobType"
-                    />
+                    <input type="radio" value="freelance" id="freelance" formControlName="jobType" />
                     <label for="freelance">Freelance</label>
-                    <input
-                      type="radio"
-                      value="contract"
-                      id="contract"
-                      formControlName="jobType"
-                    />
+                    <input type="radio" value="contract" id="contract" formControlName="jobType" />
                     <label for="contract">Contract</label>
-                    <div
-                      *ngIf="
+                    <div *ngIf="
                         f.jobType.errors &&
                         (f.jobType.dirty || f.jobType.touched)
-                      "
-                      class="invalid-feedback"
-                    >
+                      " class="invalid-feedback">
                       <div *ngIf="f.jobType.errors.required">
                         Job Type is required
                       </div>
@@ -92,22 +62,13 @@
                   </div>
                 </div>
                 <div class="row form-group">
-                  <label class="col-sm-3 label-title"
-                    >Title for your job<span class="required">*</span></label
-                  >
+                  <label class="col-sm-3 label-title">Title for your job<span class="required">*</span></label>
                   <div class="col-sm-9">
-                    <input
-                      type="text"
-                      class="form-control"
-                      placeholder="ex, Human Resource Manager"
-                      formControlName="title"
-                    />
-                    <div
-                      *ngIf="
+                    <input type="text" class="form-control" placeholder="ex, Human Resource Manager"
+                      formControlName="title" />
+                    <div *ngIf="
                         f.title.errors && (f.title.dirty || f.title.touched)
-                      "
-                      class="invalid-feedback"
-                    >
+                      " class="invalid-feedback">
                       <div *ngIf="f.title.errors.required">
                         Title is required
                       </div>
@@ -115,23 +76,14 @@
                   </div>
                 </div>
                 <div class="row form-group">
-                  <label class="col-sm-3 label-title"
-                    >Apply Url For Job<span class="required">*</span></label
-                  >
+                  <label class="col-sm-3 label-title">Apply Url For Job<span class="required">*</span></label>
                   <div class="col-sm-9">
-                    <input
-                      type="text"
-                      class="form-control"
-                      placeholder="ex, Human Resource Manager"
-                      formControlName="applyUrl"
-                    />
-                    <div
-                      *ngIf="
+                    <input type="text" class="form-control" placeholder="ex, Human Resource Manager"
+                      formControlName="applyUrl" />
+                    <div *ngIf="
                         f.applyUrl.errors &&
                         (f.applyUrl.dirty || f.applyUrl.touched)
-                      "
-                      class="invalid-feedback"
-                    >
+                      " class="invalid-feedback">
                       <div *ngIf="f.applyUrl.errors.required">
                         Apply Url is required
                       </div>
@@ -139,16 +91,9 @@
                   </div>
                 </div>
                 <div class="row form-group item-description">
-                  <label class="col-sm-3 label-title"
-                    >Minimum Requirements<span class="required">*</span></label
-                  >
+                  <label class="col-sm-3 label-title">Minimum Requirements<span class="required">*</span></label>
                   <div class="col-sm-9">
-                    <ckeditor
-                      formControlName="requirements"
-                      required
-                      [config]="ckeConfig"
-                      debounce="500"
-                    >
+                    <ckeditor formControlName="requirements" required [config]="ckeConfig" debounce="500">
                     </ckeditor>
                     <!-- <textarea
                       class="form-control"
@@ -157,13 +102,10 @@
                       rows="8"
                       formControlName="requirements"
                     ></textarea> -->
-                    <div
-                      *ngIf="
+                    <div *ngIf="
                         f.requirements.errors &&
                         (f.requirements.dirty || f.requirements.touched)
-                      "
-                      class="invalid-feedback"
-                    >
+                      " class="invalid-feedback">
                       <div *ngIf="f.requirements.errors.required">
                         Minimum Requirements is required
                       </div>
@@ -171,24 +113,14 @@
                   </div>
                 </div>
                 <div class="row form-group item-description">
-                  <label class="col-sm-3 label-title"
-                    >Description<span class="required">*</span></label
-                  >
+                  <label class="col-sm-3 label-title">Description<span class="required">*</span></label>
                   <div class="col-sm-9">
-                    <textarea
-                      class="form-control"
-                      id="textarea"
-                      placeholder="Write few lines about your jobs"
-                      rows="8"
-                      formControlName="description"
-                    ></textarea>
-                    <div
-                      *ngIf="
+                    <textarea class="form-control" id="textarea" placeholder="Write few lines about your jobs" rows="8"
+                      formControlName="description"></textarea>
+                    <div *ngIf="
                         f.description.errors &&
                         (f.description.dirty || f.description.touched)
-                      "
-                      class="invalid-feedback"
-                    >
+                      " class="invalid-feedback">
                       <div *ngIf="f.description.errors.required">
                         Description is required
                       </div>
@@ -201,29 +133,16 @@
                   </div>
                 </div>
                 <div class="row form-group add-title location">
-                  <label class="col-sm-3 label-title"
-                    >Location<span class="required">*</span></label
-                  >
+                  <label class="col-sm-3 label-title">Location<span class="required">*</span></label>
                   <div class="col-sm-9">
                     <div class="pull-left col-sm-6">
-                      <select
-                        class="form-control"
-                        formControlName="state"
-                        (change)="onChange($event.target.value)"
-                      >
+                      <select class="form-control" formControlName="state" (change)="onChange($event.target.value)">
                         <option value="" selected>Select a State</option>
-                        <option
-                          *ngFor="let state of states"
-                          [value]="state.name"
-                        >
-                          {{ state.name }}</option
-                        >
-                        <div
-                          *ngIf="
+                        <option *ngFor="let state of states" [value]="state.name">
+                          {{ state.name }}</option>
+                        <div *ngIf="
                             f.state.errors && (f.state.dirty || f.state.touched)
-                          "
-                          class="invalid-feedback"
-                        >
+                          " class="invalid-feedback">
                           <div *ngIf="f.state.errors.required">
                             State is required
                           </div>
@@ -233,17 +152,10 @@
                     <div class="pull-right col-sm-6">
                       <select class="form-control" formControlName="city">
                         <option value="" selected>Select a City</option>
-                        <option
-                          *ngFor="let city of cities"
-                          [value]="city.name"
-                          >{{ city.name }}</option
-                        >
-                        <div
-                          *ngIf="
+                        <option *ngFor="let city of cities" [value]="city.name">{{ city.name }}</option>
+                        <div *ngIf="
                             f.city.errors && (f.city.dirty || f.city.touched)
-                          "
-                          class="invalid-feedback"
-                        >
+                          " class="invalid-feedback">
                           <div *ngIf="f.city.errors.required">
                             City is required
                           </div>
@@ -253,38 +165,16 @@
                   </div>
                 </div>
                 <div class="row form-group select-price">
-                  <label class="col-sm-3 label-title"
-                    >Salary<span class="required">*</span></label
-                  >
+                  <label class="col-sm-3 label-title">Salary</label>
                   <div class="col-sm-9">
                     <label>in Rupees</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      placeholder="Min"
-                      formControlName="minSalary"
-                    />
+                    <input type="text" class="form-control" placeholder="Min" formControlName="minSalary" />
                     <span>-</span>
-                    <input
-                      type="text"
-                      class="form-control"
-                      placeholder="Max"
-                      formControlName="maxSalary"
-                    />
-                    <input
-                      type="radio"
-                      value="negotiable"
-                      id="negotiable"
-                      formControlName="maxSalary"
-                    />
-                    <label for="negotiable">Negotiable </label>
-                    <div
-                      *ngIf="
+                    <input type="text" class="form-control" placeholder="Max" formControlName="maxSalary" />
+                    <div *ngIf="
                         f.maxSalary.errors &&
                         (f.maxSalary.dirty || f.maxSalary.touched)
-                      "
-                      class="invalid-feedback"
-                    >
+                      " class="invalid-feedback">
                       <div *ngIf="f.maxSalary.errors.required">
                         Max Salary is required
                       </div>
@@ -292,9 +182,7 @@
                   </div>
                 </div>
                 <div class="row form-group add-title">
-                  <label class="col-sm-3 label-title"
-                    >Salary Type<span class="required">*</span></label
-                  >
+                  <label class="col-sm-3 label-title">Salary Type</label>
                   <div class="col-sm-9">
                     <select class="form-control" formControlName="salaryType">
                       <option value="" selected>Select Salary Type</option>
@@ -302,13 +190,10 @@
                       <option><a>Daily</a></option>
                       <option><a>Monthly</a></option>
                       <option><a>Yearly</a></option>
-                      <div
-                        *ngIf="
+                      <div *ngIf="
                           f.salaryType.errors &&
                           (f.salaryType.dirty || f.salaryType.touched)
-                        "
-                        class="invalid-feedback"
-                      >
+                        " class="invalid-feedback">
                         <div *ngIf="f.salaryType.errors.required">
                           Salary Type is required
                         </div>
@@ -317,26 +202,18 @@
                   </div>
                 </div>
                 <div class="row form-group add-title">
-                  <label class="col-sm-3 label-title"
-                    >Experience<span class="required">*</span></label
-                  >
+                  <label class="col-sm-3 label-title">Experience<span class="required">*</span></label>
                   <div class="col-sm-9">
-                    <select
-                      formControlName="experience"
-                      class="category-change form-control"
-                    >
+                    <select formControlName="experience" class="category-change form-control">
                       <option value="" selected>Select Experience</option>
                       <option value=""><a>Entry Level</a></option>
                       <option><a>Mid Level</a></option>
                       <option><a>Mid-Senior Level</a></option>
                       <option><a>Top Level</a></option>
-                      <div
-                        *ngIf="
+                      <div *ngIf="
                           f.experience.errors &&
                           (f.experience.dirty || f.experience.touched)
-                        "
-                        class="invalid-feedback"
-                      >
+                        " class="invalid-feedback">
                         <div *ngIf="f.experience.errors.required">
                           Experience is required
                         </div>
@@ -346,23 +223,14 @@
                 </div>
                 <div class="row form-group brand-name">
                   <label class="col-sm-3 label-title">
-                    Key Responsibilities:<span class="required">*</span></label
-                  >
+                    Key Responsibilities:<span class="required">*</span></label>
                   <div class="col-sm-9">
-                    <ckeditor
-                      formControlName="function"
-                      required
-                      [config]="ckeConfig"
-                      debounce="500"
-                    >
+                    <ckeditor formControlName="function" required [config]="ckeConfig" debounce="500">
                     </ckeditor>
-                    <div
-                      *ngIf="
+                    <div *ngIf="
                         f.function.errors &&
                         (f.function.dirty || f.function.touched)
-                      "
-                      class="invalid-feedback"
-                    >
+                      " class="invalid-feedback">
                       <div *ngIf="f.function.errors.required">
                         Key Responsibilities is required
                       </div>
@@ -370,23 +238,14 @@
                   </div>
                 </div>
                 <div class="row form-group brand-name">
-                  <label class="col-sm-3 label-title"
-                    >Application Deadline<span class="required">*</span></label
-                  >
+                  <label class="col-sm-3 label-title">Application Deadline</label>
                   <div class="col-sm-9">
-                    <input
-                      type="date"
-                      class="form-control"
-                      placeholder="human, reosurce, job, hrm"
-                      formControlName="jobDeadLine"
-                    />
-                    <div
-                      *ngIf="
+                    <input type="date" class="form-control" placeholder="human, reosurce, job, hrm"
+                      formControlName="jobDeadLine" />
+                    <div *ngIf="
                         f.jobDeadLine.errors &&
                         (f.jobDeadLine.dirty || f.jobDeadLine.touched)
-                      "
-                      class="invalid-feedback"
-                    >
+                      " class="invalid-feedback">
                       <div *ngIf="f.jobDeadLine.errors.required">
                         Job DeadLine is required
                       </div>
@@ -399,24 +258,14 @@
               <div class="section company-information">
                 <h4>Company Information</h4>
                 <div class="row form-group">
-                  <label class="col-sm-3 label-title"
-                    >Industry<span class="required">*</span></label
-                  >
+                  <label class="col-sm-3 label-title">Industry<span class="required">*</span></label>
                   <div class="col-sm-9">
-                    <input
-                      type="text"
-                      name="name"
-                      class="form-control"
-                      placeholder="Marketing and Advertising"
-                      formControlName="industry"
-                    />
-                    <div
-                      *ngIf="
+                    <input type="text" name="name" class="form-control" placeholder="Marketing and Advertising"
+                      formControlName="industry" />
+                    <div *ngIf="
                         f.industry.errors &&
                         (f.industry.dirty || f.industry.touched)
-                      "
-                      class="invalid-feedback"
-                    >
+                      " class="invalid-feedback">
                       <div *ngIf="f.industry.errors.required">
                         Industry is required
                       </div>
@@ -424,24 +273,14 @@
                   </div>
                 </div>
                 <div class="row form-group">
-                  <label class="col-sm-3 label-title"
-                    >Company Name<span class="required">*</span></label
-                  >
+                  <label class="col-sm-3 label-title">Company Name<span class="required">*</span></label>
                   <div class="col-sm-9">
-                    <input
-                      type="text"
-                      name="name"
-                      class="form-control"
-                      placeholder="ex, Jhon Doe"
-                      formControlName="companyName"
-                    />
-                    <div
-                      *ngIf="
+                    <input type="text" name="name" class="form-control" placeholder="ex, Jhon Doe"
+                      formControlName="companyName" />
+                    <div *ngIf="
                         f.companyName.errors &&
                         (f.companyName.dirty || f.companyName.touched)
-                      "
-                      class="invalid-feedback"
-                    >
+                      " class="invalid-feedback">
                       <div *ngIf="f.companyName.errors.required">
                         Company Name is required
                       </div>
@@ -449,24 +288,14 @@
                   </div>
                 </div>
                 <div class="row form-group">
-                  <label class="col-sm-3 label-title"
-                    >Company Size<span class="required">*</span></label
-                  >
+                  <label class="col-sm-3 label-title">Company Size</label>
                   <div class="col-sm-9">
-                    <input
-                      type="text"
-                      name="name"
-                      class="form-control"
-                      placeholder="ex, 10,200"
-                      formControlName="companySize"
-                    />
-                    <div
-                      *ngIf="
+                    <input type="text" name="name" class="form-control" placeholder="ex, 10,200"
+                      formControlName="companySize" />
+                    <div *ngIf="
                         f.companySize.errors &&
                         (f.companySize.dirty || f.companySize.touched)
-                      "
-                      class="invalid-feedback"
-                    >
+                      " class="invalid-feedback">
                       <div *ngIf="f.companySize.errors.required">
                         Company Size is required
                       </div>
@@ -474,24 +303,14 @@
                   </div>
                 </div>
                 <div class="row form-group">
-                  <label class="col-sm-3 label-title"
-                    >Web Site<span class="required">*</span></label
-                  >
+                  <label class="col-sm-3 label-title">Web Site<span class="required">*</span></label>
                   <div class="col-sm-9">
-                    <input
-                      type="text"
-                      name="name"
-                      class="form-control"
-                      placeholder="ex, www.example.com"
-                      formControlName="companySite"
-                    />
-                    <div
-                      *ngIf="
+                    <input type="text" name="name" class="form-control" placeholder="ex, www.example.com"
+                      formControlName="companySite" />
+                    <div *ngIf="
                         f.companySite.errors &&
                         (f.companySite.dirty || f.companySite.touched)
-                      "
-                      class="invalid-feedback"
-                    >
+                      " class="invalid-feedback">
                       <div *ngIf="f.companySite.errors.required">
                         Company Web Site is required
                       </div>
@@ -501,19 +320,11 @@
                 <div class="row form-group">
                   <label class="col-sm-3 label-title">Email ID</label>
                   <div class="col-sm-9">
-                    <input
-                      type="email"
-                      name="email"
-                      class="form-control"
-                      placeholder="ex, jhondoe@mail.com"
-                      formControlName="email"
-                    />
-                    <div
-                      *ngIf="
+                    <input type="email" name="email" class="form-control" placeholder="ex, jhondoe@mail.com"
+                      formControlName="email" />
+                    <div *ngIf="
                         f.email.errors && (f.email.dirty || f.email.touched)
-                      "
-                      class="invalid-feedback"
-                    >
+                      " class="invalid-feedback">
                       <div *ngIf="f.email.errors.required">
                         Email is required
                       </div>
@@ -524,24 +335,14 @@
                   </div>
                 </div>
                 <div class="row form-group">
-                  <label class="col-sm-3 label-title"
-                    >Mobile Number<span class="required">*</span></label
-                  >
+                  <label class="col-sm-3 label-title">Mobile Number</label>
                   <div class="col-sm-9">
-                    <input
-                      type="text"
-                      name="mobileNumber"
-                      class="form-control"
-                      placeholder="ex, +912457895"
-                      formControlName="mobileNumber"
-                    />
-                    <div
-                      *ngIf="
+                    <input type="text" name="mobileNumber" class="form-control" placeholder="ex, +912457895"
+                      formControlName="mobileNumber" />
+                    <div *ngIf="
                         f.mobileNumber.errors &&
                         (f.mobileNumber.dirty || f.mobileNumber.touched)
-                      "
-                      class="invalid-feedback"
-                    >
+                      " class="invalid-feedback">
                       <div *ngIf="f.mobileNumber.errors.required">
                         Mobile Number is required
                       </div>
@@ -549,24 +350,14 @@
                   </div>
                 </div>
                 <div class="row form-group address">
-                  <label class="col-sm-3 label-title"
-                    >Address<span class="required">*</span></label
-                  >
+                  <label class="col-sm-3 label-title">Address</label>
                   <div class="col-sm-9">
-                    <input
-                      type="text"
-                      name="address"
-                      class="form-control"
-                      placeholder="ex, alekdera House, coprotec, usa"
-                      formControlName="address"
-                    />
-                    <div
-                      *ngIf="
+                    <input type="text" name="address" class="form-control"
+                      placeholder="ex, alekdera House, coprotec, usa" formControlName="address" />
+                    <div *ngIf="
                         f.address.errors &&
                         (f.address.dirty || f.address.touched)
-                      "
-                      class="invalid-feedback"
-                    >
+                      " class="invalid-feedback">
                       <div *ngIf="f.address.errors.required">
                         Address is required
                       </div>
@@ -629,29 +420,17 @@
               <!-- section -->
 
               <div class="checkbox section agreement">
-                <input
-                  type="checkbox"
-                  name="send"
-                  id="send"
-                  formControlName="terms"
-                />
+                <input type="checkbox" name="send" id="send" formControlName="terms" />
                 You agree to our <a>Terms of Use</a> and
                 <a>Privacy Policy</a> and acknowledge that you are the rightful
                 owner of this item and using Jobs to find a genuine buyer.<br /><br>
 
-                <div
-                  *ngIf="f.terms.errors && (f.terms.dirty || f.terms.touched)"
-                  class="invalid-feedback"
-                >
+                <div *ngIf="f.terms.errors && (f.terms.dirty || f.terms.touched)" class="invalid-feedback">
                   <div *ngIf="f.terms.errors.required">
                     Please Accept Terms And Conditions
                   </div>
                 </div>
-                <button
-                  type="submit"
-                  class="btn btn-primary"
-                  [disabled]="jobForm.invalid"
-                >
+                <button type="submit" class="btn btn-primary" [disabled]="jobForm.invalid">
                   Post Your Job
                 </button>
               </div>

@@ -38,7 +38,7 @@ export class PostJobComponent implements OnInit {
       ]
     };
     this.jobForm = this._fb.group({
-      category: [''],
+      category: ['',Validators.required],
       jobType: ['', Validators.required],
       title: ['', Validators.required],
       applyUrl: ['', Validators.required],
@@ -48,17 +48,17 @@ export class PostJobComponent implements OnInit {
       state: ['', Validators.required],
       minSalary: [''],
       maxSalary: [''],
-      salaryType: ['', Validators.required],
+      salaryType: [''],
       experience: ['', Validators.required],
       function: ['', Validators.required],
-      jobDeadLine: ['', Validators.required],
+      jobDeadLine: [''],
       industry: ['', Validators.required],
       companyName: ['', Validators.required],
-      companySize: ['', Validators.required],
+      companySize: [''],
       companySite: ['', Validators.required],
       email: [''],
       mobileNumber: [''],
-      address: ['', Validators.required],
+      address: [''],
       terms: ['']
     });
   }
