@@ -31,7 +31,7 @@ export class SignUpComponent implements OnInit {
         mobileNumber: ["", [Validators.required]],
         city: [""],
         role: ["", Validators.required],
-        terms: ["", Validators.required]
+        // terms: ["", Validators.required]
       },
       { validator: this.checkPasswords }
     );
