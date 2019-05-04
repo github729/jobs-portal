@@ -12,6 +12,7 @@ import { HeaderComponent } from '../header/header.component';
 })
 export class SignInComponent implements OnInit {
   signInForm: FormGroup;
+  submitted = false;
 
   constructor(private _fb: FormBuilder,
     private userApi: UserService,
@@ -28,6 +29,11 @@ export class SignInComponent implements OnInit {
   get f() { return this.signInForm.controls; }
 
   login(userData) {
+    this.submitted = true;
+    if (this.signInForm.invalid) {
+      return;
+    }
+
     this.userApi.LoginUser(userData).subscribe(res => {
       // tslint:disable-next-line: no-string-literal
       if (res['success']) {
