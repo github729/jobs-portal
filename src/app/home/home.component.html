@@ -1,109 +1,80 @@
 <!-- banner-section -->
+<div class="banner-job">
+  <div class="banner-overlay"></div>
+  <div class="container text-center">
+    <h1 class="title">The Easiest Way to Get Your New Job</h1>
+    <h3>We offer 12000 jobs vacation right now</h3>
+    <div class="banner-form banner-form-full job-list-form">
+      <form [formGroup]="jobSearch" class="clearfix" (ngSubmit)="search()">
+        <!-- category-change -->
+        <div class="form-group">
+          <select class="form-control category-dropdown" formControlName="category">
+            <option value="" selected>Job Category</option>
+            <option *ngFor="let category of categories" value="{{ category.category }}">{{ category.category }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <select class="form-control language-dropdown" formControlName="city">
+            <option value="" selected>Job Location</option>
+            <option *ngFor="let location of locations" value="{{ location.city }}">{{ location.city }}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Type your key word" formControlName="keywords" />
+        </div>
+
+        <button type="submit" class="btn btn-primary" value="Search">
+          Search
+        </button>
+      </form>
+    </div><!-- banner-form -->
+
+    <ul class="banner-socail list-inline">
+      <li><a  title="Facebook"><i class="fa fa-facebook"></i></a></li>
+      <li><a  title="Twitter"><i class="fa fa-twitter"></i></a></li>
+      <li><a  title="Google Plus"><i class="fa fa-google-plus"></i></a></li>
+      <li><a  title="Youtube"><i class="fa fa-youtube"></i></a></li>
+    </ul><!-- banner-socail -->
+  </div><!-- container -->
+</div><!-- banner-section -->
 
 <div class="page">
   <div class="container">
     <!-- category ad -->
-
-    <div class="section search-form latest-jobs-ads">
-      <div class="text-center">
-        <h1 class="title">The Easiest Way to Get Your New Job</h1>
-        <h3>We offer 12000 jobs vacation right now</h3>
-        <!-- <div class="banner-form"> -->
-        <div class="banner-form banner-form-full job-list-form">
-          <form [formGroup]="jobSearch" class="clearfix" (ngSubmit)="search()">
-            <!-- category-change -->
-            <div class="form-group">
-              <select
-                class="form-control category-dropdown"
-                formControlName="category"
-              >
-                <option value="" selected>Job Category</option>
-                <option
-                  *ngFor="let category of categories"
-                  value="{{ category.category }}"
-                  >{{ category.category }}</option
-                >
-              </select>
-            </div>
-
-            <div class="form-group">
-              <select
-                class="form-control language-dropdown"
-                formControlName="city"
-              >
-                <option value="" selected>Job Location</option>
-                <option
-                  *ngFor="let location of locations"
-                  value="{{ location.city }}"
-                  >{{ location.city }}</option
-                >
-              </select>
-            </div>
-            <div class="form-group">
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Type your key word"
-                formControlName="keywords"
-              />
-            </div>
-
-            <button type="submit" class="btn btn-primary" value="Search">
-              Search
-            </button>
-          </form>
-        </div>
-
-        <!-- banner-form -->
-      </div>
-    </div>
     <div class="section latest-jobs-ads">
       <div class="section-title tab-manu">
         <h4>Latest Jobs</h4>
       </div>
-
       <div class="tab-content">
         <div class="job-ad-item" *ngFor="let job of jobs; let i = index">
           <div class="item-info">
             <div class="item-image-box">
               <div class="item-image">
-                <a routerLink="/job-details"
-                  ><img
-                    src="assets/images/job/default.png"
-                    alt="Image"
-                    class="img-fluid"
-                /></a>
+                <a routerLink="/job-details"><img src="assets/images/job/default.png" alt="Image"
+                    class="img-fluid" /></a>
               </div>
               <!-- item-image -->
             </div>
-
             <div class="ad-info">
-              <span
-                ><a routerLink="/job-details" class="title">{{
+              <span><a routerLink="/job-details" class="title">{{
                   job.category
                 }}</a>
-                @ <a>{{ job.companyName }}</a></span
-              >
+                @ <a>{{ job.companyName }}</a></span>
               <div class="ad-meta">
                 <ul>
                   <li>
-                    <a
-                      ><i class="fa fa-map-marker" aria-hidden="true"></i
-                      >{{ job.city }},{{ job.state }}
+                    <a><i class="fa fa-map-marker" aria-hidden="true"></i>{{ job.city }},{{ job.state }}
                     </a>
                   </li>
                   <li>
-                    <a
-                      ><i class="fa fa-clock-o" aria-hidden="true"></i
-                      >{{ job.jobType }}
+                    <a><i class="fa fa-clock-o" aria-hidden="true"></i>{{ job.jobType }}
                     </a>
                   </li>
                   <li *ngIf="job.minSalary != 0 || job.maxSalary != 0">
-                    <a
-                      ><i class="fa fa-money" aria-hidden="true"></i
-                      >{{ job.minSalary | currency: "INR":"symbol":"1.0" }} -
-                      {{ job.maxSalary | currency: "INR":"symbol":"1.0" }}</a
-                    >
+                    <a><i class="fa fa-money"
+                        aria-hidden="true"></i>{{ job.minSalary | currency: "INR":"symbol":"1.0" }} -
+                      {{ job.maxSalary | currency: "INR":"symbol":"1.0" }}</a>
                   </li>
                 </ul>
               </div>
@@ -111,9 +82,7 @@
             </div>
             <!-- ad-info -->
             <div class="button">
-              <a class="btn btn-primary" routerLink="/job-details/{{ job.id }}"
-                >View Now</a
-              >
+              <a class="btn btn-primary" routerLink="/job-details/{{ job.id }}">View Now</a>
             </div>
           </div>
           <div *ngIf="i === 0 || i === 2">

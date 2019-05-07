@@ -28,6 +28,24 @@
                       <option>Software Engineer</option>
                       <option>Program Development</option>
                       <option>Project Manager</option>
+                      <option>IOS Developer</option>
+                      <option>Front End Developer</option>
+                      <option>FullStack Developer</option>
+                      <option>MeanStack Developer</option>
+                      <option>WordPress Developer</option>
+                      <option>Python Developer</option>
+                      <option>PHP Developer</option>
+                      <option>Software Tester</option>
+                      <option>Java Developer</option>
+                      <option>.NET Developer</option>
+                      <option>Big Data Developer	</option>
+                      <option>Sales Force</option>
+                      <option>C++ Developer	</option>
+                      <option>UI/UX Developer</option>
+                      <option>Data Science Analyst</option>
+                      <option>Backend Developer</option>
+                      <option>Android Developer</option>
+                      <option>Web Designer</option>
                       <option>Graphics Designer</option>
                       <div *ngIf="
                           f.category.errors &&
@@ -206,7 +224,7 @@
                   <div class="col-sm-9">
                     <select formControlName="experience" class="category-change form-control">
                       <option value="" selected>Select Experience</option>
-                      <option value=""><a>Entry Level</a></option>
+                      <option><a>Entry Level</a></option>
                       <option><a>Mid Level</a></option>
                       <option><a>Mid-Senior Level</a></option>
                       <option><a>Top Level</a></option>
@@ -240,7 +258,7 @@
                 <div class="row form-group brand-name">
                   <label class="col-sm-3 label-title">Application Deadline</label>
                   <div class="col-sm-9">
-                    <input type="date" class="form-control" placeholder="human, reosurce, job, hrm"
+                    <input type="text" class="form-control" placeholder="08/05/19, ASAP"
                       formControlName="jobDeadLine" />
                     <div *ngIf="
                         f.jobDeadLine.errors &&

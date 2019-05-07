@@ -29,8 +29,8 @@
             <div class="ad-meta">
               <ul>
                 <li>
-                  <a><i class="fa fa-map-marker" aria-hidden="true"></i>{{ jobDetails?.state }},
-                    {{ jobDetails?.country }}</a>
+                  <a><i class="fa fa-map-marker" aria-hidden="true"></i>{{ jobDetails?.city}} ,{{ jobDetails?.state }}
+                  </a>
                 </li>
                 <li>
                   <a><i class="fa fa-clock-o" aria-hidden="true"></i>{{ jobDetails?.jobType }}</a>
@@ -43,7 +43,7 @@
                 </li>
                 <li *ngIf="jobDetails?.jobDeadLine != undefined">
                   <i class="fa fa-hourglass-start" aria-hidden="true"></i>Application Deadline :
-                  {{ jobDetails?.jobDeadLine | date: "mediumDate" }}
+                  {{ jobDetails?.jobDeadLine != undefined ?  jobDetails?.jobDeadLine : 'ASAP' }}
                 </li>
               </ul>
             </div>
