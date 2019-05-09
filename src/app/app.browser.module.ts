@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms'
 import { HttpClientModule } from '@angular/common/http';
@@ -29,34 +29,10 @@ import { NgxPaginationModule } from 'ngx-pagination'; // <-- import the module
 import { AdsenseModule } from 'ng2-adsense';
 import { LoaderComponent } from './loader.component';
 import { GoogleAdComponent } from './google-ad/google-ad.component';
-import { CommonModule } from '@angular/common';
-import { TransferHttpCacheModule } from '@nguniversal/common';
-import { NgtUniversalModule } from '@ng-toolkit/universal';
+import { AppModule } from './app.module';
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    FooterComponent,
-    HomeComponent,
-    JobListComponent,
-    JobDetailsComponent,
-    SignInComponent,
-    SignUpComponent,
-    PostJobComponent,
-    PostResumeComponent,
-    ResumeDetailsComponent,
-    AppliedJobsComponent,
-    ProfileComponent,
-    ProfileUpdateComponent,
-    ResumeEditComponent,
-    CloseAccountComponent,
-    UserInfoComponent,
-    JobSearchComponent,
-    LoaderComponent,
-    GoogleAdComponent
-  ],
   imports: [
-    BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
@@ -69,11 +45,10 @@ import { NgtUniversalModule } from '@ng-toolkit/universal';
       adClient: 'ca-pub-8450887295815397',
       adSlot: 7948811743,
     }),
-    CommonModule,
-    TransferHttpCacheModule,
-    NgtUniversalModule
+    AppModule,
+    BrowserTransferStateModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppBrowserModule { }

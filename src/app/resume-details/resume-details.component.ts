@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { JobsService } from '../jobs.service';
+import { LOCAL_STORAGE } from '@ng-toolkit/universal';
 
 @Component({
   selector: 'app-resume-details',
@@ -12,7 +13,7 @@ export class ResumeDetailsComponent implements OnInit {
   message: any;
   loader: boolean = true;
 
-  constructor(private jobsApi: JobsService) {
+  constructor(@Inject(LOCAL_STORAGE) private localStorage: any, private jobsApi: JobsService) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
 

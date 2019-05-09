@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { JobsService } from '../jobs.service';
+import { LOCAL_STORAGE } from '@ng-toolkit/universal';
 
 @Component({
   selector: 'app-post-resume',
@@ -14,7 +15,7 @@ export class PostResumeComponent implements OnInit {
 
 
 
-  constructor(private _fb: FormBuilder,
+  constructor(@Inject(LOCAL_STORAGE) private localStorage: any, private _fb: FormBuilder,
     private jobsApi: JobsService) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     this.ckeConfig = {

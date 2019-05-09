@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { UserService } from '../user.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { HeaderComponent } from '../header/header.component';
+import { LOCAL_STORAGE } from '@ng-toolkit/universal';
 
 @Component({
   selector: 'app-profile-update',
@@ -16,7 +17,7 @@ export class ProfileUpdateComponent implements OnInit {
   profileUpdate: FormGroup;
   changePassword: FormGroup;
 
-  constructor(private userApi: UserService,
+  constructor(@Inject(LOCAL_STORAGE) private localStorage: any, private userApi: UserService,
     private _fb: FormBuilder,
     private toastr: ToastrService,
     private router: Router) {

@@ -1,4 +1,5 @@
-import { Component, OnInit,AfterViewInit } from '@angular/core';
+import { Component, OnInit,AfterViewInit, Inject } from '@angular/core';
+import { WINDOW } from '@ng-toolkit/universal';
 
 @Component({
   selector: 'app-google-ad',
@@ -7,13 +8,13 @@ import { Component, OnInit,AfterViewInit } from '@angular/core';
 })
 export class GoogleAdComponent implements OnInit,AfterViewInit {
 
-  constructor() { }
+  constructor(@Inject(WINDOW) private window: Window, ) { }
 
   ngOnInit() {
   }
   ngAfterViewInit() {
     try{
-      (window['adsbygoogle'] = window['adsbygoogle'] || []).push({});
+      (this.window['adsbygoogle'] = this.window['adsbygoogle'] || []).push({});
     }catch(e){
       console.error("error");
     }

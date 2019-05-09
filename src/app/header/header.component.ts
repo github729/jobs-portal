@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from '../user.service';
+import { LOCAL_STORAGE } from '@ng-toolkit/universal';
 
 @Component({
   selector: 'app-header',
@@ -13,13 +15,16 @@ export class HeaderComponent implements OnInit {
   public currentUser: any;
   // tslint:disable-next-line: member-ordering
   public static updateUserStatus: Subject<boolean> = new Subject();
-  constructor(private router: Router,
-              private toastr: ToastrService,
-              private userApi : UserService) {
-    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    HeaderComponent.updateUserStatus.subscribe(res => {
+  constructor(@Inject(LOCAL_STORAGE) private localStorage: any, @Inject(PLATFORM_ID) private platformId: any, private router: Router,
+    private toastr: ToastrService,
+    private userApi: UserService) {
+    if (isPlatformBrowser(this.platformId)) {
+      // localStorage will be available: we can use it.
       this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    });
+      HeaderComponent.updateUserStatus.subscribe(res => {
+        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+      });
+    }
   }
 
   ngOnInit() {
@@ -40,7 +45,7 @@ export class HeaderComponent implements OnInit {
   }
   logout() {
     this.userApi.logout();
-    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.currentUser = JSON.parse(this.localStorage.getItem('currentUser'));
     this.toastr.success('You have been logged out.', 'Success');
     this.router.navigate(['/home']);
   }
