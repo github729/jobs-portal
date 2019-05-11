@@ -1,8 +1,10 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { ENV } from './app.settings';
+import { LOCAL_STORAGE } from '@ng-toolkit/universal';
 
 @Injectable({
   providedIn: 'root'
@@ -12,15 +14,17 @@ export class JobsService {
   private httpOptions: any;
   currentUser: any;
 
-  constructor(private _http: HttpClient) {
-    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  constructor(@Inject(LOCAL_STORAGE) private localStorage: any, @Inject(PLATFORM_ID) private platformId: any, private _http: HttpClient) {
+    if (isPlatformBrowser(this.platformId)) {
+    this.currentUser = JSON.parse(this.localStorage.getItem('currentUser'));
 
     this.httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': this.currentUser != null ? this.currentUser.token:'Jobs'
+        'Authorization': this.currentUser != null ? this.currentUser.token : 'Jobs'
       })
     };
+  }
   }
   // Post Job
   postJob(jobData) {
@@ -47,12 +51,12 @@ export class JobsService {
       );
   }
   // get top five jobs based on posted date
-  topFiveJobs(){
+  topFiveJobs() {
     return this._http
-    .get(`${ENV.BASE_API}top-five-jobs`, this.httpOptions)
-    .pipe(
-      catchError(this.handleError)
-    );
+      .get(`${ENV.BASE_API}top-five-jobs`, this.httpOptions)
+      .pipe(
+        catchError(this.handleError)
+      );
   }
   // get all state
   getStates() {

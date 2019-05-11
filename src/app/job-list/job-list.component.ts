@@ -1,10 +1,12 @@
-import { Component, OnInit, OnChanges, AfterViewInit } from '@angular/core';
+import { Component, OnInit, OnChanges, AfterViewInit, Inject, PLATFORM_ID } from '@angular/core';
 import { JobsService } from '../jobs.service';
 import { UserService } from '../user.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { window } from 'rxjs/operators';
+import { LOCAL_STORAGE, WINDOW } from '@ng-toolkit/universal';
+import { isPlatformBrowser } from '@angular/common';
 declare interface Window {
   adsbygoogle: any[];
 }
@@ -31,13 +33,15 @@ export class JobListComponent implements OnInit, AfterViewInit {
   currentUser: any;
   jobSearch: FormGroup;
 
-  constructor(private jobApi: JobsService,
+  constructor(@Inject(WINDOW) private window: Window, @Inject(PLATFORM_ID) private platformId: any, @Inject(LOCAL_STORAGE) private localStorage: any, private jobApi: JobsService,
     private _fb: FormBuilder,
     private route: ActivatedRoute,
     private toastr: ToastrService,
     private router: Router) {
-
-    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    if (isPlatformBrowser(this.platformId)) {
+      // localStorage will be available: we can use it.
+      this.currentUser = JSON.parse(this.localStorage.getItem('currentUser'));
+    }
   }
 
   ngOnInit() {
@@ -73,7 +77,7 @@ export class JobListComponent implements OnInit, AfterViewInit {
   }
   ngAfterViewInit() {
     try {
-      (window['adsbygoogle'] = window['adsbygoogle'] || []).push({});
+      (this.window['adsbygoogle'] = this.window['adsbygoogle'] || []).push({});
     } catch (e) {
       console.error("error");
     }

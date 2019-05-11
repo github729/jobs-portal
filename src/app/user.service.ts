@@ -1,8 +1,10 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { throwError } from 'rxjs';
 import { ENV } from './app.settings';
 import { catchError, tap } from 'rxjs/operators';
+import { LOCAL_STORAGE } from '@ng-toolkit/universal';
+import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -12,15 +14,18 @@ export class UserService {
   private httpOptions: any;
   currentUser: any;
 
-  constructor(private _http: HttpClient) {
-    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    this.httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        // tslint:disable-next-line: object-literal-key-quotes
-        'Authorization': this.currentUser != null ? this.currentUser.token : 'Jobs'
-      })
-    };
+  constructor(@Inject(LOCAL_STORAGE) private localStorage: any, @Inject(PLATFORM_ID) private platformId: any, private _http: HttpClient) {
+    if (isPlatformBrowser(this.platformId)) {
+      // localStorage will be available: we can use it.
+      this.currentUser = JSON.parse(this.localStorage.getItem('currentUser'));
+      this.httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          // tslint:disable-next-line: object-literal-key-quotes
+          'Authorization': this.currentUser != null ? this.currentUser.token : 'Jobs'
+        })
+      };
+    }
   }
   LoginUser(userData) {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
@@ -32,7 +37,10 @@ export class UserService {
             const userObj: any = {};
             userObj.user = response.data;
             userObj.token = response.token;
-            localStorage.setItem('currentUser', JSON.stringify(userObj));
+            if (isPlatformBrowser(this.platformId)) {
+              // localStorage will be available: we can use it.
+              this.localStorage.setItem('currentUser', JSON.stringify(userObj));
+            }
           }
         }),
         catchError(this.handleError)
@@ -41,7 +49,9 @@ export class UserService {
   // logout event
   public logout(): void {
     this.currentUser = null;
-    localStorage.removeItem('currentUser');
+    if (isPlatformBrowser(this.platformId)) {
+      this.localStorage.removeItem('currentUser');
+    }
   }
 
   // Create User

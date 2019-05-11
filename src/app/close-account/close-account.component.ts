@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { UserService } from '../user.service';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { LOCAL_STORAGE } from '@ng-toolkit/universal';
 
 @Component({
   selector: 'app-close-account',
@@ -12,12 +13,12 @@ export class CloseAccountComponent implements OnInit {
   userId: any;
   currentUser: any;
 
-  constructor(private userApi: UserService,
+  constructor(@Inject(LOCAL_STORAGE) private localStorage: any, private userApi: UserService,
     private route: ActivatedRoute,
     private toastr: ToastrService) { }
 
   ngOnInit() {
-    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.currentUser = JSON.parse(this.localStorage.getItem('currentUser'));
   }
   deleteClose() {
     this.userApi.deleteUser(this.currentUser.user.id).subscribe(res => {
