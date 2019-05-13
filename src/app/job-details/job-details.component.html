@@ -188,7 +188,7 @@
 </section>
 <!-- job-details-page -->
 
-<section id="something-sell" class="clearfix parallax-section">
+<section id="something-sell" class="clearfix parallax-section"  *ngIf="currentUser && currentUser?.user?.role === 'Student'">
   <div class="container">
     <div class="row">
       <div class="col-sm-12 text-center">
