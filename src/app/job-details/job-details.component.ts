@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { LOCAL_STORAGE } from '@ng-toolkit/universal';
+import { Component, OnInit, PLATFORM_ID, Inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { JobsService } from '../jobs.service';
 
@@ -10,9 +12,16 @@ import { JobsService } from '../jobs.service';
 export class JobDetailsComponent implements OnInit {
   jobId: any;
   jobDetails: any;
+  currentUser: any;
 
   constructor(private route: ActivatedRoute,
-              private jobsApi: JobsService) { }
+    @Inject(LOCAL_STORAGE) private localStorage: any, @Inject(PLATFORM_ID) private platformId: any,
+    private jobsApi: JobsService) {
+      if (isPlatformBrowser(this.platformId)) {
+        // localStorage will be available: we can use it.
+        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+      }
+    }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
