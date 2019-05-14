@@ -11,43 +11,24 @@
     </div>
 
     <div class="banner-form banner-form-full job-list-form">
-      <form
-        [formGroup]="jobSearch"
-        class="clearfix"
-        (ngSubmit)="filterJobs(jobSearch.value)"
-      >
+      <form [formGroup]="jobSearch" class="clearfix" (ngSubmit)="filterJobs(jobSearch.value)">
         <!-- category-change -->
         <div class="form-group">
-          <select
-            class="form-control category-dropdown"
-            formControlName="category"
-          >
+          <select class="form-control category-dropdown" formControlName="category">
             <option value="" selected>Job Category</option>
-            <option
-              *ngFor="let category of categories"
-              value="{{ category.category }}"
-              >{{ category.category }}</option
-            >
+            <option *ngFor="let category of categories" value="{{ category.category }}">{{ category.category }}</option>
           </select>
         </div>
 
         <div class="form-group">
           <select class="form-control language-dropdown" formControlName="city">
             <option value="" selected>Job Location</option>
-            <option
-              *ngFor="let location of locations"
-              value="{{ location.city }}"
-              >{{ location.city }}</option
-            >
+            <option *ngFor="let location of locations" value="{{ location.city }}">{{ location.city }}</option>
           </select>
         </div>
         <div class="form-group">
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Type your skills  or technologies known"
-            formControlName="keywords"
-          />
+          <input type="text" class="form-control" placeholder="Type your skills  or technologies known"
+            formControlName="keywords" />
         </div>
         <div class="form-group">
           <button type="submit" class="btn btn-primary" value="Search">
@@ -67,28 +48,18 @@
             <div class="panel-group" id="tr-accordion">
               <div class="card panel-faq">
                 <div class="card-header">
-                  <button
-                    data-toggle="collapse"
-                    data-target="#accordion-one"
-                    aria-expanded="true"
-                    aria-controls="accordion-one"
-                  >
+                  <button data-toggle="collapse" data-target="#accordion-one" aria-expanded="true"
+                    aria-controls="accordion-one">
                     Categories
                   </button>
                 </div>
                 <!-- card-header -->
 
-                <div
-                  id="accordion-one"
-                  class="collapse show"
-                  data-parent="#tr-accordion"
-                >
+                <div id="accordion-one" class="collapse show" data-parent="#tr-accordion">
                   <!-- panel-body -->
                   <div class="panel-body">
                     <h5>
-                      <a (click)="allCategories()"
-                        ><i class="fa fa-caret-down"></i> All Categories</a
-                      >
+                      <a (click)="allCategories()"><i class="fa fa-caret-down"></i> All Categories</a>
                     </h5>
                     <ul>
                       <li *ngFor="let category of categories">
@@ -105,56 +76,27 @@
 
               <div class="card panel-faq">
                 <div class="card-header">
-                  <button
-                    class="collapsed"
-                    data-toggle="collapse"
-                    data-target="#accordion-four"
-                    aria-expanded="true"
-                    aria-controls="accordion-four"
-                  >
+                  <button class="collapsed" data-toggle="collapse" data-target="#accordion-four" aria-expanded="true"
+                    aria-controls="accordion-four">
                     Employment Type
                   </button>
                 </div>
                 <!-- card-header -->
 
-                <div
-                  id="accordion-four"
-                  class="collapse"
-                  data-parent="#tr-accordion"
-                >
+                <div id="accordion-four" class="collapse" data-parent="#tr-accordion">
                   <!-- panel-body -->
                   <div class="panel-body">
-                    <input
-                      type="checkbox"
-                      value="Full Time"
-                      name="full-time"
-                      (change)="selectJobType($event, 'Full Time')"
-                      id="full-time"
-                    />
+                    <input type="checkbox" value="Full Time" name="full-time"
+                      (change)="selectJobType($event, 'Full Time')" id="full-time" />
                     Full Time<br />
-                    <input
-                      type="checkbox"
-                      value="Part Time"
-                      name="part-time"
-                      (change)="selectJobType($event, 'Part Time')"
-                      id="part-time"
-                    />
+                    <input type="checkbox" value="Part Time" name="part-time"
+                      (change)="selectJobType($event, 'Part Time')" id="part-time" />
                     Part Time<br />
-                    <input
-                      type="checkbox"
-                      name="contract"
-                      id="contract"
-                      (change)="selectJobType($event, 'Contract')"
-                      value="Contract"
-                    />
+                    <input type="checkbox" name="contract" id="contract" (change)="selectJobType($event, 'Contract')"
+                      value="Contract" />
                     Contract<br />
-                    <input
-                      type="checkbox"
-                      name="intern"
-                      id="intern"
-                      (change)="selectJobType($event, 'Freelance')"
-                      value="Freelance"
-                    />
+                    <input type="checkbox" name="intern" id="intern" (change)="selectJobType($event, 'Freelance')"
+                      value="Freelance" />
                     Freelance<br />
                   </div>
                   <!-- panel-body -->
@@ -164,56 +106,27 @@
 
               <div class="card panel-faq">
                 <div class="card-header">
-                  <button
-                    class="collapsed"
-                    data-toggle="collapse"
-                    data-target="#accordion-five"
-                    aria-expanded="true"
-                    aria-controls="accordion-five"
-                  >
+                  <button class="collapsed" data-toggle="collapse" data-target="#accordion-five" aria-expanded="true"
+                    aria-controls="accordion-five">
                     Experience Level
                   </button>
                 </div>
                 <!-- card-header -->
 
-                <div
-                  id="accordion-five"
-                  class="collapse"
-                  data-parent="#tr-accordion"
-                >
+                <div id="accordion-five" class="collapse" data-parent="#tr-accordion">
                   <!-- panel-body -->
                   <div class="panel-body">
-                    <input
-                      type="checkbox"
-                      name="entry-level"
-                      id="entry-level"
-                      value="Entry Level"
-                      (change)="selectExp($event, 'Entry Level')"
-                    />
+                    <input type="checkbox" name="entry-level" id="entry-level" value="Entry Level"
+                      (change)="selectExp($event, 'Entry Level')" />
                     Entry Level<br />
-                    <input
-                      type="checkbox"
-                      name="mid-level"
-                      id="mid-level"
-                      value="Mid Level"
-                      (change)="selectExp($event, 'Mid Level')"
-                    />
+                    <input type="checkbox" name="mid-level" id="mid-level" value="Mid Level"
+                      (change)="selectExp($event, 'Mid Level')" />
                     Mid Level<br />
-                    <input
-                      type="checkbox"
-                      name="mid-senior"
-                      id="mid-senior"
-                      value="Mid-Senior Level"
-                      (change)="selectExp($event, 'Mid-Senior Level')"
-                    />
+                    <input type="checkbox" name="mid-senior" id="mid-senior" value="Mid-Senior Level"
+                      (change)="selectExp($event, 'Mid-Senior Level')" />
                     Mid-Senior Level<br />
-                    <input
-                      type="checkbox"
-                      name="top-level"
-                      id="top-level"
-                      value="Top Level"
-                      (change)="selectExp($event, 'Top Level')"
-                    />
+                    <input type="checkbox" name="top-level" id="top-level" value="Top Level"
+                      (change)="selectExp($event, 'Top Level')" />
                     Top Level<br />
                   </div>
                   <!-- panel-body -->
@@ -223,37 +136,20 @@
 
               <div class="card panel-faq">
                 <div class="card-header">
-                  <button
-                    class="collapsed"
-                    data-toggle="collapse"
-                    data-target="#accordion-six"
-                    aria-expanded="true"
-                    aria-controls="accordion-six"
-                  >
+                  <button class="collapsed" data-toggle="collapse" data-target="#accordion-six" aria-expanded="true"
+                    aria-controls="accordion-six">
                     Company
                   </button>
                 </div>
                 <!-- card-header -->
 
-                <div
-                  id="accordion-six"
-                  class="collapse"
-                  data-parent="#tr-accordion"
-                >
+                <div id="accordion-six" class="collapse" data-parent="#tr-accordion">
                   <!-- panel-body -->
                   <div class="panel-body">
-                    <input
-                      type="text"
-                      placeholder="Search Company"
-                      class="form-control"
-                    />
+                    <input type="text" placeholder="Search Company" class="form-control" />
                     <div *ngFor="let company of companies">
-                      <input
-                        type="checkbox"
-                        [name]="company.companyName"
-                        [value]="company.companyName"
-                        (change)="selectCompany($event, company)"
-                      />
+                      <input type="checkbox" [name]="company.companyName" [value]="company.companyName"
+                        (change)="selectCompany($event, company)" />
                       {{ company.companyName }}<br />
                     </div>
                   </div>
@@ -264,37 +160,20 @@
 
               <div class="card panel-faq">
                 <div class="card-header">
-                  <button
-                    class="collapsed"
-                    data-toggle="collapse"
-                    data-target="#accordion-seven"
-                    aria-expanded="true"
-                    aria-controls="accordion-seven"
-                  >
+                  <button class="collapsed" data-toggle="collapse" data-target="#accordion-seven" aria-expanded="true"
+                    aria-controls="accordion-seven">
                     Location
                   </button>
                 </div>
                 <!-- card-header -->
 
-                <div
-                  id="accordion-seven"
-                  class="collapse"
-                  data-parent="#tr-accordion"
-                >
+                <div id="accordion-seven" class="collapse" data-parent="#tr-accordion">
                   <!-- panel-body -->
                   <div class="panel-body">
-                    <input
-                      type="text"
-                      placeholder="Search Location"
-                      class="form-control"
-                    />
+                    <input type="text" placeholder="Search Location" class="form-control" />
                     <div *ngFor="let location of locations">
-                      <input
-                        type="checkbox"
-                        [name]="location.state"
-                        [value]="location.state"
-                        (change)="selectLocation($event, location)"
-                      />
+                      <input type="checkbox" [name]="location.state" [value]="location.state"
+                        (change)="selectLocation($event, location)" />
                       {{ location.city }},{{ location.state }}<br />
                     </div>
                   </div>
@@ -310,10 +189,7 @@
 
         <!-- recommended-ads -->
         <div class="col-md-8 col-lg-8">
-          <div
-            class="section job-list-item"
-            *ngIf="totalRecords > 0; else noRecords"
-          >
+          <div class="section job-list-item" *ngIf="totalRecords > 0; else noRecords">
             <div class="featured-top clearfix">
               <h4>Showing 1-{{ limit }} of {{ totalRecords | number }} jobs</h4>
               <!-- <div class="dropdown pull-right">
@@ -332,9 +208,7 @@
             </div>
             <!-- featured-top -->
 
-            <div
-              class="job-ad-item"
-              *ngFor="
+            <div class="job-ad-item" *ngFor="
                 let job of jobs
                   | paginate
                     : {
@@ -342,46 +216,33 @@
                         currentPage: p,
                         totalItems: totalRecords
                       }
-              "
-            >
+              ">
               <div class="item-info">
                 <div class="item-image-box">
                   <div class="item-image">
-                    <a (click)="jobDetailView(job.id)"
-                      ><img
-                        src="assets/images/job/default.png"
-                        alt="Image"
-                        class="img-fluid"
-                    /></a>
+                    <a (click)="jobDetailView(job.id)"><img src="assets/images/job/default.png" alt="Image"
+                        class="img-fluid" /></a>
                   </div>
                   <!-- item-image -->
                 </div>
 
                 <div class="ad-info">
-                  <span
-                    ><a (click)="jobDetailView(job.id)" class="title">{{
+                  <span><a (click)="jobDetailView(job.id)" class="title">{{
                       job.category | titlecase
                     }}</a>
-                    @ <a>{{ job.companyName | titlecase }}</a></span
-                  >
+                    @ <a>{{ job.companyName | titlecase }}</a></span>
                   <div class="ad-meta">
                     <ul>
                       <li>
-                        <a
-                          ><i class="fa fa-map-marker" aria-hidden="true"></i
-                          >{{ job.city }},{{ job.state }}
+                        <a><i class="fa fa-map-marker" aria-hidden="true"></i>{{ job.city }},{{ job.state }}
                         </a>
                       </li>
                       <li>
-                        <a
-                          ><i class="fa fa-clock-o" aria-hidden="true"></i
-                          >{{ job.jobType }}</a
-                        >
+                        <a><i class="fa fa-clock-o" aria-hidden="true"></i>{{ job.jobType }}</a>
                       </li>
                       <li *ngIf="job.minSalary != 0 || job.maxSalary != 0">
-                        <a
-                          ><i class="fa fa-money" aria-hidden="true"></i
-                          >{{ job.minSalary | currency: "INR":"symbol":"1.0" }}
+                        <a><i class="fa fa-money"
+                            aria-hidden="true"></i>{{ job.minSalary | currency: "INR":"symbol":"1.0" }}
                           -
                           {{ job.maxSalary | currency: "INR":"symbol":"1.0" }}
                         </a>
@@ -402,11 +263,8 @@
             <!-- ad-section -->
 
             <!-- pagination  -->
-            <pagination-controls
-              (pageChange)="pageChanged($event)"
-              previousLabel="Previous"
-              nextLabel="Next"
-            ></pagination-controls>
+            <pagination-controls (pageChange)="pageChanged($event)" previousLabel="Previous" nextLabel="Next">
+            </pagination-controls>
             <!-- pagination  -->
           </div>
           <ng-template #noRecords>
@@ -432,7 +290,8 @@
 </section>
 <!-- main -->
 
-<section id="something-sell" class="clearfix parallax-section">
+<section id="something-sell" class="clearfix parallax-section"
+  *ngIf="currentUser && currentUser?.user?.role === 'Student'">
   <div class="container">
     <div class="row">
       <div class="col-sm-12 text-center">
