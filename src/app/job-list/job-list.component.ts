@@ -1,3 +1,4 @@
+import { Meta } from '@angular/platform-browser';
 import { Component, OnInit, OnChanges, AfterViewInit, Inject, PLATFORM_ID } from '@angular/core';
 import { JobsService } from '../jobs.service';
 import { UserService } from '../user.service';
@@ -37,11 +38,16 @@ export class JobListComponent implements OnInit, AfterViewInit {
     private _fb: FormBuilder,
     private route: ActivatedRoute,
     private toastr: ToastrService,
-    private router: Router) {
+    private router: Router,
+    private meta: Meta) {
     if (isPlatformBrowser(this.platformId)) {
       // localStorage will be available: we can use it.
       this.currentUser = JSON.parse(this.localStorage.getItem('currentUser'));
     }
+    this.meta.updateTag(
+      { name: 'description', content: `IT jobs available on quikresults.in and angular,frontend ,php,wordpress,react,backend and more!` }
+    );
+
   }
 
   ngOnInit() {
