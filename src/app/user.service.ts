@@ -17,7 +17,7 @@ export class UserService {
   constructor(@Inject(LOCAL_STORAGE) private localStorage: any, @Inject(PLATFORM_ID) private platformId: any, private _http: HttpClient) {
     if (isPlatformBrowser(this.platformId)) {
       // localStorage will be available: we can use it.
-      this.currentUser = JSON.parse(this.localStorage.getItem('currentUser'));
+      this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
       this.httpOptions = {
         headers: new HttpHeaders({
           'Content-Type': 'application/json',
