@@ -3,7 +3,10 @@
   <div class="banner-overlay"></div>
   <div class="container text-center">
     <h1 class="title">The Easiest Way to Get Your New Job</h1>
-    <h3>We offer 12000 jobs vacation right now</h3>
+    <h5 class="description">We are India based job portal, one who provide the best jobs in IT industry.Now you can
+      search jobs from all
+      cities in India like Hyderabad,Bangalore,Chennai and another more Cities.We are one of the best recruitment Portal
+      for job search. </h5>
     <div class="banner-form banner-form-full job-list-form">
       <form [formGroup]="jobSearch" class="clearfix" (ngSubmit)="search()">
         <!-- category-change -->
@@ -29,13 +32,15 @@
         </button>
       </form>
     </div><!-- banner-form -->
-
+    <!--
     <ul class="banner-socail list-inline">
-      <li><a  title="Facebook"><i class="fa fa-facebook"></i></a></li>
-      <li><a  title="Twitter"><i class="fa fa-twitter"></i></a></li>
-      <li><a  title="Google Plus"><i class="fa fa-google-plus"></i></a></li>
-      <li><a  title="Youtube"><i class="fa fa-youtube"></i></a></li>
-    </ul><!-- banner-socail -->
+      <li><a title="Facebook"><i class="fa fa-facebook"></i></a></li>
+      <li><a title="Twitter"><i class="fa fa-twitter"></i></a></li>
+      <li><a title="Google Plus"><i class="fa fa-google-plus"></i></a></li>
+      <li><a title="Youtube"><i class="fa fa-youtube"></i></a></li>
+    </ul> -->
+    <!-- banner-socail -->
+
   </div><!-- container -->
 </div><!-- banner-section -->
 
@@ -49,15 +54,17 @@
       <div class="tab-content">
         <div class="job-ad-item" *ngFor="let job of jobs; let i = index">
           <div class="item-info">
-            <div class="item-image-box">
+            <!-- <div class="item-image-box">
               <div class="item-image">
                 <a routerLink="/job-details"><img src="assets/images/job/default.png" alt="Image"
                     class="img-fluid" /></a>
               </div>
-              <!-- item-image -->
-            </div>
+            </div> -->
+            <!-- item-image -->
             <div class="ad-info">
-              <span><a routerLink="/job-details" class="title">{{
+              <span><a
+                  routerLink="/job-details/{{ job.category | slugify }}/{{ job.companyName | slugify }}/{{ job.city | slugify }}-{{ job.state | slugify }}/{{ job.id }}"
+                  class="title">{{
                   job.category
                 }}</a>
                 @ <a>{{ job.companyName }}</a></span>
@@ -82,7 +89,9 @@
             </div>
             <!-- ad-info -->
             <div class="button">
-              <a class="btn btn-primary" routerLink="/job-details/{{ job.id }}">View Now</a>
+              <a class="btn btn-primary"
+                routerLink="/job-details/{{ job.category | slugify }}/{{ job.companyName | slugify }}/{{ job.city | slugify }}-{{ job.state | slugify }}/{{ job.id }}">Apply
+                Now</a>
             </div>
           </div>
           <div *ngIf="i === 0 || i === 2">
@@ -91,8 +100,6 @@
           <!-- item-info -->
         </div>
         <!-- ad-item -->
-
-        <!-- tab-pane -->
       </div>
       <!-- tab-content -->
     </div>
@@ -100,11 +107,6 @@
     <app-google-ad></app-google-ad>
   </div>
   <!-- ad-section -->
-
-  <!-- workshop-traning -->
-
-  <!-- cta -->
-
   <!-- conainer -->
 </div>
 <!-- page -->

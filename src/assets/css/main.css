@@ -2427,7 +2427,7 @@ input:-moz-placeholder {
 
 .social-media {
 	overflow: hidden;
-	margin-left: 120px;
+	/* margin-left: 120px; */
 }
 
 .social-media .button {

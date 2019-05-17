@@ -32,6 +32,7 @@ import { GoogleAdComponent } from './google-ad/google-ad.component';
 import { CommonModule } from '@angular/common';
 import { TransferHttpCacheModule } from '@nguniversal/common';
 import { NgtUniversalModule } from '@ng-toolkit/universal';
+import { SlugifyPipe } from './slugify.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,7 +54,8 @@ import { NgtUniversalModule } from '@ng-toolkit/universal';
     UserInfoComponent,
     JobSearchComponent,
     LoaderComponent,
-    GoogleAdComponent
+    GoogleAdComponent,
+    SlugifyPipe
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

@@ -14,12 +14,12 @@
     <div class="job-details">
       <div class="section job-ad-item">
         <div class="item-info">
-          <div class="item-image-box">
+          <!-- <div class="item-image-box">
             <div class="item-image">
               <img src="assets/images/job/default.png" alt="Image" class="img-fluid" />
             </div>
+          </div> -->
             <!-- item-image -->
-          </div>
 
           <div class="ad-info">
             <span><span><a class="title">{{ jobDetails?.category }}</a></span>
@@ -31,7 +31,7 @@
                   </a>
                 </li>
                 <li>
-                  <a><i class="fa fa-clock-o" aria-hidden="true"></i>{{ jobDetails?.jobType }}</a>
+                  <a><i class="fa fa-clock-o" aria-hidden="true"></i>{{ jobDetails?.jobType | titlecase}}</a>
                 </li>
                 <li *ngIf="jobDetails?.minSalary != 0 || jobDetails?.maxSalary != 0">
                   <i class="fa fa-money"
@@ -80,7 +80,9 @@
         </div>
       </div>
       <!-- job-ad-item -->
-
+      <div class="advertisement text-center">
+        <app-google-ad></app-google-ad>
+      </div>
       <div class="job-details-info">
         <div class="row">
           <div class="col-md-8">
@@ -97,6 +99,9 @@
                   <span>{{ jobDetails?.description }}</span>
                 </p>
               </div>
+              <div class="advertisement text-center">
+                <app-google-ad></app-google-ad>
+              </div>
               <div class="responsibilities">
                 <h1>Key Responsibilities</h1>
                 <p [innerHTML]="jobDetails?.function"></p>
@@ -105,6 +110,9 @@
                 <h1>Minimum Requirements</h1>
                 <p [innerHTML]="jobDetails?.requirements"></p>
               </div>
+            </div>
+            <div class="advertisement text-center">
+              <app-google-ad></app-google-ad>
             </div>
           </div>
           <div class="col-md-4">
@@ -126,7 +134,7 @@
               </ul>
             </div>
             <div class="section company-info">
-              <h1>Company Info</h1>
+              <h1>Company Info </h1>
               <ul>
                 <li>
                   Compnay Name: <a>{{ jobDetails?.companyName }}</a>
@@ -136,19 +144,20 @@
                   Compnay SIze: {{ jobDetails?.companySize }} Employee
                 </li>
                 <li>
-                  Industry: <a>{{ jobDetails?.industry }}</a>
+                  Industry: <a> {{ jobDetails?.industry }}</a>
                 </li>
                 <li *ngIf="jobDetails?.mobileNumber != ''">Phone: {{ jobDetails?.mobileNumber }}</li>
                 <li *ngIf="jobDetails?.email != ''">
                   Email:
-                  <a><span class="__cf_email__"
-                      data-cfemail="d4bdbab2bb94b0a6bba4b6bbacfab7bbb9">{{ jobDetails?.email }}</span></a>
+                  <a><span class="__cf_email__" data-cfemail="d4bdbab2bb94b0a6bba4b6bbacfab7bbb9">
+                      {{ jobDetails?.email }}</span></a>
                 </li>
                 <li>
-                  Website: <a>{{ jobDetails?.companySite }}</a>
+                  Website: <a> {{ jobDetails?.companySite }}</a>
                 </li>
               </ul>
               <ul class="share-social">
+
                 <li>
                   <a><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
                 </li>

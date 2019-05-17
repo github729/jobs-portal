@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit, Inject } from '@angular/core';
 import { UserService } from '../user.service';
 import { ActivatedRoute } from '@angular/router';
@@ -15,6 +16,7 @@ export class CloseAccountComponent implements OnInit {
 
   constructor(@Inject(LOCAL_STORAGE) private localStorage: any, private userApi: UserService,
     private route: ActivatedRoute,
+    private router: Router,
     private toastr: ToastrService) { }
 
   ngOnInit() {
@@ -24,6 +26,9 @@ export class CloseAccountComponent implements OnInit {
     this.userApi.deleteUser(this.currentUser.user.id).subscribe(res => {
       if (res['success']) {
         this.toastr.success(res['message'], 'Success');
+        this.userApi.logout();
+        this.currentUser = JSON.parse(this.localStorage.getItem('currentUser'));
+        this.router.navigate(['/home']);
       }
     });
   }

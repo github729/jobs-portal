@@ -43,7 +43,7 @@
     <!-- banner-form -->
     <div class="category-info">
       <div class="row">
-        <div class="col-lg-3 col-md-4">
+        <div class="col-lg-3 col-md-3">
           <div class="accordion">
             <div class="panel-group" id="tr-accordion">
               <div class="card panel-faq">
@@ -188,7 +188,7 @@
         <!-- accordion-->
 
         <!-- recommended-ads -->
-        <div class="col-md-8 col-lg-8">
+        <div class="col-md-7 col-lg-7">
           <div class="section job-list-item" *ngIf="totalRecords > 0; else noRecords">
             <div class="featured-top clearfix">
               <h4>Showing 1-{{ limit }} of {{ totalRecords | number }} jobs</h4>
@@ -218,16 +218,16 @@
                       }
               ">
               <div class="item-info">
-                <div class="item-image-box">
+                <!-- <div class="item-image-box">
                   <div class="item-image">
                     <a (click)="jobDetailView(job.id)"><img src="assets/images/job/default.png" alt="Image"
                         class="img-fluid" /></a>
                   </div>
-                  <!-- item-image -->
-                </div>
+                </div> -->
+                <!-- item-image -->
 
                 <div class="ad-info">
-                  <span><a (click)="jobDetailView(job.id)" class="title">{{
+                  <span><a routerLink="/job-details/{{ job.category | slugify }}/{{ job.companyName | slugify }}/{{ job.city | slugify }}-{{ job.state | slugify }}/{{ job.id }}" class="title">{{
                       job.category | titlecase
                     }}</a>
                     @ <a>{{ job.companyName | titlecase }}</a></span>
@@ -274,13 +274,16 @@
           </ng-template>
         </div>
         <!-- recommended-ads -->
-
-        <!-- <div class="col-md-2 d-none d-lg-block">
+        <div class="col-md-2 d-none d-lg-block">
           <div class="advertisement text-center">
             <app-google-ad></app-google-ad>
           </div>
-        </div> -->
+        </div>
       </div>
+    </div>
+    <!-- recommended-ads -->
+    <div class="advertisement text-center">
+      <app-google-ad></app-google-ad>
     </div>
   </div>
   <!-- container -->

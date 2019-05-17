@@ -9,22 +9,13 @@
         Your Profile Settings Are Below.
       </h5>
     </div>
-
-    <!-- <div class="favorites-user">
-      <div class="my-ads">
-        <a routerLink="applied-jobs">29<small>Apply Job</small></a>
-      </div>
-      <div class="favorites">
-        <a href="bookmark.html">18<small>Favorites</small></a>
-      </div>
-    </div> -->
   </div>
   <!-- user-profile -->
 
   <ul class="user-menu">
-    <li><a routerLink="/profile">Account Info </a></li>
-    <li><a routerLink="/resume-details">View Resume</a></li>
-    <li><a routerLink="/resume-edit">Edit Resume</a></li>
+    <li><a routerLink="/profile" *ngIf="currentUser.user.role === 'Student'">Account Info </a></li>
+    <li><a routerLink="/resume-details" *ngIf="currentUser.user.role === 'Student'">View Resume</a></li>
+    <li><a routerLink="/resume-edit" *ngIf="currentUser.user.role === 'Student'">Edit Resume</a></li>
     <li><a routerLink="/profile-update">Profile Update</a></li>
     <!-- <li><a href="bookmark.html">Bookmark</a></li> -->
     <!-- <li class="active"><a routerLink="/applied-jobs">applied job</a></li> -->

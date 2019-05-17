@@ -2,6 +2,13 @@
   padding-top: 25px;
 
 }
+
 .search-form .title {
   color: #000 !important;
+}
+
+.description {
+  margin-top: 40px;
+  margin-bottom: 10px;
+  line-height: 30px;
 }
