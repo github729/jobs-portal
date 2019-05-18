@@ -52,7 +52,7 @@ export class PostJobComponent implements OnInit {
       experience: ['', Validators.required],
       function: ['', Validators.required],
       jobDeadLine: [''],
-      industry: ['', Validators.required],
+      industry: [''],
       companyName: ['', Validators.required],
       companySize: [''],
       companySite: ['', Validators.required],

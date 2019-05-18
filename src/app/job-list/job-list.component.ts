@@ -44,9 +44,6 @@ export class JobListComponent implements OnInit, AfterViewInit {
       // localStorage will be available: we can use it.
       this.currentUser = JSON.parse(this.localStorage.getItem('currentUser'));
     }
-    this.meta.updateTag(
-      { name: 'description', content: `IT jobs available on quikresults.in and angular,frontend ,php,wordpress,react,backend and more!` }
-    );
 
   }
 

@@ -36,6 +36,7 @@ app.set('views', DIST_FOLDER);
 // Serve static files from /browser
 app.get('*.*', express.static(DIST_FOLDER, {
   maxAge: '1y'
+
 }));
 
 // All regular routes use the Universal engine
@@ -44,5 +45,6 @@ app.get('*', (req, res) => {
 });
 app.route('/sitemap.xml')
   .get((req, res) => {
-    res.sendFile(path.resolve(path.join(__dirname, '/sitemap.xml')));
+    console.log('hi')
+    res.sendFile(join(DIST_FOLDER, 'sitemap.xml'));
   });

@@ -27,7 +27,7 @@
           </select>
         </div>
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Type your skills  or technologies known"
+          <input type="text" class="form-control" placeholder="Type your key words"
             formControlName="keywords" />
         </div>
         <div class="form-group">
@@ -227,8 +227,10 @@
                 <!-- item-image -->
 
                 <div class="ad-info">
-                  <span><a routerLink="/job-details/{{ job.category | slugify }}/{{ job.companyName | slugify }}/{{ job.city | slugify }}-{{ job.state | slugify }}/{{ job.id }}" class="title">{{
-                      job.category | titlecase
+                  <span><a
+                      routerLink="/job-details/{{ job.category | slugify }}/{{ job.companyName | slugify }}/{{ job.city | slugify }}-{{ job.state | slugify }}/{{ job.id }}"
+                      class="title">{{
+                      job.category
                     }}</a>
                     @ <a>{{ job.companyName | titlecase }}</a></span>
                   <div class="ad-meta">
@@ -238,7 +240,7 @@
                         </a>
                       </li>
                       <li>
-                        <a><i class="fa fa-clock-o" aria-hidden="true"></i>{{ job.jobType }}</a>
+                        <a><i class="fa fa-clock-o" aria-hidden="true"></i>{{ job.jobType | titlecase}}</a>
                       </li>
                       <li *ngIf="job.minSalary != 0 || job.maxSalary != 0">
                         <a><i class="fa fa-money"
@@ -252,6 +254,10 @@
                   <!-- ad-meta -->
                 </div>
                 <!-- ad-info -->
+
+              </div>
+              <div class="job-title">
+                <a><i class="fa fa-hand-o-right" aria-hidden="true"></i> {{job.title}}</a>
               </div>
               <!-- item-info -->
             </div>

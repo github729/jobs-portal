@@ -12,3 +12,14 @@
   margin-bottom: 10px;
   line-height: 30px;
 }
+.job-title {
+  padding: 15px;
+}
+.job-title a {
+  font-size: 14px;
+  color: #a0a0a0;
+}
+.job-title a i {
+  font-size: 20px;
+  margin-right: 10px;
+}
