@@ -87,15 +87,15 @@
                   <!-- panel-body -->
                   <div class="panel-body">
                     <input type="checkbox" value="Full Time" name="full-time"
-                      (change)="selectJobType($event, 'Full Time')" id="full-time" />
+                      (change)="selectJobType($event, 'full-time')" id="full-time" />
                     Full Time<br />
                     <input type="checkbox" value="Part Time" name="part-time"
-                      (change)="selectJobType($event, 'Part Time')" id="part-time" />
+                      (change)="selectJobType($event, 'part-time')" id="part-time" />
                     Part Time<br />
-                    <input type="checkbox" name="contract" id="contract" (change)="selectJobType($event, 'Contract')"
+                    <input type="checkbox" name="contract" id="contract" (change)="selectJobType($event, 'contract')"
                       value="Contract" />
                     Contract<br />
-                    <input type="checkbox" name="intern" id="intern" (change)="selectJobType($event, 'Freelance')"
+                    <input type="checkbox" name="intern" id="intern" (change)="selectJobType($event, 'freelance')"
                       value="Freelance" />
                     Freelance<br />
                   </div>
@@ -172,7 +172,7 @@
                   <div class="panel-body">
                     <input type="text" placeholder="Search Location" class="form-control" />
                     <div *ngFor="let location of locations">
-                      <input type="checkbox" [name]="location.state" [value]="location.state"
+                      <input type="checkbox" [name]="location.city" [value]="location.city"
                         (change)="selectLocation($event, location)" />
                       {{ location.city }},{{ location.state }}<br />
                     </div>

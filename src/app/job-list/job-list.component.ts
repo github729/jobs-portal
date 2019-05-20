@@ -126,9 +126,9 @@ export class JobListComponent implements OnInit, AfterViewInit {
   }
   selectLocation(type, data) {
     if (type.target.checked) {
-      this.selectedLocations.push(data.state);
+      this.selectedLocations.push(data.city);
     } else {
-      var index = this.selectedLocations.indexOf(data.state);
+      var index = this.selectedLocations.indexOf(data.city);
       if (index > -1) {
         this.selectedLocations.splice(index, 1);
       }
