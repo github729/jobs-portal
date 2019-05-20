@@ -54,7 +54,7 @@ export class JobListComponent implements OnInit, AfterViewInit {
       .subscribe(params => {
         if (Object.keys(params).length > 0) {
           this.jobSearch = this._fb.group({
-            category: [params.category],
+            category: ['',params.category],
             city: [params.city],
             keywords: [params.keyWords]
           });
