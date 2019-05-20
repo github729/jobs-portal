@@ -84,4 +84,8 @@
   .emply-now h2 ,h4 {
     font-size: 20px;
   }
+  .findby h6 {
+    margin-left: 0px;
+    margin-top: 0px;
+  }
 }
