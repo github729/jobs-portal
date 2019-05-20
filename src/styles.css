@@ -1,4 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~@ngx-share/button/themes/default/default-theme';
+@import '~@ngx-share/button/themes/modern/modern-light-theme';
+
 .btn-primary {
   color: #fff !important;
 }

@@ -3,46 +3,70 @@
   <div class="banner-overlay"></div>
   <div class="container text-center">
     <h1 class="title">The Easiest Way to Get Your New Job</h1>
-    <h5 class="description">We are India based job portal, one who provide the best jobs in IT industry.Now you can
-      search jobs from all
-      cities in India like Hyderabad,Bangalore,Chennai and another more Cities.We are one of the best recruitment Portal
-      for job search. </h5>
+    <h5 class="description">
+      QuikResults is an India recruitment job portal, One who provide the best
+      jobs in IT industry.Now you can search jobs from any where in India like
+      Hyderabad,Bangalore,Chennai and many more.And one who provide the best
+      recruitment portal for job search.
+    </h5>
     <div class="banner-form banner-form-full job-list-form">
       <form [formGroup]="jobSearch" class="clearfix" (ngSubmit)="search()">
         <!-- category-change -->
         <div class="form-group">
-          <select class="form-control category-dropdown" formControlName="category">
+          <select
+            class="form-control category-dropdown"
+            formControlName="category"
+          >
             <option value="" selected>Job Category</option>
-            <option *ngFor="let category of categories" value="{{ category.category }}">{{ category.category }}</option>
+            <option
+              *ngFor="let category of categories"
+              value="{{ category.category }}"
+              >{{ category.category }}</option
+            >
           </select>
         </div>
 
         <div class="form-group">
           <select class="form-control language-dropdown" formControlName="city">
             <option value="" selected>Job Location</option>
-            <option *ngFor="let location of locations" value="{{ location.city }}">{{ location.city }}</option>
+            <option
+              *ngFor="let location of locations"
+              value="{{ location.city }}"
+              >{{ location.city }}</option
+            >
           </select>
         </div>
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Type your key words" formControlName="keywords" />
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Type your key words"
+            formControlName="keywords"
+          />
         </div>
 
         <button type="submit" class="btn btn-primary" value="Search">
           Search
         </button>
       </form>
-    </div><!-- banner-form -->
-    <!--
-    <ul class="banner-socail list-inline">
-      <li><a title="Facebook"><i class="fa fa-facebook"></i></a></li>
-      <li><a title="Twitter"><i class="fa fa-twitter"></i></a></li>
-      <li><a title="Google Plus"><i class="fa fa-google-plus"></i></a></li>
-      <li><a title="Youtube"><i class="fa fa-youtube"></i></a></li>
-    </ul> -->
+    </div>
+    <!-- banner-form -->
+    <share-buttons
+      [theme]="'modern-light'"
+      [include]="['facebook', 'twitter', 'linkedin', 'whatsapp']"
+      [description]="
+        'QuikResults is an India recruitment job portal, One who provide the best jobs in IT industry.Now you can search jobs from any where in India like Hyderabad,Bangalore,Chennai and many more.And one who provide the best recruitment portal for job search.'
+      "
+      [tags]="'Jobs,'"
+      [show]="5"
+      [url]="'http://quikresults.in/home'"
+      [autoSetMeta]="true"
+    ></share-buttons>
     <!-- banner-socail -->
-
-  </div><!-- container -->
-</div><!-- banner-section -->
+  </div>
+  <!-- container -->
+</div>
+<!-- banner-section -->
 
 <div class="page">
   <div class="container">
@@ -62,26 +86,38 @@
             </div> -->
             <!-- item-image -->
             <div class="ad-info">
-              <span><a
-                  routerLink="/job-details/{{ job.category | slugify }}/{{ job.companyName | slugify }}/{{ job.city | slugify }}-{{ job.state | slugify }}/{{ job.id }}"
-                  class="title">{{
-                  job.category
-                }}</a>
-                @ <a>{{ job.companyName }}</a></span>
+              <span
+                ><a
+                  routerLink="/job-details/{{ job.category | slugify }}/{{
+                    job.companyName | slugify
+                  }}/{{ job.city | slugify }}-{{ job.state | slugify }}/{{
+                    job.id
+                  }}"
+                  class="title"
+                  >{{ job.category }}</a
+                >
+                @ <a>{{ job.companyName }}</a></span
+              >
               <div class="ad-meta">
                 <ul>
                   <li>
-                    <a><i class="fa fa-map-marker" aria-hidden="true"></i>{{ job.city }},{{ job.state }}
+                    <a
+                      ><i class="fa fa-map-marker" aria-hidden="true"></i
+                      >{{ job.city }},{{ job.state }}
                     </a>
                   </li>
                   <li>
-                    <a><i class="fa fa-clock-o" aria-hidden="true"></i>{{ job.jobType }}
+                    <a
+                      ><i class="fa fa-clock-o" aria-hidden="true"></i
+                      >{{ job.jobType }}
                     </a>
                   </li>
                   <li *ngIf="job.minSalary != 0 || job.maxSalary != 0">
-                    <a><i class="fa fa-money"
-                        aria-hidden="true"></i>{{ job.minSalary | currency: "INR":"symbol":"1.0" }} -
-                      {{ job.maxSalary | currency: "INR":"symbol":"1.0" }}</a>
+                    <a
+                      ><i class="fa fa-money" aria-hidden="true"></i
+                      >{{ job.minSalary | currency: "INR":"symbol":"1.0" }} -
+                      {{ job.maxSalary | currency: "INR":"symbol":"1.0" }}</a
+                    >
                   </li>
                 </ul>
               </div>
@@ -91,13 +127,22 @@
 
             <!-- ad-info -->
             <div class="button">
-              <a class="btn btn-primary"
-                routerLink="/job-details/{{ job.category | slugify }}/{{ job.companyName | slugify }}/{{ job.city | slugify }}-{{ job.state | slugify }}/{{ job.id }}">Apply
-                Now</a>
+              <a
+                class="btn btn-primary"
+                routerLink="/job-details/{{ job.category | slugify }}/{{
+                  job.companyName | slugify
+                }}/{{ job.city | slugify }}-{{ job.state | slugify }}/{{
+                  job.id
+                }}"
+                >Apply Now</a
+              >
             </div>
           </div>
           <div class="job-title">
-            <a><i class="fa fa-hand-o-right" aria-hidden="true"></i> {{job.title}}</a>
+            <a
+              ><i class="fa fa-hand-o-right" aria-hidden="true"></i>
+              {{ job.title }}</a
+            >
           </div>
           <div *ngIf="i === 0 || i === 2">
             <app-google-ad></app-google-ad>

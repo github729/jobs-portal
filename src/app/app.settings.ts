@@ -14,5 +14,6 @@ export const ENV = {
   // BASE_URI: getHost(),
   BASE_API: apiURI,
   AUTHOR: 'Anusha',
-  SERVER_URL: serverURI
+  SERVER_URL: serverURI,
+  DomainUrl: 'http://quikresults.in'
 }

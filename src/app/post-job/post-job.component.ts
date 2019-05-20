@@ -66,7 +66,6 @@ export class PostJobComponent implements OnInit {
   get f() { return this.jobForm.controls; }
 
   postJob() {
-    console.log(this.jobForm.value);
     this.jobsApi.postJob(this.jobForm.value).subscribe(res => {
       if (res['success']) {
         this.router.navigate(['/job-list'])

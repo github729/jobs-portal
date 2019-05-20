@@ -32,6 +32,7 @@ import { GoogleAdComponent } from './google-ad/google-ad.component';
 import { CommonModule } from '@angular/common';
 import { TransferHttpCacheModule } from '@nguniversal/common';
 import { NgtUniversalModule } from '@ng-toolkit/universal';
+import { ShareButtonsModule } from '@ngx-share/buttons';
 import { SlugifyPipe } from './slugify.pipe';
 @NgModule({
   declarations: [
@@ -73,7 +74,10 @@ import { SlugifyPipe } from './slugify.pipe';
     }),
     CommonModule,
     TransferHttpCacheModule,
-    NgtUniversalModule
+    NgtUniversalModule,
+    ShareButtonsModule.withConfig({
+      debug: true
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
