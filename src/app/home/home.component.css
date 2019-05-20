@@ -23,3 +23,59 @@
   font-size: 20px;
   margin-right: 10px;
 }
+.register-now {
+  padding: 0px;
+}
+
+
+.emply-now {
+  position: absolute;
+  top: 50px;
+  text-align: center;
+}
+.emply-now h2 {
+  font-size: 32px;
+  color: #fb7c00;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.emply-now h4 {
+  text-align: center;
+  font-size: 22px;
+  line-height: 33px;
+}
+.btn {
+  text-align: left;
+}
+.findby {
+  /* margin: 50px 30px 75px 30px; */
+  padding: 30px 80px 30px 80px;
+}
+.findby .title {
+  font-weight: 500;
+  font-size: 35px;
+  margin-bottom: 40px;
+}
+.findby .card {
+  margin-bottom: 35px;
+}
+.findby img {
+  padding-bottom: 25px;
+}
+.findby h6 {
+  margin-top: 60px;
+  margin-left: -45px;
+  font-weight: 400;
+  font-size: 20px;
+}
+@media(min-width: 360px)and (max-width:800px) {
+  .register-now img {
+    max-width: none !important;
+  }
+  .emply-now {
+    text-align: left;
+  }
+  .emply-now h2 ,h4 {
+    font-size: 20px;
+  }
+}
