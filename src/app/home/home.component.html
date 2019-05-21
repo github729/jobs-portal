@@ -67,12 +67,28 @@
   <!-- container -->
 </div>
 <!-- banner-section -->
-
+<!-- Find By Jobs -->
 <div class="text-center findby ">
   <h2 class="text-info title">Find jobs by location</h2>
   <div class="row">
     <div class="col-lg-3">
       <div
+        class="card"
+        routerLink="/job-list"
+        [queryParams]="{ city: 'Hyderabad' }"
+      >
+        <div class="row">
+          <div class="icon">
+            <img
+              alt="hyderabad Jobs"
+              src="assets/images/jobs-in-hyderabad.png"
+              title="hyderabad Jobs"
+            />
+            <h6 class="text-info">Hyderabad</h6>
+          </div>
+        </div>
+      </div>
+      <!-- <div
         class="card"
         routerLink="/job-list"
         [queryParams]="{ city: 'Hyderabad' }"
@@ -89,7 +105,7 @@
             <h6 class="text-info">Hyderabad</h6>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
     <div class="col-lg-3">
       <div
@@ -98,15 +114,13 @@
         [queryParams]="{ city: 'Bengaluru' }"
       >
         <div class="row">
-          <div class="col-lg-6">
+          <div class="icon">
             <img
               class="job-location"
               src="assets/images/jobs-in-bangalore.png"
               alt="Bangalore Jobs"
               title="Bangalore Jobs"
             />
-          </div>
-          <div class="col-lg-6">
             <h6 class="text-info">Bangalore</h6>
           </div>
         </div>
@@ -119,15 +133,13 @@
         [queryParams]="{ city: 'Chennai' }"
       >
         <div class="row">
-          <div class="col-lg-6">
+          <div class="icon">
             <img
               class="job-location"
               src="assets/images/jobs-in-chennai.png"
               alt="Chennai Jobs"
               title="Chennai Jobs"
             />
-          </div>
-          <div class="col-lg-6">
             <h6 class="text-info">Chennai</h6>
           </div>
         </div>
@@ -140,15 +152,13 @@
         [queryParams]="{ city: 'Mumbai' }"
       >
         <div class="row">
-          <div class="col-lg-6">
+          <div class="icon">
             <img
               class="job-location"
               src="assets/images/jobs-in-mumbai.png"
               alt="Mumbai Jobs"
               title="Mumbai Jobs"
             />
-          </div>
-          <div class="col-lg-6">
             <h6 class="text-info">Mumbai</h6>
           </div>
         </div>
@@ -163,15 +173,13 @@
         [queryParams]="{ city: 'Delhi' }"
       >
         <div class="row">
-          <div class="col-lg-6">
+          <div class="icon">
             <img
               class="job-location"
               src="assets/images/jobs-in-delhi.png"
               alt="Delhi Jobs"
               title="Delhi Jobs"
             />
-          </div>
-          <div class="col-lg-6">
             <h6 class="text-info">Delhi</h6>
           </div>
         </div>
@@ -180,15 +188,13 @@
     <div class="col-lg-3">
       <div class="card" routerLink="/job-list" [queryParams]="{ city: 'Pune' }">
         <div class="row">
-          <div class="col-lg-6">
+          <div class="icon">
             <img
               class="job-location"
               src="assets/images/jobs-in-pune.png"
               alt="Pune Jobs"
               title="Pune Jobs"
             />
-          </div>
-          <div class="col-lg-6">
             <h6 class="text-info">Pune</h6>
           </div>
         </div>
@@ -201,14 +207,12 @@
         [queryParams]="{ city: 'Ahmedabad' }"
       >
         <div class="row">
-          <div class="col-lg-6">
+          <div class="icon">
             <img
               src="assets/images/jobs-in-ahmedabad.png"
               alt="Ahmedabad Jobs"
               title="Ahmedabad Jobs"
             />
-          </div>
-          <div class="col-lg-6">
             <h6 class="text-info">Ahmedabad</h6>
           </div>
         </div>
@@ -221,15 +225,13 @@
         [queryParams]="{ city: 'Kolkata' }"
       >
         <div class="row">
-          <div class="col-lg-6">
+          <div class="icon">
             <img
               class="job-location"
               src="assets/images/jobs-in-kolkata.png"
               alt="Kolkata Jobs"
               title="Kolkata Jobs"
             />
-          </div>
-          <div class="col-lg-6">
             <h6 class="text-info">Kolkata</h6>
           </div>
         </div>
@@ -237,6 +239,12 @@
     </div>
   </div>
 </div>
+<!-- Find By Jobs -->
+<!-- ads-section -->
+<div class="ad-section text-center">
+  <app-google-ad></app-google-ad>
+</div>
+<!-- ads-section -->
 
 <!-- register-section -->
 <div class="col-lg-12 register-now">

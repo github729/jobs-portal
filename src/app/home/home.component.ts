@@ -43,11 +43,11 @@ export class HomeComponent implements OnInit, AfterViewInit {
     });
   }
   ngAfterViewInit() {
-    try {
-      (this.window['adsbygoogle'] = this.window['adsbygoogle'] || []).push({});
-    } catch (e) {
+    // try {
+    //   (this.window['adsbygoogle'] = this.window['adsbygoogle'] || []).push({});
+    // } catch (e) {
 
-    }
+    // }
   }
   search() {
     this.router.navigate(['/job-list'],

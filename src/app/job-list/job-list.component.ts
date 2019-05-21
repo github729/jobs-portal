@@ -1,29 +1,32 @@
-import { Meta } from '@angular/platform-browser';
-import { Component, OnInit, OnChanges, AfterViewInit, Inject, PLATFORM_ID } from '@angular/core';
-import { JobsService } from '../jobs.service';
-import { UserService } from '../user.service';
-import { Router, ActivatedRoute } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
-import { FormGroup, FormBuilder } from '@angular/forms';
-import { window } from 'rxjs/operators';
-import { LOCAL_STORAGE, WINDOW } from '@ng-toolkit/universal';
-import { isPlatformBrowser } from '@angular/common';
+import { Meta } from "@angular/platform-browser";
+import {
+  Component,
+  OnInit,
+  AfterViewInit,
+  Inject,
+  PLATFORM_ID
+} from "@angular/core";
+import { JobsService } from "../jobs.service";
+import { Router, ActivatedRoute } from "@angular/router";
+import { ToastrService } from "ngx-toastr";
+import { FormGroup, FormBuilder } from "@angular/forms";
+import { LOCAL_STORAGE, WINDOW } from "@ng-toolkit/universal";
+import { isPlatformBrowser, Location } from "@angular/common";
 declare interface Window {
   adsbygoogle: any[];
 }
-declare var adsbygoogle: any[];
 
 @Component({
-  selector: 'app-job-list',
-  templateUrl: './job-list.component.html',
-  styleUrls: ['./job-list.component.css']
+  selector: "app-job-list",
+  templateUrl: "./job-list.component.html",
+  styleUrls: ["./job-list.component.css"]
 })
 export class JobListComponent implements OnInit, AfterViewInit {
   jobs: any;
   locations: any;
   categories: any;
   companies: any;
-  filterData: any = {}
+  filterData: any = {};
   p: number = 1;
   totalRecords: any;
   limit: number = 5;
@@ -33,76 +36,86 @@ export class JobListComponent implements OnInit, AfterViewInit {
   selectedJobType: any = [];
   currentUser: any;
   jobSearch: FormGroup;
+  selectedItem: any;
+  query: boolean;
 
-  constructor(@Inject(WINDOW) private window: Window, @Inject(PLATFORM_ID) private platformId: any, @Inject(LOCAL_STORAGE) private localStorage: any, private jobApi: JobsService,
+  constructor(
+    @Inject(WINDOW) private window: Window,
+    @Inject(PLATFORM_ID) private platformId: any,
+    @Inject(LOCAL_STORAGE) private localStorage: any,
+    private jobApi: JobsService,
     private _fb: FormBuilder,
     private route: ActivatedRoute,
+    private location: Location,
     private toastr: ToastrService,
     private router: Router,
-    private meta: Meta) {
+    private meta: Meta
+  ) {
     if (isPlatformBrowser(this.platformId)) {
       // localStorage will be available: we can use it.
-      this.currentUser = JSON.parse(this.localStorage.getItem('currentUser'));
+      this.currentUser = JSON.parse(this.localStorage.getItem("currentUser"));
     }
-
   }
 
   ngOnInit() {
     this.filterData.limit = this.limit;
     this.filterData.offset = 0;
-    this.route.queryParams
-      .subscribe(params => {
-        if (Object.keys(params).length > 0) {
-          this.jobSearch = this._fb.group({
-            category: ['',params.category],
-            city: [params.city],
-            keywords: [params.keyWords]
-          });
-          this.filterData = this.jobSearch.value;
-          this.filterJobs(this.jobSearch.value)
-        } else {
-          this.jobSearch = this._fb.group({
-            category: [''],
-            city: [''],
-            keywords: ['']
-          });
-          this.getJobs(this.filterData);
-        }
-      });
-
-    this.jobApi.getJobFilters().subscribe(res => {
-      if (res['success']) {
-        this.locations = res['locations'];
-        this.categories = res['categories'];
-        this.companies = res['companies'];
+    this.route.queryParams.subscribe(params => {
+      if (Object.keys(params).length > 0) {
+        this.jobSearch = this._fb.group({
+          category: [params.category !== undefined ? params.category : ""],
+          city: [params.city],
+          keywords: [params.keyWords]
+        });
+        this.filterData = this.jobSearch.value;
+        this.query = true;
+        this.filterJobs(this.jobSearch.value);
+      } else {
+        this.jobSearch = this._fb.group({
+          category: [""],
+          city: [""],
+          keywords: [""]
+        });
+        this.getJobs(this.filterData);
       }
-    })
+    });
+    this.jobApi.getJobFilters().subscribe(res => {
+      if (res["success"]) {
+        this.locations = res["locations"];
+        this.categories = res["categories"];
+        this.companies = res["companies"];
+      }
+    });
   }
   ngAfterViewInit() {
-    try {
-      (this.window['adsbygoogle'] = this.window['adsbygoogle'] || []).push({});
-    } catch (e) {
-      console.error("error");
-    }
+    // try {
+    //   (this.window['adsbygoogle'] = this.window['adsbygoogle'] || []).push({});
+    // } catch (e) {
+    //   console.error("error");
+    // }
   }
   allCategories() {
-    delete this.filterData.category
+    delete this.filterData.category;
     this.filterData.limit = this.limit;
     this.filterData.offset = 0;
     this.getJobs(this.filterData);
   }
   getJobs(filterData?) {
     this.jobApi.getJobs(filterData).subscribe(res => {
-      if (res['success']) {
-        this.jobs = res['data'];
-        this.totalRecords = res['recordsTotal'];
+      if (res["success"]) {
+        this.jobs = res["data"];
+        this.totalRecords = res["recordsTotal"];
       }
     });
   }
   filterJobs(searchData) {
+    if (!this.query) {
+      this.location.replaceState(this.location.path().split("?")[0], "");
+    }
     if (searchData != undefined) {
       searchData.limit = this.limit;
       searchData.offset = 0;
+      this.query = false;
     }
     this.getJobs(searchData);
   }
@@ -135,7 +148,6 @@ export class JobListComponent implements OnInit, AfterViewInit {
     }
     this.filterData.selectedLocations = this.selectedLocations;
     this.getJobs(this.filterData);
-
   }
   selectExp(type, data) {
     if (type.target.checked) {
@@ -148,7 +160,6 @@ export class JobListComponent implements OnInit, AfterViewInit {
     }
     this.filterData.selectedExp = this.selectedExp;
     this.getJobs(this.filterData);
-
   }
   selectJobType(type, data) {
     if (type.target.checked) {
@@ -162,11 +173,12 @@ export class JobListComponent implements OnInit, AfterViewInit {
     this.filterData.selectedJobType = this.selectedJobType;
     this.getJobs(this.filterData);
   }
-  selectCategory(data) {
+  selectCategory(data, index) {
     this.filterData.category = data.category;
+    this.selectedItem = index;
     this.getJobs(this.filterData);
   }
   jobDetailView(jobId) {
-    this.router.navigate(['/job-details', jobId]);
+    this.router.navigate(["/job-details", jobId]);
   }
 }

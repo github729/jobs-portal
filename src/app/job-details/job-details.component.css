@@ -1,3 +1,7 @@
 .ad-padding {
   padding-bottom: 20px;
 }
+a.website-anchor {
+  color: #0d8bcc;
+  border-bottom: 1px solid #0d8bcc;
+}

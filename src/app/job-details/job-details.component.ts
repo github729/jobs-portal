@@ -1,3 +1,4 @@
+import { Meta, Title } from "@angular/platform-browser";
 import { isPlatformBrowser } from "@angular/common";
 import { LOCAL_STORAGE } from "@ng-toolkit/universal";
 import { Component, OnInit, PLATFORM_ID, Inject } from "@angular/core";
@@ -19,11 +20,12 @@ export class JobDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
+    private titleService: Title,
     @Inject(LOCAL_STORAGE) private localStorage: any,
     @Inject(PLATFORM_ID) private platformId: any,
     private jobsApi: JobsService
   ) {
-    this.url = ENV.DomainUrl + router.url;
+    this.url = ENV.DomainUrl + this.router.url;
     if (isPlatformBrowser(this.platformId)) {
       // localStorage will be available: we can use it.
       this.currentUser = JSON.parse(localStorage.getItem("currentUser"));
@@ -36,6 +38,8 @@ export class JobDetailsComponent implements OnInit {
       this.jobsApi.getJobById(this.jobId).subscribe(res => {
         if (res["success"]) {
           this.jobDetails = res["data"];
+          console.log(this.jobDetails.title);
+          this.titleService.setTitle(this.jobDetails.title);
         }
       });
     });

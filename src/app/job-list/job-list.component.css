@@ -12,3 +12,7 @@
   font-size: 20px;
   margin-right: 10px;
 }
+.accordion .panel-body ul li a.active{
+  color : #0d8bcc;
+  font-weight: bold;
+}
