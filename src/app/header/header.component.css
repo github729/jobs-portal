@@ -1,3 +1,6 @@
 .navbar-brand .img-fluid{
   height: 40px;
 }
+#navbarNav .active-link {
+  color: #0072bc;
+}
