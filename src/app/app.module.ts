@@ -34,6 +34,7 @@ import { TransferHttpCacheModule } from '@nguniversal/common';
 import { NgtUniversalModule } from '@ng-toolkit/universal';
 import { ShareButtonsModule } from '@ngx-share/buttons';
 import { SlugifyPipe } from './slugify.pipe';
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,7 +57,8 @@ import { SlugifyPipe } from './slugify.pipe';
     JobSearchComponent,
     LoaderComponent,
     GoogleAdComponent,
-    SlugifyPipe
+    SlugifyPipe,
+    PrivacyPolicyComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
