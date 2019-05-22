@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: "home", component: HomeComponent },
   { path: "job-list", component: JobListComponent },
   {
-    path: "job-details/:category/:companyName/:location/:id",
+    path: "job-details/:category/:companyName/:state/:city/:id",
     component: JobDetailsComponent
   },
   { path: "sign-in", component: SignInComponent },

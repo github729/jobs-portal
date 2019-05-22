@@ -357,15 +357,9 @@
 
                 <div class="ad-info">
                   <span
-                    ><a
-                      routerLink="/job-details/{{ job.category | slugify }}/{{
-                        job.companyName | slugify
-                      }}/{{ job.city | slugify }}-{{ job.state | slugify }}/{{
-                        job.id
-                      }}"
-                      class="title"
-                      >{{ job.category }}</a
-                    >
+                    ><a (click)="jobDetailView(job)" class="title">{{
+                      job.category
+                    }}</a>
                     @ <a>{{ job.companyName | titlecase }}</a></span
                   >
                   <div class="ad-meta">

@@ -282,16 +282,8 @@
             <!-- item-image -->
             <div class="ad-info">
               <span
-                ><a
-                  routerLink="/job-details/{{ job.category | slugify }}/{{
-                    job.companyName | slugify
-                  }}/{{ job.city | slugify }}-{{ job.state | slugify }}/{{
-                    job.id
-                  }}"
-                  class="title"
-                  >{{ job.category }}</a
-                >
-                @ <a>{{ job.companyName }}</a></span
+                ><a (click)="jobDetailView(job)">{{ job.category }}</a> @
+                <a>{{ job.companyName }}</a></span
               >
               <div class="ad-meta">
                 <ul>
@@ -324,11 +316,7 @@
             <div class="button">
               <a
                 class="btn btn-primary"
-                routerLink="/job-details/{{ job.category | slugify }}/{{
-                  job.companyName | slugify
-                }}/{{ job.city | slugify }}-{{ job.state | slugify }}/{{
-                  job.id
-                }}"
+                (click)="jobDetailView(job)"
                 >Apply Now</a
               >
             </div>

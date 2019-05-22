@@ -12,6 +12,7 @@ import { ToastrService } from "ngx-toastr";
 import { FormGroup, FormBuilder } from "@angular/forms";
 import { LOCAL_STORAGE, WINDOW } from "@ng-toolkit/universal";
 import { isPlatformBrowser, Location } from "@angular/common";
+import { SlugifyPipe } from "../slugify.pipe";
 declare interface Window {
   adsbygoogle: any[];
 }
@@ -49,7 +50,8 @@ export class JobListComponent implements OnInit, AfterViewInit {
     private location: Location,
     private toastr: ToastrService,
     private router: Router,
-    private meta: Meta
+    private meta: Meta,
+    private sulgify: SlugifyPipe
   ) {
     if (isPlatformBrowser(this.platformId)) {
       // localStorage will be available: we can use it.
@@ -178,7 +180,18 @@ export class JobListComponent implements OnInit, AfterViewInit {
     this.selectedItem = index;
     this.getJobs(this.filterData);
   }
-  jobDetailView(jobId) {
-    this.router.navigate(["/job-details", jobId]);
+  jobDetailView(job) {
+    this.router.navigate([
+      "/job-details",
+      this.sulgify.transform(job.category),
+      this.sulgify.transform(job.companyName),
+      this.sulgify.transform(job.state),
+      this.sulgify.transform(job.city),
+      btoa(job.id)
+    ]);
   }
+  // var enc = window.btoa(str);
+  // console.log(enc);
+  // var dec = window.btoa(enc);
+  // console.log(dec);
 }
