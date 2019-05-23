@@ -35,10 +35,9 @@ export class JobDetailsComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.jobId = params.id;
-      this.jobsApi.getJobById(atob(this.jobId)).subscribe(res => {
+      this.jobsApi.getJobById(this.jobId).subscribe(res => {
         if (res["success"]) {
           this.jobDetails = res["data"];
-          console.log(this.jobDetails.title);
           this.titleService.setTitle(this.jobDetails.title);
         }
       });

@@ -30,7 +30,7 @@ export class JobListComponent implements OnInit, AfterViewInit {
   filterData: any = {};
   p: number = 1;
   totalRecords: any;
-  limit: number = 5;
+  limit: number = 85;
   selectedCompanies: any = [];
   selectedLocations: any = [];
   selectedExp: any = [];
@@ -187,7 +187,7 @@ export class JobListComponent implements OnInit, AfterViewInit {
       this.sulgify.transform(job.companyName),
       this.sulgify.transform(job.state),
       this.sulgify.transform(job.city),
-      btoa(job.id)
+      job.id
     ]);
   }
   // var enc = window.btoa(str);

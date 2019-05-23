@@ -56,6 +56,7 @@ import { PrivacyPolicyComponent } from "./privacy-policy/privacy-policy.componen
     UserInfoComponent,
     JobSearchComponent,
     LoaderComponent,
+    SlugifyPipe,
     GoogleAdComponent,
     PrivacyPolicyComponent
   ],

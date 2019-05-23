@@ -71,7 +71,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
       this.sulgify.transform(job.companyName),
       this.sulgify.transform(job.state),
       this.sulgify.transform(job.city),
-      btoa(job.id)
+      job.id
     ]);
   }
 }
