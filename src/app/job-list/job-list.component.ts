@@ -30,7 +30,7 @@ export class JobListComponent implements OnInit, AfterViewInit {
   filterData: any = {};
   p: number = 1;
   totalRecords: any;
-  limit: number = 85;
+  limit: number = 5;
   selectedCompanies: any = [];
   selectedLocations: any = [];
   selectedExp: any = [];
