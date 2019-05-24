@@ -4,6 +4,7 @@ import { UserService } from '../user.service';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { LOCAL_STORAGE } from '@ng-toolkit/universal';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-close-account',
@@ -16,8 +17,11 @@ export class CloseAccountComponent implements OnInit {
 
   constructor(@Inject(LOCAL_STORAGE) private localStorage: any, private userApi: UserService,
     private route: ActivatedRoute,
+    private titleService: Title,
     private router: Router,
-    private toastr: ToastrService) { }
+    private toastr: ToastrService) {
+      this.titleService.setTitle("Close Account - QuikResults");
+     }
 
   ngOnInit() {
     this.currentUser = JSON.parse(this.localStorage.getItem('currentUser'));

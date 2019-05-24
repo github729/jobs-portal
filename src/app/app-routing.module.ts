@@ -14,6 +14,7 @@ import { ProfileUpdateComponent } from "./profile-update/profile-update.componen
 import { ResumeEditComponent } from "./resume-edit/resume-edit.component";
 import { CloseAccountComponent } from "./close-account/close-account.component";
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
+import { DisclaimerComponent } from './disclaimer/disclaimer.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "home", pathMatch: "full" },
@@ -33,7 +34,8 @@ const routes: Routes = [
   { path: "profile-update", component: ProfileUpdateComponent },
   { path: "resume-edit", component: ResumeEditComponent },
   { path: "delete-account", component: CloseAccountComponent },
-  { path: "privacy-policy", component: PrivacyPolicyComponent }
+  { path: "privacy-policy", component: PrivacyPolicyComponent },
+  { path: "disclaimer", component: DisclaimerComponent }
 ];
 
 @NgModule({

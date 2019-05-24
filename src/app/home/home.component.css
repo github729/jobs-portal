@@ -23,20 +23,20 @@
   font-size: 20px;
   margin-right: 10px;
 }
-.register-now {
+/* .register-now {
   padding: 0px;
 }
 .register-now img {
   width: 100%;
   max-width: 100%;
-}
+} */
 
-.emply-now {
+/* .emply-now {
   position: absolute;
   top: 50px;
   text-align: center;
-}
-.emply-now h2 {
+} */
+/* .emply-now h2 {
   font-size: 32px;
   color: #68b7df;
   font-weight: bold;
@@ -46,7 +46,7 @@
   text-align: center;
   font-size: 22px;
   line-height: 33px;
-}
+} */
 .btn {
   text-align: left;
 }
@@ -70,7 +70,6 @@
   padding-bottom: 25px;
 }
 .findby h6 {
-
   font-weight: 400;
   font-size: 20px;
 }
@@ -80,18 +79,37 @@
   margin-top: 30px;
   padding-bottom: 30px;
 }
-
+.bg-overlay {
+  background:  url("../../assets/images/cover1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  height: 350px;
+}
+.register {
+  top: 50px;
+}
+.register h2 {
+  color: #68b7df;
+  font-size: 32px;
+  font-weight: bold;
+}
+.register h4 {
+  font-size: 23px;
+  line-height: 33px;
+  text-align: center;
+}
 @media(min-width: 360px)and (max-width:800px) {
-  .register-now img {
+  /* .register-now img {
     max-width: none !important;
     width: initial !important;
-  }
-  .emply-now {
+  } */
+  /* .emply-now {
     text-align: left;
   }
   .emply-now h2 ,h4 {
     font-size: 20px;
-  }
+  } */
   .findby h6 {
     margin-left: 0px;
     margin-top: 0px;

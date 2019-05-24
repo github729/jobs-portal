@@ -1,8 +1,10 @@
+import { Meta } from "@angular/platform-browser";
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { UserService } from "../user.service";
 import { ToastrService } from "ngx-toastr";
 import { Router } from "@angular/router";
+import { Title } from "@angular/platform-browser";
 
 @Component({
   selector: "app-sign-up",
@@ -18,8 +20,19 @@ export class SignUpComponent implements OnInit {
     private _fb: FormBuilder,
     private userApi: UserService,
     private router: Router,
-    private toastr: ToastrService
-  ) {}
+    private toastr: ToastrService,
+    private titleService: Title,
+    private meta: Meta
+  ) {
+    this.meta.updateTag({
+      name: "description",
+      content:
+        "Register with quikresutls.in &  apply to jobs easily. Find the right Job by top employers from India. Create your Profile Now, Free!."
+    });
+    this.titleService.setTitle(
+      "Register Free on quikresults.in | Apply to Millions of Jobs Online"
+    );
+  }
 
   ngOnInit() {
     this.employeeSignUpForm = this._fb.group(
@@ -30,7 +43,7 @@ export class SignUpComponent implements OnInit {
         confirmPassword: ["", Validators.required],
         mobileNumber: ["", [Validators.required]],
         city: [""],
-        role: ["", Validators.required],
+        role: ["", Validators.required]
         // terms: ["", Validators.required]
       },
       { validator: this.checkPasswords }

@@ -11,8 +11,7 @@ import { SlugifyPipe } from '../slugify.pipe';
   styleUrls: ["./home.component.css"]
 })
 export class HomeComponent implements OnInit, AfterViewInit {
-  title =
-    "Jobs 2019 - Search Jobs in India, Latest Job Vacancies, Recruitment,IT Jobs,Software Jobs,Development Jobs - Quikresults.in";
+
   locations: any;
   categories: any;
   jobSearch: FormGroup;
@@ -27,7 +26,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     private meta: Meta,
     private sulgify: SlugifyPipe
   ) {
-    this.titleService.setTitle(this.title);
+    this.titleService.setTitle("Home | QuikResults");
   }
 
   ngOnInit() {

@@ -1,4 +1,4 @@
-import { Meta } from "@angular/platform-browser";
+import { Meta, Title } from "@angular/platform-browser";
 import {
   Component,
   OnInit,
@@ -49,6 +49,7 @@ export class JobListComponent implements OnInit, AfterViewInit {
     private route: ActivatedRoute,
     private location: Location,
     private toastr: ToastrService,
+    private titleService: Title,
     private router: Router,
     private meta: Meta,
     private sulgify: SlugifyPipe
@@ -57,6 +58,14 @@ export class JobListComponent implements OnInit, AfterViewInit {
       // localStorage will be available: we can use it.
       this.currentUser = JSON.parse(this.localStorage.getItem("currentUser"));
     }
+    this.meta.updateTag({
+      name: "description",
+      content:
+        "Connect with employers. Apply to Millions of job opportunities across top companies, industries & locations on India’s job site. Apply online. Post CV today."
+    });
+    this.titleService.setTitle(
+      "Jobs 2019 - Recruitment - Job Search - Employment - Job Vacancies - Quikresults.in"
+    );
   }
 
   ngOnInit() {

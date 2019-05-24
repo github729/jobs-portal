@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { Meta } from "@angular/platform-browser";
+import { Meta, Title } from "@angular/platform-browser";
 
 @Component({
   selector: "app-privacy-policy",
@@ -7,11 +7,12 @@ import { Meta } from "@angular/platform-browser";
   styleUrls: ["./privacy-policy.component.css"]
 })
 export class PrivacyPolicyComponent implements OnInit {
-  constructor(private meta: Meta) {
+  constructor(private meta: Meta, private titleService: Title) {
     this.meta.updateTag({
       name: "keywords",
       content: "quickresults,quikrresults"
     });
+    this.titleService.setTitle("QuikResults.in - Privacy Policy");
   }
 
   ngOnInit() {}

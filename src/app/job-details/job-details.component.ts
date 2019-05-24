@@ -20,6 +20,7 @@ export class JobDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
+    private meta: Meta,
     private titleService: Title,
     @Inject(LOCAL_STORAGE) private localStorage: any,
     @Inject(PLATFORM_ID) private platformId: any,
@@ -38,7 +39,31 @@ export class JobDetailsComponent implements OnInit {
       this.jobsApi.getJobById(this.jobId).subscribe(res => {
         if (res["success"]) {
           this.jobDetails = res["data"];
-          this.titleService.setTitle(this.jobDetails.title);
+          this.titleService.setTitle(
+            `Hiring for ${this.jobDetails.category} - ${
+              this.jobDetails.city
+            }- ${this.jobDetails.state} - ${this.jobDetails.companyName} - ${
+              this.jobDetails.experience
+            }  of experience`
+          );
+          this.meta.updateTag({
+            name: "description",
+            content: `Job Description for Hiring for ${
+              this.jobDetails.category
+            } in ${this.jobDetails.companyName} in ${this.jobDetails.city}, ${
+              this.jobDetails.state
+            } for  ${this.jobDetails.experience} of experience. Apply Now!`
+          });
+          this.meta.updateTag({
+            name: "keywords",
+            content: `${this.jobDetails.category} Jobs in ${
+              this.jobDetails.city
+            },${this.jobDetails.category} Jobs in ${
+              this.jobDetails.companyName
+            },${this.jobDetails.category} ,${this.jobDetails.companyName}, ${
+              this.jobDetails.city
+            } ${ENV.GlobalKeywords} `
+          });
         }
       });
     });

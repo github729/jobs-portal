@@ -35,6 +35,7 @@ import { NgtUniversalModule } from "@ng-toolkit/universal";
 import { ShareButtonsModule } from "@ngx-share/buttons";
 import { SlugifyPipe } from "./slugify.pipe";
 import { PrivacyPolicyComponent } from "./privacy-policy/privacy-policy.component";
+import { DisclaimerComponent } from './disclaimer/disclaimer.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,7 +59,8 @@ import { PrivacyPolicyComponent } from "./privacy-policy/privacy-policy.componen
     LoaderComponent,
     SlugifyPipe,
     GoogleAdComponent,
-    PrivacyPolicyComponent
+    PrivacyPolicyComponent,
+    DisclaimerComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: "serverApp" }),
