@@ -1,0 +1,49 @@
+.tabbing .tabs {
+  background-color: #efefef;
+  overflow: hidden;
+}
+
+.alphabets.tabbing .tab {
+  padding-left: 12.2px;
+  padding-right: 12.2px;
+  color: #666;
+}
+
+.tabbing .tabs .active {
+  padding-bottom: 10px;
+  border-bottom: 4px solid #09c;
+}
+
+.tabbing .tabs .tab {
+  cursor: pointer;
+  text-align: center;
+  float: left;
+  padding: 10px 14px;
+  background-color: #efefef;
+  border-right: 1px solid #e4e4e4;
+}
+
+.card-columns {
+  -webkit-column-count: 4;
+  -moz-column-count: 4;
+  column-count: 4;
+  padding-bottom: 30px;
+  padding-top: 30px;
+  margin-left: 80px;
+}
+
+.company {
+  color: #0d8bcc !important;
+  line-height: 30px;
+}
+
+.companies-bg {
+  background-image: url(../../assets/images/bg/job-list-bg.jpg);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.companies-bg .card {
+  margin-left: -15px;
+  margin-right: -8px;
+}

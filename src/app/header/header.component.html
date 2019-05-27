@@ -22,7 +22,32 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="nav navbar-nav">
           <li><a routerLink="/home" routerLinkActive="active-link">Home</a></li>
-          <li><a routerLink="job-list" routerLinkActive="active-link">Job list</a></li>
+          <li class="dropdown">
+            <a
+              routerLink="job-list"
+              routerLinkActive="active-link"
+              class="dropdown-toggle"
+              >Job Search</a
+            >
+            <ul class="dropdown-menu">
+              <li>
+                <a routerLink="/jobs-list">All Jobs</a>
+              </li>
+              <li>
+                <a routerLink="/jobs-by-location">Jobs By Location</a>
+              </li>
+              <li>
+                <a class="dropdown-item" routerLink="/jobs-by-category"
+                  >Jobs By Category</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item" routerLink="/jobs-by-company"
+                  >Jobs By Comapany</a
+                >
+              </li>
+            </ul>
+          </li>
           <!-- <li><a href="details.html">Job Details</a></li> -->
           <li>
             <a
@@ -33,9 +58,8 @@
           </li>
 
           <li class="dropdown" *ngIf="currentUser">
-            <a class="dropdown-toggle" data-toggle="dropdown"
-              >My Account<span class="caret"></span
-            ></a>
+            <a class="dropdown-toggle">My Account<span class="caret"></span></a>
+            <!-- data-toggle="dropdown" in anchor tag -->
             <ul class="dropdown-menu">
               <!-- <li>
                 <a

@@ -4,3 +4,6 @@
 #navbarNav .active-link {
   color: #0072bc;
 }
+.dropdown:hover>.dropdown-menu {
+  display: block;
+}

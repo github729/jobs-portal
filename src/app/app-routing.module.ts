@@ -1,3 +1,6 @@
+import { CompaniesListComponent } from './companies-list/companies-list.component';
+import { CategoriesListComponent } from './categories-list/categories-list.component';
+import { LocationsListComponent } from "./locations-list/locations-list.component";
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { HomeComponent } from "./home/home.component";
@@ -13,8 +16,8 @@ import { ProfileComponent } from "./profile/profile.component";
 import { ProfileUpdateComponent } from "./profile-update/profile-update.component";
 import { ResumeEditComponent } from "./resume-edit/resume-edit.component";
 import { CloseAccountComponent } from "./close-account/close-account.component";
-import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
-import { DisclaimerComponent } from './disclaimer/disclaimer.component';
+import { PrivacyPolicyComponent } from "./privacy-policy/privacy-policy.component";
+import { DisclaimerComponent } from "./disclaimer/disclaimer.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "home", pathMatch: "full" },
@@ -35,7 +38,10 @@ const routes: Routes = [
   { path: "resume-edit", component: ResumeEditComponent },
   { path: "delete-account", component: CloseAccountComponent },
   { path: "privacy-policy", component: PrivacyPolicyComponent },
-  { path: "disclaimer", component: DisclaimerComponent }
+  { path: "disclaimer", component: DisclaimerComponent },
+  { path: "jobs-by-location", component: LocationsListComponent },
+  { path: "jobs-by-category", component: CategoriesListComponent },
+  { path: "jobs-by-company", component: CompaniesListComponent }
 ];
 
 @NgModule({

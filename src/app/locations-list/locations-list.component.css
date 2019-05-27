@@ -1,0 +1,15 @@
+.location-bg {
+  background-image: url(../../assets/images/bg/job-list-bg.jpg);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.locations-info {
+  padding-top: 30px;
+}
+/*
+@media (min-width: 576px) {
+  .card-columns .card {
+    width: 74%;
+  }
+} */

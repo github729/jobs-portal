@@ -62,7 +62,7 @@ export class JobDetailsComponent implements OnInit {
               this.jobDetails.companyName
             },${this.jobDetails.category} ,${this.jobDetails.companyName}, ${
               this.jobDetails.city
-            } ${ENV.GlobalKeywords} `
+            }, ${ENV.GlobalKeywords} `
           });
         }
       });
