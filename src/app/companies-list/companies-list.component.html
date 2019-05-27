@@ -1,0 +1,36 @@
+<section class="companies-bg page">
+  <div class="container">
+    <div class="breadcrumb-section">
+      <!-- breadcrumb -->
+      <ol class="breadcrumb">
+        <li><a routerLink="/home">Home</a></li>
+        <li>Jobs By Companies</li>
+      </ol>
+      <!-- breadcrumb -->
+      <h2 class="title">
+        Browse Jobs by Companies
+      </h2>
+    </div>
+    <div class="tabbing companies">
+      <div class="row">
+        <div class="tabs">
+          <a
+            *ngFor="let aplhaBet of alphaBetArray"
+            class="tab"
+            (click)="selectedAplhaBet(aplhaBet)"
+            [ngClass]="{ active: selectedLetter === aplhaBet }"
+          >
+            {{ aplhaBet }}</a
+          >
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-columns">
+        <div class="company-item" *ngFor="let company of companies">
+          <a class="company">{{ company.companyName }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

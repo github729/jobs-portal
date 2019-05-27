@@ -36,6 +36,9 @@ import { ShareButtonsModule } from "@ngx-share/buttons";
 import { SlugifyPipe } from "./slugify.pipe";
 import { PrivacyPolicyComponent } from "./privacy-policy/privacy-policy.component";
 import { DisclaimerComponent } from './disclaimer/disclaimer.component';
+import { CompaniesListComponent } from './companies-list/companies-list.component';
+import { LocationsListComponent } from './locations-list/locations-list.component';
+import { CategoriesListComponent } from './categories-list/categories-list.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,7 +63,10 @@ import { DisclaimerComponent } from './disclaimer/disclaimer.component';
     SlugifyPipe,
     GoogleAdComponent,
     PrivacyPolicyComponent,
-    DisclaimerComponent
+    DisclaimerComponent,
+    CompaniesListComponent,
+    LocationsListComponent,
+    CategoriesListComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: "serverApp" }),
