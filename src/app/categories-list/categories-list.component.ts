@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { JobsService } from '../jobs.service';
 
 @Component({
   selector: 'app-categories-list',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./categories-list.component.css']
 })
 export class CategoriesListComponent implements OnInit {
+  categories: any;
 
-  constructor() { }
+  constructor(private jobApi: JobsService) { }
 
   ngOnInit() {
+    this.jobApi.getJobsCategories().subscribe(res => {
+      console.log(res);
+      this.categories = res['data'];
+    })
   }
 
 }

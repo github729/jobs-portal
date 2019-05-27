@@ -73,20 +73,33 @@ export class JobListComponent implements OnInit, AfterViewInit {
     this.filterData.offset = 0;
     this.route.queryParams.subscribe(params => {
       if (Object.keys(params).length > 0) {
-        this.jobSearch = this._fb.group({
-          category: [params.category !== undefined ? params.category : ""],
-          city: [params.city],
-          keywords: [params.keyWords]
-        });
-        this.filterData = this.jobSearch.value;
-        this.query = true;
-        this.filterJobs(this.jobSearch.value);
+        console.log(params.companyName);
+        if (params.companyName != undefined) {
+          this.jobSearch = this._fb.group({
+            category: [""],
+            city: [""],
+            keywords: [""]
+          });
+          this.filterData.companyName = params.companyName;
+          this.query = true;
+          this.filterJobs(this.filterData);
+        } else {
+          this.jobSearch = this._fb.group({
+            category: [params.category !== undefined ? params.category : ""],
+            city: [params.city !== undefined ? params.city : ""],
+            keywords: [params.keyWords]
+          });
+          this.filterData = this.jobSearch.value;
+          this.query = true;
+          this.filterJobs(this.jobSearch.value);
+        }
       } else {
         this.jobSearch = this._fb.group({
           category: [""],
           city: [""],
           keywords: [""]
         });
+        this.filterData = this.jobSearch.value;
         this.getJobs(this.filterData);
       }
     });
@@ -199,8 +212,4 @@ export class JobListComponent implements OnInit, AfterViewInit {
       job.id
     ]);
   }
-  // var enc = window.btoa(str);
-  // console.log(enc);
-  // var dec = window.btoa(enc);
-  // console.log(dec);
 }

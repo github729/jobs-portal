@@ -28,7 +28,12 @@
     <div class="card">
       <div class="card-columns">
         <div class="company-item" *ngFor="let company of companies">
-          <a class="company">{{ company.companyName }}</a>
+          <a
+            class="company"
+            routerLink="/job-list"
+            [queryParams]="{ companyName: company.companyName }"
+            >{{ company.companyName }}</a
+          >
         </div>
       </div>
     </div>
