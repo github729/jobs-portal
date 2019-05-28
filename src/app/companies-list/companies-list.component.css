@@ -40,7 +40,7 @@
 .companies-bg {
   background-image: url(../../assets/images/bg/job-list-bg.jpg);
   background-repeat: no-repeat;
-  background-size: contain;
+  /* background-size: contain; */
 }
 
 .companies-bg .card {

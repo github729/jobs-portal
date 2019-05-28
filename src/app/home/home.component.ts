@@ -4,14 +4,13 @@ import { FormGroup, FormBuilder } from "@angular/forms";
 import { JobsService } from "../jobs.service";
 import { WINDOW } from "@ng-toolkit/universal";
 import { Meta, Title } from "@angular/platform-browser";
-import { SlugifyPipe } from '../slugify.pipe';
+import { SlugifyPipe } from "../slugify.pipe";
 @Component({
   selector: "app-home",
   templateUrl: "./home.component.html",
   styleUrls: ["./home.component.css"]
 })
 export class HomeComponent implements OnInit, AfterViewInit {
-
   locations: any;
   categories: any;
   jobSearch: FormGroup;
@@ -47,6 +46,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
       }
     });
   }
+
   ngAfterViewInit() {
     // try {
     //   (this.window['adsbygoogle'] = this.window['adsbygoogle'] || []).push({});

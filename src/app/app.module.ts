@@ -39,6 +39,8 @@ import { DisclaimerComponent } from './disclaimer/disclaimer.component';
 import { CompaniesListComponent } from './companies-list/companies-list.component';
 import { LocationsListComponent } from './locations-list/locations-list.component';
 import { CategoriesListComponent } from './categories-list/categories-list.component';
+import { SortingPipe } from './sorting.pipe';
+import { GoogleTextAdsComponent } from './google-text-ads/google-text-ads.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -66,7 +68,9 @@ import { CategoriesListComponent } from './categories-list/categories-list.compo
     DisclaimerComponent,
     CompaniesListComponent,
     LocationsListComponent,
-    CategoriesListComponent
+    CategoriesListComponent,
+    SortingPipe,
+    GoogleTextAdsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: "serverApp" }),
