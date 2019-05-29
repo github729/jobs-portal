@@ -47,6 +47,7 @@ import {
   FacebookLoginProvider,
   LinkedInLoginProvider
 } from "angularx-social-login-vk";
+import { GovtJobsComponent } from './govt-jobs/govt-jobs.component';
 let config = new AuthServiceConfig([
   {
     id: GoogleLoginProvider.PROVIDER_ID,
@@ -93,7 +94,8 @@ export function provideConfig() {
     LocationsListComponent,
     CategoriesListComponent,
     SortingPipe,
-    GoogleTextAdsComponent
+    GoogleTextAdsComponent,
+    GovtJobsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: "serverApp" }),

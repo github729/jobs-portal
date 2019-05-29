@@ -3280,7 +3280,7 @@ input, select, a, .transition,
 
 
 .navbar .navbar-nav .dropdown-menu {
-	margin-top: 3px;
+	margin-top: 0px;
 }
 
 .navbar-brand {

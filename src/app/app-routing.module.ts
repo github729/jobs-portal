@@ -1,3 +1,4 @@
+import { GovtJobsComponent } from './govt-jobs/govt-jobs.component';
 import { CompaniesListComponent } from './companies-list/companies-list.component';
 import { CategoriesListComponent } from './categories-list/categories-list.component';
 import { LocationsListComponent } from "./locations-list/locations-list.component";
@@ -39,6 +40,7 @@ const routes: Routes = [
   { path: "delete-account", component: CloseAccountComponent },
   { path: "privacy-policy", component: PrivacyPolicyComponent },
   { path: "disclaimer", component: DisclaimerComponent },
+  { path: "govt-jobs", component: GovtJobsComponent },
   { path: "jobs-by-location", component: LocationsListComponent },
   { path: "jobs-by-category", component: CategoriesListComponent },
   { path: "jobs-by-company", component: CompaniesListComponent }
