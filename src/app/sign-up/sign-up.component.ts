@@ -5,7 +5,12 @@ import { UserService } from "../user.service";
 import { ToastrService } from "ngx-toastr";
 import { Router } from "@angular/router";
 import { Title } from "@angular/platform-browser";
-
+import { AuthService } from "angularx-social-login-vk";
+import {
+  FacebookLoginProvider,
+  GoogleLoginProvider,
+  LinkedInLoginProvider
+} from "angularx-social-login-vk";
 @Component({
   selector: "app-sign-up",
   templateUrl: "./sign-up.component.html",
@@ -22,7 +27,8 @@ export class SignUpComponent implements OnInit {
     private router: Router,
     private toastr: ToastrService,
     private titleService: Title,
-    private meta: Meta
+    private meta: Meta,
+    private authService: AuthService
   ) {
     this.meta.updateTag({
       name: "description",
@@ -79,5 +85,25 @@ export class SignUpComponent implements OnInit {
         this.router.navigate(["/sign-in"]);
       }
     });
+  }
+  signInWithGoogle(): void {
+    console.log("userData:");
+    this.authService
+      .signIn(GoogleLoginProvider.PROVIDER_ID)
+      .then(userData => {})
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
+  signInWithFB(): void {
+    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
+  }
+
+  signInWithLinkedIn(): void {
+    this.authService.signIn(LinkedInLoginProvider.PROVIDER_ID);
+  }
+  signOut(): void {
+    this.authService.signOut();
   }
 }

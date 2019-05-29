@@ -35,12 +35,35 @@ import { NgtUniversalModule } from "@ng-toolkit/universal";
 import { ShareButtonsModule } from "@ngx-share/buttons";
 import { SlugifyPipe } from "./slugify.pipe";
 import { PrivacyPolicyComponent } from "./privacy-policy/privacy-policy.component";
-import { DisclaimerComponent } from './disclaimer/disclaimer.component';
-import { CompaniesListComponent } from './companies-list/companies-list.component';
-import { LocationsListComponent } from './locations-list/locations-list.component';
-import { CategoriesListComponent } from './categories-list/categories-list.component';
-import { SortingPipe } from './sorting.pipe';
-import { GoogleTextAdsComponent } from './google-text-ads/google-text-ads.component';
+import { DisclaimerComponent } from "./disclaimer/disclaimer.component";
+import { CompaniesListComponent } from "./companies-list/companies-list.component";
+import { LocationsListComponent } from "./locations-list/locations-list.component";
+import { CategoriesListComponent } from "./categories-list/categories-list.component";
+import { SortingPipe } from "./sorting.pipe";
+import { GoogleTextAdsComponent } from "./google-text-ads/google-text-ads.component";
+import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login-vk";
+import {
+  GoogleLoginProvider,
+  FacebookLoginProvider,
+  LinkedInLoginProvider
+} from "angularx-social-login-vk";
+let config = new AuthServiceConfig([
+  {
+    id: GoogleLoginProvider.PROVIDER_ID,
+    provider: new GoogleLoginProvider(
+      "750007380790-6gsndmt7920gbmt1i9f8onj45tstrpj2.apps.googleusercontent.com"
+    )
+  },
+  {
+    id: FacebookLoginProvider.PROVIDER_ID,
+    provider: new FacebookLoginProvider("296925167886120") // ID приложения в Вконтакте
+  }
+]);
+
+export function provideConfig() {
+  return config;
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -89,9 +112,16 @@ import { GoogleTextAdsComponent } from './google-text-ads/google-text-ads.compon
     CommonModule,
     TransferHttpCacheModule,
     NgtUniversalModule,
-    ShareButtonsModule.withConfig({})
+    ShareButtonsModule.withConfig({}),
+    SocialLoginModule
   ],
-  providers: [SlugifyPipe],
+  providers: [
+    SlugifyPipe,
+    {
+      provide: AuthServiceConfig,
+      useFactory: provideConfig
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -24,9 +24,6 @@
 }
 
 .card-columns {
-  -webkit-column-count: 4;
-  -moz-column-count: 4;
-  column-count: 4;
   padding-bottom: 30px;
   padding-top: 30px;
   margin-left: 80px;
@@ -46,4 +43,28 @@
 .companies-bg .card {
   margin-left: -15px;
   margin-right: -8px;
+}
+
+@media (min-width: 576px) {
+  .card-columns {
+    column-count: 2;
+  }
+}
+
+@media (min-width: 768px) {
+  .card-columns {
+    column-count: 3;
+  }
+}
+
+@media (min-width: 992px) {
+  .card-columns {
+    column-count: 4;
+  }
+}
+
+@media (min-width: 1200px) {
+  .card-columns {
+    column-count: 4;
+  }
 }

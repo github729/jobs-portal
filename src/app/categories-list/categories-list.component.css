@@ -1,17 +1,40 @@
 .card-columns {
-  -webkit-column-count: 4;
-  -moz-column-count: 4;
-  column-count: 4;
   padding-bottom: 30px;
   padding-top: 30px;
   margin-left: 90px;
 }
+
 .category {
   color: #0d8bcc !important;
   line-height: 30px;
 }
+
 .categories-bg {
   background-image: url(../../assets/images/bg/job-list-bg.jpg);
   background-repeat: no-repeat;
   background-size: contain;
+}
+
+@media (min-width: 576px) {
+  .card-columns {
+    column-count: 2;
+  }
+}
+
+@media (min-width: 768px) {
+  .card-columns {
+    column-count: 3;
+  }
+}
+
+@media (min-width: 992px) {
+  .card-columns {
+    column-count: 4;
+  }
+}
+
+@media (min-width: 1200px) {
+  .card-columns {
+    column-count: 4;
+  }
 }
