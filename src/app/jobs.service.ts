@@ -70,6 +70,12 @@ export class JobsService {
       .get(`${ENV.BASE_API}job-categories`, this.httpOptions)
       .pipe(catchError(this.handleError));
   }
+    // get  jobs companies
+    getGovtJobs() {
+      return this._http
+        .get(`${ENV.BASE_API}govt-jobs`, this.httpOptions)
+        .pipe(catchError(this.handleError));
+    }
   // get all state
   getStates() {
     return this._http

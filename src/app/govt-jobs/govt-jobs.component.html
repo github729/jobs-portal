@@ -48,13 +48,19 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>IRCTC Recruitment 2019</td>
-                    <td>74 Supervisor (Hospitality) (Walk-in)</td>
-                    <td>B.Sc</td>
-                    <td>11, 13 & 15-06-19</td>
+                  <tr *ngFor="let govtJob of govtJobs">
+                    <td>{{ govtJob.organisation }}</td>
+                    <td>{{ govtJob.postName }}</td>
+                    <td>{{ govtJob.qualification }}</td>
+                    <td>{{ govtJob.deadline }}</td>
                     <td>
-                      <a class="notification">Download Notification</a>
+                      <a
+                        class="notification"
+                        href="{{ serverUrl + govtJob.notificationFile }}"
+                        target="blank"
+                        download
+                        >Download Notification</a
+                      >
                     </td>
                   </tr>
                   <tr>
