@@ -67,8 +67,8 @@
             <div class="panel-group" id="tr-accordion">
               <div class="card panel-faq">
                 <div class="card-header">
+                  <!-- data-toggle="collapse" -->
                   <button
-                    data-toggle="collapse"
                     data-target="#accordion-one"
                     aria-expanded="true"
                     aria-controls="accordion-one"
@@ -99,6 +99,11 @@
                         >
                       </li>
                     </ul>
+                    <div class="more">
+                      <a target="blank" href="/jobs-by-category"
+                        >View All Categories...</a
+                      >
+                    </div>
                   </div>
                   <!-- panel-body -->
                 </div>
@@ -109,9 +114,9 @@
               </div>
               <div class="card panel-faq">
                 <div class="card-header">
+                  <!-- data-toggle="collapse" -->
+                  <!-- class="collapsed" -->
                   <button
-                    class="collapsed"
-                    data-toggle="collapse"
                     data-target="#accordion-four"
                     aria-expanded="true"
                     aria-controls="accordion-four"
@@ -123,7 +128,7 @@
 
                 <div
                   id="accordion-four"
-                  class="collapse"
+                  class="collapse show"
                   data-parent="#tr-accordion"
                 >
                   <!-- panel-body -->
@@ -168,9 +173,9 @@
 
               <div class="card panel-faq">
                 <div class="card-header">
+                  <!-- data-toggle="collapse" -->
+                  <!-- class="collapsed" -->
                   <button
-                    class="collapsed"
-                    data-toggle="collapse"
                     data-target="#accordion-five"
                     aria-expanded="true"
                     aria-controls="accordion-five"
@@ -182,7 +187,7 @@
 
                 <div
                   id="accordion-five"
-                  class="collapse"
+                  class="collapse show"
                   data-parent="#tr-accordion"
                 >
                   <!-- panel-body -->
@@ -225,13 +230,15 @@
               </div>
               <!-- panel -->
               <div class="ad-section text-center">
-                <app-google-text-ads></app-google-text-ads>
+                <app-google-text-ads
+                  style="height: 100px;"
+                ></app-google-text-ads>
               </div>
               <div class="card panel-faq">
                 <div class="card-header">
+                  <!-- data-toggle="collapse" -->
+                  <!-- class="collapsed" -->
                   <button
-                    class="collapsed"
-                    data-toggle="collapse"
                     data-target="#accordion-six"
                     aria-expanded="true"
                     aria-controls="accordion-six"
@@ -243,16 +250,16 @@
 
                 <div
                   id="accordion-six"
-                  class="collapse"
+                  class="collapse show"
                   data-parent="#tr-accordion"
                 >
                   <!-- panel-body -->
                   <div class="panel-body">
-                    <input
+                    <!-- <input
                       type="text"
                       placeholder="Search Company"
                       class="form-control"
-                    />
+                    /> -->
                     <div *ngFor="let company of companies">
                       <input
                         type="checkbox"
@@ -262,6 +269,11 @@
                       />
                       {{ company.companyName }}<br />
                     </div>
+                    <div class="more">
+                      <a target="blank" href="/jobs-by-company"
+                        >View All Comapnies...</a
+                      >
+                    </div>
                   </div>
                   <!-- panel-body -->
                 </div>
@@ -270,9 +282,9 @@
 
               <div class="card panel-faq">
                 <div class="card-header">
+                  <!-- data-toggle="collapse" -->
+                  <!-- class="collapsed" -->
                   <button
-                    class="collapsed"
-                    data-toggle="collapse"
                     data-target="#accordion-seven"
                     aria-expanded="true"
                     aria-controls="accordion-seven"
@@ -284,16 +296,16 @@
 
                 <div
                   id="accordion-seven"
-                  class="collapse"
+                  class="collapse show"
                   data-parent="#tr-accordion"
                 >
                   <!-- panel-body -->
                   <div class="panel-body">
-                    <input
+                    <!-- <input
                       type="text"
                       placeholder="Search Location"
                       class="form-control"
-                    />
+                    /> -->
                     <div *ngFor="let location of locations">
                       <input
                         type="checkbox"
@@ -302,6 +314,11 @@
                         (change)="selectLocation($event, location)"
                       />
                       {{ location.city }},{{ location.state }}<br />
+                    </div>
+                    <div class="more">
+                      <a target="blank" href="/jobs-by-location"
+                        >View All Locations...</a
+                      >
                     </div>
                   </div>
                   <!-- panel-body -->
@@ -434,6 +451,7 @@
         <div class="col-md-2 d-none d-lg-block">
           <div class="advertisement text-center">
             <app-google-ad></app-google-ad>
+            <app-google-text-ads></app-google-text-ads>
           </div>
         </div>
       </div>

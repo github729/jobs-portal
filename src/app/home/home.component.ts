@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     private meta: Meta,
     private sulgify: SlugifyPipe
   ) {
-    this.titleService.setTitle("Home | QuikResults");
+    this.titleService.setTitle("Jobs in India - Software Developer Vacancies - Freshers Recruitment 2019 - Quikresults.in");
   }
 
   ngOnInit() {

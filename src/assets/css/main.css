@@ -958,13 +958,13 @@ a.verified i {
     font-size: 18px;
     color: #000;
     font-weight: 500;
-    cursor: pointer;
+    /* cursor: pointer; */
     padding-right: 20px;
 }
 
 .accordion .card-header>button:before {
     position: absolute;
-    content: "\f068";
+    /* content: "\f068"; */
     right: 15px;
     top: 8px;
     font-size: 20px;
@@ -983,7 +983,8 @@ a.verified i {
 .accordion .panel-body {
 	padding:20px 25px;
 	background-color:#fff;
-	border: 1px solid #ddd;
+  border: 1px solid #ddd;
+  cursor: pointer;
 }
 
 .accordion .panel-body h5 {

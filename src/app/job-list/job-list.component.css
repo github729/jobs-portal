@@ -16,3 +16,10 @@
   color : #0d8bcc;
   font-weight: bold;
 }
+.more {
+  text-align: center;
+}
+.more a {
+  color: #0d8bcc;
+  border-bottom: 1px solid #0d8bcc;
+}
