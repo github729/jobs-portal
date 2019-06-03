@@ -8,16 +8,24 @@ import { ENV } from "../app.settings";
   styleUrls: ["./govt-jobs.component.css"]
 })
 export class GovtJobsComponent implements OnInit {
-  govtJobs: any;
   serverUrl = ENV.SERVER_URL;
+  stateWiseGovtJobs: any;
+  industriesWiseGovtJobs: any;
 
   constructor(private jobApi: JobsService) {}
 
   ngOnInit() {
     console.log(this.serverUrl);
-    this.jobApi.getGovtJobs().subscribe(res => {
+    this.jobApi.getGovtJobsByStates().subscribe(res => {
       if (res["success"]) {
-        this.govtJobs = res["data"];
+        this.stateWiseGovtJobs = res["data"];
+        console.log(this.stateWiseGovtJobs);
+      }
+    });
+    this.jobApi.getGovtJobsByIndustries().subscribe(res => {
+      if (res["success"]) {
+        this.industriesWiseGovtJobs = res["data"];
+        console.log(this.industriesWiseGovtJobs);
       }
     });
   }

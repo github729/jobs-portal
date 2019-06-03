@@ -28,10 +28,10 @@
             </p>
 
             <p>Here are the list of Government Jobs 2019 Opening today.</p>
-            <div class="table-responsive tablepress">
+            <div class="table-responsive tablepress" *ngFor="let industryJobs of industriesWiseGovtJobs">
               <h5>
                 <strong
-                  ><a id="railway"></a>Railway Jobs 2019 – 2233 Vacancies<br />
+                  ><a id="railway"></a>{{industryJobs.name}} Jobs 2019<br />
                 </strong>
               </h5>
               <table
@@ -48,7 +48,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let govtJob of govtJobs">
+                  <tr *ngFor="let govtJob of industryJobs.govtJobs">
                     <td>{{ govtJob.organisation }}</td>
                     <td>{{ govtJob.postName }}</td>
                     <td>{{ govtJob.qualification }}</td>
@@ -63,62 +63,16 @@
                       >
                     </td>
                   </tr>
-                  <tr>
-                    <td>IRCTC Recruitment 2019</td>
-                    <td>74 Supervisor (Hospitality) (Walk-in)</td>
-                    <td>B.Sc</td>
-                    <td>11, 13 & 15-06-19</td>
-                    <td>
-                      <a class="notification">Download Notification</a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>IRCTC Recruitment 2019</td>
-                    <td>74 Supervisor (Hospitality) (Walk-in)</td>
-                    <td>B.Sc</td>
-                    <td>11, 13 & 15-06-19</td>
-                    <td>
-                      <a class="notification">Download Notification</a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>IRCTC Recruitment 2019</td>
-                    <td>74 Supervisor (Hospitality) (Walk-in)</td>
-                    <td>B.Sc</td>
-                    <td>11, 13 & 15-06-19</td>
-                    <td>
-                      <a class="notification">Download Notification</a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>IRCTC Recruitment 2019</td>
-                    <td>74 Supervisor (Hospitality) (Walk-in)</td>
-                    <td>B.Sc</td>
-                    <td>11, 13 & 15-06-19</td>
-                    <td>
-                      <a class="notification">Download Notification</a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>IRCTC Recruitment 2019</td>
-                    <td>74 Supervisor (Hospitality) (Walk-in)</td>
-                    <td>B.Sc</td>
-                    <td>11, 13 & 15-06-19</td>
-                    <td>
-                      <a class="notification">Download Notification</a>
-                    </td>
-                  </tr>
                 </tbody>
               </table>
             </div>
             <!--end of .table-responsive-->
           </div>
-          <div class="jobs-by-category">
+          <div class="jobs-by-category" *ngFor="let stateJobs of stateWiseGovtJobs">
             <div class="table-responsive tablepress">
               <h5>
                 <strong
-                  ><a id="bank"></a>Bank/Financial Department Jobs 2019 – 14175
-                  Vacancies<br />
+                  ><a id="bank"></a>{{stateJobs.name}} Jobs 2019 <br />
                 </strong>
               </h5>
               <table
@@ -135,58 +89,19 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>IRCTC Recruitment 2019</td>
-                    <td>74 Supervisor (Hospitality) (Walk-in)</td>
-                    <td>B.Sc</td>
-                    <td>11, 13 & 15-06-19</td>
+                  <tr *ngFor="let govtJob of stateJobs.govtJobs">
+                    <td>{{ govtJob.organisation }}</td>
+                    <td>{{ govtJob.postName }}</td>
+                    <td>{{ govtJob.qualification }}</td>
+                    <td>{{ govtJob.deadline }}</td>
                     <td>
-                      <a class="notification">Download Notification</a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>IRCTC Recruitment 2019</td>
-                    <td>74 Supervisor (Hospitality) (Walk-in)</td>
-                    <td>B.Sc</td>
-                    <td>11, 13 & 15-06-19</td>
-                    <td>
-                      <a class="notification">Download Notification</a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>IRCTC Recruitment 2019</td>
-                    <td>74 Supervisor (Hospitality) (Walk-in)</td>
-                    <td>B.Sc</td>
-                    <td>11, 13 & 15-06-19</td>
-                    <td>
-                      <a class="notification">Download Notification</a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>IRCTC Recruitment 2019</td>
-                    <td>74 Supervisor (Hospitality) (Walk-in)</td>
-                    <td>B.Sc</td>
-                    <td>11, 13 & 15-06-19</td>
-                    <td>
-                      <a class="notification">Download Notification</a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>IRCTC Recruitment 2019</td>
-                    <td>74 Supervisor (Hospitality) (Walk-in)</td>
-                    <td>B.Sc</td>
-                    <td>11, 13 & 15-06-19</td>
-                    <td>
-                      <a class="notification">Download Notification</a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>IRCTC Recruitment 2019</td>
-                    <td>74 Supervisor (Hospitality) (Walk-in)</td>
-                    <td>B.Sc</td>
-                    <td>11, 13 & 15-06-19</td>
-                    <td>
-                      <a class="notification">Download Notification</a>
+                      <a
+                        class="notification"
+                        href="{{ serverUrl + govtJob.notificationFile }}"
+                        target="blank"
+                        download
+                        >Download Notification</a
+                      >
                     </td>
                   </tr>
                 </tbody>
