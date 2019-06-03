@@ -46,6 +46,11 @@ export class JobsService {
       .get(`${ENV.BASE_API}job-filters`, this.httpOptions)
       .pipe(catchError(this.handleError));
   }
+  getTopFiveJobFilters() {
+    return this._http
+      .get(`${ENV.BASE_API}job-top-five-filters`, this.httpOptions)
+      .pipe(catchError(this.handleError));
+  }
   // get all Jobs
   getJobs(filterData?) {
     return this._http

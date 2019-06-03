@@ -1,16 +1,17 @@
 .search-form .text-center {
   padding-top: 25px;
-
 }
-
 .search-form .title {
   color: #000 !important;
 }
-
 .description {
   margin-top: 40px;
   margin-bottom: 10px;
   line-height: 30px;
+  font-size: 21px;
+}
+.findby h3 {
+  font-size: 20px;
 }
 .job-title {
   padding: 15px;
@@ -23,35 +24,10 @@
   font-size: 20px;
   margin-right: 10px;
 }
-/* .register-now {
-  padding: 0px;
-}
-.register-now img {
-  width: 100%;
-  max-width: 100%;
-} */
-
-/* .emply-now {
-  position: absolute;
-  top: 50px;
-  text-align: center;
-} */
-/* .emply-now h2 {
-  font-size: 32px;
-  color: #68b7df;
-  font-weight: bold;
-  margin-bottom: 20px;
-}
-.emply-now h4 {
-  text-align: center;
-  font-size: 22px;
-  line-height: 33px;
-} */
 .btn {
   text-align: left;
 }
 .findby {
-  /* margin: 50px 30px 75px 30px; */
   padding: 30px 80px 0px 80px;
 }
 .findby .title {
@@ -100,16 +76,6 @@
   text-align: center;
 }
 @media(min-width: 360px)and (max-width:800px) {
-  /* .register-now img {
-    max-width: none !important;
-    width: initial !important;
-  } */
-  /* .emply-now {
-    text-align: left;
-  }
-  .emply-now h2 ,h4 {
-    font-size: 20px;
-  } */
   .findby h6 {
     margin-left: 0px;
     margin-top: 0px;

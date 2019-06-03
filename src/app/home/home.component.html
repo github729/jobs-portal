@@ -3,12 +3,12 @@
   <div class="banner-overlay"></div>
   <div class="container text-center">
     <h1 class="title">The Easiest Way to Get Your New Job</h1>
-    <h5 class="description">
+    <h2 class="description">
       QuikResults is an India recruitment job portal, One who provide the best
       jobs in IT industry.Now you can search jobs from any where in India like
       Hyderabad,Bangalore,Chennai and many more.And one who provide the best
       recruitment portal for job search.
-    </h5>
+    </h2>
     <div class="banner-form banner-form-full job-list-form">
       <form [formGroup]="jobSearch" class="clearfix" (ngSubmit)="search()">
         <!-- category-change -->
@@ -84,28 +84,10 @@
               src="assets/images/jobs-in-hyderabad.png"
               title="hyderabad Jobs"
             />
-            <h6 class="text-info">Hyderabad</h6>
+            <h3 class="text-info">Hyderabad</h3>
           </div>
         </div>
       </div>
-      <!-- <div
-        class="card"
-        routerLink="/job-list"
-        [queryParams]="{ city: 'Hyderabad' }"
-      >
-        <div class="row">
-          <div class="col-lg-6">
-            <img
-              src="assets/images/jobs-in-hyderabad.png"
-              alt="hyderabad Jobs"
-              title="hyderabad Jobs"
-            />
-          </div>
-          <div class="col-lg-6">
-            <h6 class="text-info">Hyderabad</h6>
-          </div>
-        </div>
-      </div> -->
     </div>
     <div class="col-lg-3">
       <div
@@ -121,7 +103,7 @@
               alt="Bangalore Jobs"
               title="Bangalore Jobs"
             />
-            <h6 class="text-info">Bangalore</h6>
+            <h3 class="text-info">Bangalore</h3>
           </div>
         </div>
       </div>
@@ -140,7 +122,7 @@
               alt="Chennai Jobs"
               title="Chennai Jobs"
             />
-            <h6 class="text-info">Chennai</h6>
+            <h3 class="text-info">Chennai</h3>
           </div>
         </div>
       </div>
@@ -159,7 +141,7 @@
               alt="Mumbai Jobs"
               title="Mumbai Jobs"
             />
-            <h6 class="text-info">Mumbai</h6>
+            <h3 class="text-info">Mumbai</h3>
           </div>
         </div>
       </div>
@@ -180,7 +162,7 @@
               alt="Delhi Jobs"
               title="Delhi Jobs"
             />
-            <h6 class="text-info">Delhi</h6>
+            <h3 class="text-info">Delhi</h3>
           </div>
         </div>
       </div>
@@ -195,7 +177,7 @@
               alt="Pune Jobs"
               title="Pune Jobs"
             />
-            <h6 class="text-info">Pune</h6>
+            <h3 class="text-info">Pune</h3>
           </div>
         </div>
       </div>
@@ -213,7 +195,7 @@
               alt="Ahmedabad Jobs"
               title="Ahmedabad Jobs"
             />
-            <h6 class="text-info">Ahmedabad</h6>
+            <h3 class="text-info">Ahmedabad</h3>
           </div>
         </div>
       </div>
@@ -232,7 +214,7 @@
               alt="Kolkata Jobs"
               title="Kolkata Jobs"
             />
-            <h6 class="text-info">Kolkata</h6>
+            <h3 class="text-info">Kolkata</h3>
           </div>
         </div>
       </div>
@@ -247,27 +229,14 @@
 <!-- ads-section -->
 
 <!-- register-section -->
-<!-- <div class="col-lg-12 register-now">
-  <img src="assets/images/cover1.jpg" alt="Employer" title="Employer" />
-  <div class="col-lg-6 offset-lg-5 emply-now">
-    <h2>Register now and let employers find you</h2>
-    <h4>
-      Since thousands of qualified professionals get contacted every day through
-      quikresults, you can be the next successful candidate.
-    </h4>
-    <a routerLink="/sign-up" class="btn btn-primary now-rigi">
-      Register For Jobs
-    </a>
-  </div>
-</div> -->
 <div class="bg-overlay">
   <div class="row text-center">
     <div class="col-lg-6 offset-lg-5 register">
       <h2>Register now and let employers find you</h2>
-      <h4>
+      <h5>
         Since thousands of qualified professionals get contacted every day
         through quikresults, you can be the next successful candidate.
-      </h4>
+      </h5>
       <a routerLink="/sign-up" class="btn btn-primary now-rigi">
         Register For Jobs
       </a>
@@ -288,12 +257,6 @@
       <div class="tab-content">
         <div class="job-ad-item" *ngFor="let job of jobs; let i = index">
           <div class="item-info">
-            <!-- <div class="item-image-box">
-              <div class="item-image">
-                <a routerLink="/job-details"><img src="assets/images/job/default.png" alt="Image"
-                    class="img-fluid" /></a>
-              </div>
-            </div> -->
             <!-- item-image -->
             <div class="ad-info">
               <span

@@ -22,7 +22,7 @@ declare interface Window {
   templateUrl: "./job-list.component.html",
   styleUrls: ["./job-list.component.css"]
 })
-export class JobListComponent implements OnInit, AfterViewInit {
+export class JobListComponent implements OnInit {
   jobs: any;
   locations: any;
   categories: any;
@@ -39,6 +39,9 @@ export class JobListComponent implements OnInit, AfterViewInit {
   jobSearch: FormGroup;
   selectedItem: any;
   query: boolean;
+  topFiveLocations: any;
+  topFiveCompanies: any;
+  topFiveCategories: any;
 
   constructor(
     @Inject(WINDOW) private window: Window,
@@ -73,7 +76,6 @@ export class JobListComponent implements OnInit, AfterViewInit {
     this.filterData.offset = 0;
     this.route.queryParams.subscribe(params => {
       if (Object.keys(params).length > 0) {
-        console.log(params.companyName);
         if (params.companyName != undefined) {
           this.jobSearch = this._fb.group({
             category: [""],
@@ -110,14 +112,15 @@ export class JobListComponent implements OnInit, AfterViewInit {
         this.companies = res["companies"];
       }
     });
+    this.jobApi.getTopFiveJobFilters().subscribe(res => {
+      if (res["success"]) {
+        this.topFiveLocations = res["locations"];
+        this.topFiveCategories = res["categories"];
+        this.topFiveCompanies = res["companies"];
+      }
+    });
   }
-  ngAfterViewInit() {
-    // try {
-    //   (this.window['adsbygoogle'] = this.window['adsbygoogle'] || []).push({});
-    // } catch (e) {
-    //   console.error("error");
-    // }
-  }
+
   allCategories() {
     delete this.filterData.category;
     this.filterData.limit = this.limit;

@@ -91,7 +91,7 @@
                       >
                     </h5>
                     <ul>
-                      <li *ngFor="let category of categories; let i = index">
+                      <li *ngFor="let category of topFiveCategories; let i = index">
                         <a
                           (click)="selectCategory(category, i)"
                           [ngClass]="{ active: selectedItem === i }"
@@ -260,7 +260,7 @@
                       placeholder="Search Company"
                       class="form-control"
                     /> -->
-                    <div *ngFor="let company of companies">
+                    <div *ngFor="let company of topFiveCompanies">
                       <input
                         type="checkbox"
                         [name]="company.companyName"
@@ -306,7 +306,7 @@
                       placeholder="Search Location"
                       class="form-control"
                     /> -->
-                    <div *ngFor="let location of locations">
+                    <div *ngFor="let location of topFiveLocations">
                       <input
                         type="checkbox"
                         [name]="location.city"
