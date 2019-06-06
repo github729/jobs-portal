@@ -43,29 +43,6 @@
                     ></textarea>
                   </div>
                 </div>
-                <!-- <div class="row form-group photos-resume">
-                  <label class="col-sm-4 label-title"
-                    >Photos for your Resume</label
-                  >
-                  <div class="col-sm-8 ">
-                    <label class="upload-image left" for="upload-image-one">
-                      <input
-                        type="file"
-                        id="upload-image-one"
-                        formControlName="image"
-                      />
-                      Type: JPG, PNG Size: 3.5 x 4.5 cm
-                    </label>
-                    <label class="upload-image" for="upload-image-two">
-                      <input
-                        type="file"
-                        id="upload-image-two"
-                        formControlName="image"
-                      />
-                      Upload Photo
-                    </label>
-                  </div>
-                </div> -->
               </div>
               <!-- postdetails -->
 
@@ -170,8 +147,9 @@
                 <h4>Education Background</h4>
                 <div
                   *ngFor="
-                    let education of resumeForm['controls'].educationDetails
-                      ['controls'];
+                    let education of resumeForm['controls'].educationDetails[
+                      'controls'
+                    ];
                     let educationIndex = index
                   "
                 >
@@ -256,12 +234,6 @@
               <div class="section special-qualification">
                 <h4>Special Qualification</h4>
                 <div class="form-group item-description">
-                  <!-- <textarea
-                    class="form-control"
-                    placeholder="Write few lines about your special qualification"
-                    rows="8"
-                    formControlName="specialQualification"
-                  ></textarea> -->
                   <ckeditor
                     formControlName="specialQualification"
                     required
@@ -280,8 +252,9 @@
                 <h4>Language Proficiency:</h4>
                 <div
                   *ngFor="
-                    let language of resumeForm['controls'].languageProficiency
-                      ['controls'];
+                    let language of resumeForm['controls'].languageProficiency[
+                      'controls'
+                    ];
                     let languageIndex = index
                   "
                 >
@@ -305,37 +278,52 @@
                           <div class="rating">
                             <input
                               type="radio"
-                              id="star1{{languageIndex}}"
+                              id="star1{{ languageIndex }}"
                               value="1"
                               formControlName="rating"
-                            /><label class="full" for="star1{{languageIndex}}"></label>
+                            /><label
+                              class="full"
+                              for="star1{{ languageIndex }}"
+                            ></label>
 
                             <input
                               type="radio"
-                              id="star2{{languageIndex}}"
+                              id="star2{{ languageIndex }}"
                               value="2"
                               formControlName="rating"
-                            /><label class="full" for="star2{{languageIndex}}"></label>
+                            /><label
+                              class="full"
+                              for="star2{{ languageIndex }}"
+                            ></label>
 
                             <input
                               type="radio"
-                              id="star3{{languageIndex}}"
+                              id="star3{{ languageIndex }}"
                               formControlName="rating"
-                            /><label class="full" for="star3{{languageIndex}}"></label>
+                            /><label
+                              class="full"
+                              for="star3{{ languageIndex }}"
+                            ></label>
 
                             <input
                               type="radio"
-                              id="star4{{languageIndex}}"
+                              id="star4{{ languageIndex }}"
                               value="4"
                               formControlName="rating"
-                            /><label class="full" for="star4{{languageIndex}}"></label>
+                            /><label
+                              class="full"
+                              for="star4{{ languageIndex }}"
+                            ></label>
 
                             <input
                               type="radio"
-                              id="star5{{languageIndex}}"
+                              id="star5{{ languageIndex }}"
                               value="5"
                               formControlName="rating"
-                            /><label class="full" for="star5{{languageIndex}}"></label>
+                            /><label
+                              class="full"
+                              for="star5{{ languageIndex }}"
+                            ></label>
                           </div>
                         </div>
                         <!-- rating-star -->
@@ -360,18 +348,6 @@
               <div class="section company-information">
                 <!-- [formGroup]="resumeForm.get('personalDetails')" -->
                 <h4>Personal Deatils</h4>
-                <!-- <div class="row form-group">
-                  <label class="col-sm-3 label-title">Full Name</label>
-                  <div class="col-sm-9">
-                    <input
-                      type="text"
-                      name="name"
-                      class="form-control"
-                      placeholder="Jhon Doe"
-                      formControlName="fullName"
-                    />
-                  </div>
-                </div> -->
                 <div class="row form-group">
                   <label class="col-sm-3 label-title">Father's Name</label>
                   <div class="col-sm-9">
@@ -444,9 +420,6 @@
                     />
                   </div>
                 </div>
-                <!-- <div class="buttons pull-right">
-                  <a class="btn">Add New Feild</a>
-                </div> -->
               </div>
               <!-- section -->
 
@@ -467,50 +440,12 @@
               Post Your Resume
             </button>
           </form>
-          <!-- form -->
-          <!-- <div class="buttons">
-            <a class="btn">Update Profile</a>
-            <a class="btn cancle">Cancle</a>
-          </div> -->
         </div>
 
         <!-- quick-rules -->
         <div class="col-lg-4">
           <div class="section quick-rules">
-              <app-google-ad></app-google-ad>
-
-            <!-- <h4>Quick rules</h4>
-            <p class="lead">
-              Posting an ad on <a>quikresults.com</a> is free! However, all ads must
-              follow our rules:
-            </p>
-
-            <ul>
-              <li>Make sure you post in the correct category.</li>
-              <li>
-                Do not post the same ad more than once or repost an ad within 48
-                hours.
-              </li>
-              <li>Do not upload pictures with watermarks.</li>
-              <li>
-                Do not post ads containing multiple items unless it's a package
-                deal.
-              </li>
-              <li>
-                Do not put your email or phone numbers in the title or
-                description.
-              </li>
-              <li>Make sure you post in the correct category.</li>
-              <li>
-                Do not post the same ad more than once or repost an ad within 48
-                hours.
-              </li>
-              <li>Do not upload pictures with watermarks.</li>
-              <li>
-                Do not post ads containing multiple items unless it's a package
-                deal.
-              </li>
-            </ul> -->
+            <app-google-ad></app-google-ad>
           </div>
         </div>
         <!-- quick-rules -->
