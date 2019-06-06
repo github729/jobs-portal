@@ -5,7 +5,7 @@
 //   return `${protocol}//${host}`;
 // };
 
-const apiURI = `http://localhost:5000/v1/`;
+const apiURI = `http://3.86.159.151:5000/v1/`;
 const serverURI = `http://3.86.159.151:5000/`;
 
 export const ENV = {
