@@ -15,17 +15,14 @@ export class GovtJobsComponent implements OnInit {
   constructor(private jobApi: JobsService) {}
 
   ngOnInit() {
-    console.log(this.serverUrl);
     this.jobApi.getGovtJobsByStates().subscribe(res => {
       if (res["success"]) {
         this.stateWiseGovtJobs = res["data"];
-        console.log(this.stateWiseGovtJobs);
       }
     });
     this.jobApi.getGovtJobsByIndustries().subscribe(res => {
       if (res["success"]) {
         this.industriesWiseGovtJobs = res["data"];
-        console.log(this.industriesWiseGovtJobs);
       }
     });
   }
